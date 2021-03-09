@@ -10,9 +10,9 @@ class ShopAdmin(OSMGeoAdmin):
 
 
 @admin.register(Category)
-class ShopAdmin(OSMGeoAdmin):
+class CategoryAdmin(admin.ModelAdmin):
     list_display = ('CAname', 'CAdesc') 
 
 @admin.register(Product)
-class ShopAdmin(OSMGeoAdmin):
+class ProductAdmin(admin.ModelAdmin):
     list_display = ('PRname', 'PRdesc', 'PRcategory')       
