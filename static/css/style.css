@@ -4,7 +4,7 @@
 # General
 --------------------------------------------------------------*/
 body {
-  background-color: #fff;
+  background: linear-gradient(to bottom, #000000 9%, #cc33ff 100%);
   color: #333;
 }
 
@@ -378,7 +378,7 @@ span {
 }
 
 .nav-menu li:hover > a, .nav-menu > .menu-active > a {
-  color: #71c55d;
+  color: #152b0f;
 }
 
 .nav-menu > li {
