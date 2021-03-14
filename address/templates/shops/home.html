@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block title %}
+Dalil
+{% endblock title %}
 
 {% block main %}
 
@@ -8,10 +11,25 @@
  <section id="hero">
     <div class="hero-container" data-aos="fade-in">
       <h1>Welcome to Dalil</h1>
-      <h2>Elegant Bootstrap Template for Startups, Apps &amp; more...</h2>
-      <img src="{% static 'img/hero-img.png' %}" alt="Hero Imgs" data-aos="zoom-out" data-aos-delay="100">
-      <a href="#get-started" class="btn-get-started scrollto">Get Started</a>
-      <div class="btns">
+      <h2> Fast search, name the product &amp; Governorate ..</h2>
+      <form action="{% url 'address:product_list' %}">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Product Search</label>
+          <input name="product-bar" class="form-control form-control-lg" type="text" placeholder="Produ...">
+        </div>
+        <div class="form-group ">
+          <label for="inputState">Governorate</label>
+          <select name="gover-bar" class="form-control form-control-lg">
+            <option selected>Choose...</option>
+            {% for key, value in govs %}
+            <option value="{{key}}">{{ value }}</option>
+            {% endfor %}
+            
+          </select>
+        </div>
+        <button type="submit" class="btn btn-dark btn-lg btn-block">Search</button>
+      </form>
+      <div class="btns mt-4">
         <a href="#"><i class="fa fa-apple fa-3x"></i> App Store</a>
         <a href="#"><i class="fa fa-play fa-3x"></i> Google Play</a>
         <a href="#"><i class="fa fa-windows fa-3x"></i> windows</a>

@@ -48,7 +48,7 @@ class Shop(models.Model):
     SHcreated_dt = models.DateTimeField(auto_now_add=True, verbose_name=_("Created date"))
     SHcreated_by = models.ForeignKey(User, related_name="user_shop", on_delete=models.CASCADE, verbose_name=_("Created by"))
     SHupdated_dt = models.DateTimeField(null=True, verbose_name=_("Updated date"))
-    SHupdated_by = models.ForeignKey(User, null=True, related_name="+", on_delete=models.CASCADE, verbose_name=_("Updated by"))
+    SHupdated_by = models.ForeignKey(User, null=True, blank=True, related_name="+", on_delete=models.CASCADE, verbose_name=_("Updated by"))
     SHslug = models.SlugField(blank=True, null=True, verbose_name=_("Slug"))
 
     
@@ -73,8 +73,8 @@ class Product(models.Model):
     PRname = models.CharField(max_length=50, verbose_name=_("Product name"))
     PRshop = models.ForeignKey(Shop, related_name="shop_product", on_delete=models.CASCADE, verbose_name=_("Shop name"))
     PRdesc = models.TextField(max_length=400, help_text=_("Write about the product quality and how the product work ^_^ .."), verbose_name=_("description"))
-    PRref = models.URLField(max_length=350, null=True, verbose_name=_("Outside reference link"))
-    PRref_img = models.URLField(max_length=400, null=True, verbose_name=_("Link image"))    
+    PRref = models.URLField(max_length=400, null=True, blank=True, verbose_name=_("Outside reference link"))
+    PRref_img = models.URLField(max_length=500, null=True, blank=True, verbose_name=_("Link image"))    
     PRcategory = models.ForeignKey("Category", related_name="category_product", on_delete=models.CASCADE, verbose_name=_("Category"))
     PRslug = models.SlugField(blank=True, null=True, verbose_name=_("Slug"))
 
@@ -101,7 +101,7 @@ class Category(models.Model):
     
     CAname = models.CharField(max_length=50, verbose_name=_("Category name"))
     CAdesc = models.TextField(max_length=400, verbose_name=_("description"))
-    CAref_img = models.URLField(max_length=400, null=True, verbose_name=_("Link image"))
+    CAref_img = models.URLField(max_length=500, null=True, verbose_name=_("Link image"))
     CAslug = models.SlugField(blank=True, null=True, verbose_name=_("Slug"))
 
 

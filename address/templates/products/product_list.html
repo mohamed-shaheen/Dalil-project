@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Products
+{% endblock title %}
+
+{% block main %}
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Products</h2>
+          <ol>
+            <li><a href="{% url 'address:home' %}">Home</a></li>
+            <li>Products</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page pt-4">
+      <div class="container">
+        <p class="m-5">
+            <table class="table table-hover table-dark ">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Product name</th>
+                    <th scope="col">Shop</th>
+                    <th scope="col">Gover</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">image</th>
+                    <th scope="col">refrance</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for product in products %}    
+                  <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{product.PRname}}</td>
+                    <td>{{product.PRshop}}</td>
+                    <td>{{product.PRshop.get_SHgover_display }}</td>
+                    <td>{{product.PRdesc}}</td>
+                    <td>{{product.PRcategory}}</td>
+                    <td>
+                        {% if product.PRref %}
+                            <a href="{{product.PRref_img}}">image</a>
+                        {% else %}
+                          None
+                        {% endif %}      
+                    </td>
+                    <td>
+                        {% if product.PRref %}
+                            <a href="{{product.PRref}}">ref link</a>
+                        {% else %}
+                          None
+                        {% endif %}      
+                    </td>
+                  </tr>
+                {% endfor %}  
+                </tbody>
+              </table>
+        </p>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+{% endblock main %}
