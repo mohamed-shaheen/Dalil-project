@@ -1,6 +1,7 @@
 from django.contrib.gis.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import slugify
+from django.urls import reverse
 from django.contrib.auth.models import User
 # Create your models here.
 
@@ -61,11 +62,15 @@ class Shop(models.Model):
         verbose_name = _("Shop")
         verbose_name_plural = _("Shops")
 
-    #def get_absolute_url(self):
-    #    return reverse("", kwargs={"slug": self.SHslug})
+    def get_absolute_url(self):
+        return reverse("address:shop_detail", kwargs={"id" : self.id, "slug": self.SHslug})
 
     def __str__(self):
         return self.SHname
+
+    def get_product_count(self):
+        return Product.objects.filter(PRshop=self).count()
+        
 
 
 class Product(models.Model):

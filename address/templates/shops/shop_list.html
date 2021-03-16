@@ -25,11 +25,11 @@ Products
 
     <section class="inner-page pt-4">
       <div class="container">
-        <p class="m-5">
-          <form method="GET">
-             <div class="row">
+        <p class=" m-5">
+            <form method="GET">
+                <div class="row">
                   <div class="col">
-                    <input name="product-bar" class="form-control form-control-lg" type="text" placeholder="Produ...">
+                    <input name="shop-bar" class="form-control form-control-lg" type="text" placeholder="Sho...">
                   </div>
                   <div class="col">
                     <select name="gover-bar" class="form-control form-control-lg">
@@ -37,53 +37,41 @@ Products
                         {% for key, value in govs %}
                         <option value="{{key}}">{{ value }}</option>
                         {% endfor %}  
-                    </select>
+                     </select>
                   </div>
-              </div>
-            <button type="submit" class="btn btn-dark btn-lg btn-block mt-3">Search</button>
-          </form>
+                </div>
+                <button type="submit" class="btn btn-dark btn-lg btn-block mt-3">Search</button>
+              </form>
           <div class="table-responsive mt-5">
             <table class="table table-hover table-dark ">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Product name</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Shop</th>
+                    <th scope="col">Shop name</th>
                     <th scope="col">Gover</th>
-                    <th scope="col">address</th>
-                    <th scope="col">image</th>
-                    <th scope="col">refrance</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Number</th>
+                    <th scope="col">Offered products</th>
                   </tr>
                 </thead>
                 <tbody>
-                {% for product in products %}    
+                {% for shop in shops %}    
                   <tr>
                     <th scope="row">{{forloop.counter}}</th>
-                    <td>{{product.PRname}}</td>
-                    <td>{{product.PRdesc}}</td>
-                    <td>{{product.PRcategory}}</td>
-                    <td>{{product.PRshop}}</td>
-                    <td>{{product.PRshop.get_SHgover_display }}</td>
-                    <td>{{product.PRshop.SHaddress}}</td>
+                    <td><a href="{{shop.get_absolute_url}}">{{shop.SHname}}</a></td>
+                    <td>{{shop.get_SHgover_display}}</td>
+                    <td>{{shop.SHaddress}}</td>
+                    <td>{{shop.SHnum}}</td>
                     <td>
-                        {% if product.PRref %}
-                            <a href="{{product.PRref_img}}">image</a>
+                        {% if shop.get_product_count > 0 %}
+                            <strong>{{ shop.get_product_count }}</strong>
                         {% else %}
-                          None
-                        {% endif %}      
-                    </td>
-                    <td>
-                        {% if product.PRref %}
-                            <a href="{{product.PRref}}">ref link</a>
-                        {% else %}
-                          None
+                          No products added
                         {% endif %}      
                     </td>
                   </tr>
-                {% empty %}  
-                  <p class="clo alert alert-danger text-center"><strong> NO PRODUCTS HAS FOUND!!</strong></p>
+                {% empty %}
+                <p class="clo alert alert-danger text-center"><strong> NO SHOPS HAS FOUND!!</strong></p>
                 {% endfor %}  
                 </tbody>
               </table>
