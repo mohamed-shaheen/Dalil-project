@@ -64,7 +64,7 @@ Products
                     <td>{{product.PRname}}</td>
                     <td>{{product.PRdesc}}</td>
                     <td>{{product.PRcategory}}</td>
-                    <td>{{product.PRshop}}</td>
+                    <td><a href="{{product.PRshop.get_absolute_url}}">{{product.PRshop}}</a></td>
                     <td>{{product.PRshop.get_SHgover_display }}</td>
                     <td>{{product.PRshop.SHaddress}}</td>
                     <td>

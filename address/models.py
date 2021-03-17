@@ -1,4 +1,5 @@
 from django.contrib.gis.db import models
+from django.contrib.gis import forms
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import slugify
 from django.urls import reverse

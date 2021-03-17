@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.contrib.gis.admin import OSMGeoAdmin
+from django.contrib.gis.admin import OSMGeoAdmin, GeoModelAdmin
 from .models import Shop, Product, Category
 # Register your models here.
 
@@ -7,6 +7,8 @@ from .models import Shop, Product, Category
 @admin.register(Shop)
 class ShopAdmin(OSMGeoAdmin):
     list_display = ('SHname', 'SHgover', 'SHaddress', 'SHlocation') 
+    #default_lon = 31.233334
+    #default_lat = 30.033333
 
 
 @admin.register(Category)

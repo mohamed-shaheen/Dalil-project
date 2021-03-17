@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Add shop
+{% endblock title %}
+
+{% block main %}
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Add shop</h2>
+          <ol>
+            <li><a href="{% url 'address:home' %}">Home</a></li>
+            <li><a href="{% url 'address:shop_list' %}">Shops</a></li>
+            <li>Add shop</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page pt-4">
+      <div class="container">
+        <p class=" m-5">
+            <form method="post" novalidate >
+                {% csrf_token %}
+                {{form.media}}
+                {% include  'includes/form.html' %}
+                <button type="submit" class="btn btn-success">Add</button>  
+           </form>
+        </p>
+      </div>
+    </section>
+
+  </main>
+  <!-- End #main -->
+
+{% endblock main %}

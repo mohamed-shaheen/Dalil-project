@@ -4,7 +4,7 @@
 # General
 --------------------------------------------------------------*/
 body {
-  background: linear-gradient(to bottom, #f5f1f1 9%, #cc7ae7 100%);
+  background: linear-gradient(to bottom, #ffffff 9%, #000000 100%);
   color: #333;
 }
 
@@ -35,11 +35,11 @@ h5 {
 a {
   letter-spacing: 2px;
   text-decoration: none;
-  color: #71c55d;
+  color: #0899a3;
 }
 
 a:hover {
-  color: #92d283;
+  color: #83b9d2;
 }
 
 ul {
@@ -104,7 +104,7 @@ span {
 .back-to-top {
   position: fixed;
   display: none;
-  background: #71c55d;
+  background: #0899a3;
   line-height: 1;
   color: #fff;
   padding: 7px 12px 13px 12px;
@@ -122,13 +122,13 @@ span {
 }
 
 .back-to-top:focus {
-  background: #71c55d;
+  background: #0899a3;
   color: #fff;
   outline: none;
 }
 
 .back-to-top:hover {
-  background: #55b03f;
+  background: #0899a3;
   color: #fff;
 }
 
@@ -136,7 +136,7 @@ span {
 # Header
 --------------------------------------------------------------*/
 #header {
-  background: #fff;
+  background:  #ffffff;
   position: fixed;
   left: 0;
   top: 0;
@@ -167,7 +167,7 @@ span {
 }
 
 #header #logo h1 a span {
-  color: #71c55d;
+  color: #0899a3;
 }
 
 #header #logo img {
@@ -218,7 +218,7 @@ span {
   font-weight: 700;
   line-height: 56px;
   font-family: "Philosopher", sans-serif;
-  color: #71c55d;
+  color: #0899a3;
 }
 
 @media (max-width: 768px) {
@@ -260,14 +260,14 @@ span {
   border-radius: 50px;
   transition: 0.5s;
   margin-bottom: 30px;
-  border: 2px solid #71c55d;
+  border: 2px solid #0899a3;
   background: #fff;
-  color: #71c55d;
+  color: #0899a3;
   text-decoration: none;
 }
 
 #hero .btn-get-started:hover {
-  background: #71c55d;
+  background: #0899a3;
   color: #fff;
 }
 
@@ -288,7 +288,7 @@ span {
 }
 
 #hero .btns a:hover {
-  color: #71c55d;
+  color: #0899a3;
 }
 
 /*--------------------------------------------------------------
@@ -406,7 +406,7 @@ span {
 }
 
 .nav-menu ul li:hover > a {
-  color: #71c55d;
+  color: #0899a3;
 }
 
 .nav-menu ul ul {
@@ -495,11 +495,11 @@ span {
 }
 
 #mobile-nav ul .menu-has-children i.fa-chevron-up {
-  color: #71c55d;
+  color: #0899a3;
 }
 
 #mobile-nav ul .menu-active a {
-  color: #71c55d;
+  color: #0899a3;
 }
 
 #mobile-body-overly {
@@ -684,7 +684,7 @@ section {
 }
 
 #get-started .feature-block a:hover {
-  color: #71c55d;
+  color: #0899a3;
 }
 
 /* About Us Section
@@ -775,7 +775,7 @@ section {
 }
 
 .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
-  background: #71c55d;
+  background: #0899a3;
 }
 
 .owl-theme .owl-dots .owl-dot span {
@@ -800,7 +800,7 @@ section {
 #video .overlay .play-btn {
   width: 94px;
   height: 94px;
-  background: radial-gradient(#71c55d 50%, rgba(113, 197, 93, 0.15) 52%);
+  background: radial-gradient(#0899a3 50%, rgba(113, 197, 93, 0.15) 52%);
   border-radius: 50%;
   display: block;
   margin: 153px auto 0;
@@ -847,7 +847,7 @@ section {
 }
 
 #video .overlay .play-btn:hover::after {
-  border-left: 15px solid #71c55d;
+  border-left: 15px solid #0899a3;
   transform: scale(20);
 }
 
@@ -954,7 +954,7 @@ section {
 }
 
 #team .team-block .team-content ul li a .fa:hover {
-  color: #71c55d;
+  color: #0899a3;
 }
 
 #team .team-block .team-content ul > span {
@@ -979,7 +979,7 @@ section {
 }
 
 #testimonials .testimonials-content::before {
-  color: #71c55d;
+  color: #0899a3;
   content: "";
   display: inline-block;
   font: 70px/1 FontAwesome;
@@ -1023,7 +1023,7 @@ section {
 }
 
 #testimonials .btm-btm .active {
-  background: #71c55d;
+  background: #0899a3;
 }
 
 .carousel-indicators {
@@ -1095,14 +1095,14 @@ section {
 }
 
 #pricing .block-pricing .table .table_btn a {
-  background: #71c55d;
+  background: #0899a3;
   color: #fff;
   margin: 0;
   display: inline-block;
 }
 
 #pricing .block-pricing .table .table_btn a:hover {
-  background: #55b03f;
+  background: #05a9b4;
 }
 
 #pricing .block-pricing .table .table_btn a .fa {
@@ -1146,7 +1146,7 @@ section {
 }
 
 #blog .block-blog .content-blog h4 a:hover {
-  color: #71c55d;
+  color: #0899a3;
 }
 
 #blog .block-blog .content-blog > span {
@@ -1165,7 +1165,7 @@ section {
 }
 
 #blog .block-blog .content-blog a.readmore:hover {
-  color: #71c55d;
+  color: #0899a3;
 }
 
 /* Newsletter Section
@@ -1202,13 +1202,13 @@ section {
 }
 
 #newsletter .form-control:focus {
-  border-color: #71c55d;
+  border-color: #0899a3;
   box-shadow: none;
   outline: 0 none;
 }
 
 #newsletter .btn {
-  background: #71c55d;
+  background: #0899a3;
   border: 0;
   border-radius: 0;
   height: 50px;
@@ -1223,7 +1223,7 @@ section {
 }
 
 #newsletter .btn:hover {
-  background: #55b03f;
+  background: #05a9b4;
 }
 
 #newsletter .btn .fa {
@@ -1237,7 +1237,7 @@ section {
 }
 
 #newsletter ul li {
-  background: #71c55d;
+  background: #0899a3;
   border-radius: 50px;
   float: left;
   height: 35px;
@@ -1249,7 +1249,7 @@ section {
 }
 
 #newsletter ul li:hover {
-  background: #55b03f;
+  background: #05a9b4;
 }
 
 #newsletter ul li .fa {
@@ -1268,7 +1268,7 @@ section {
 
 #contact .info i {
   font-size: 32px;
-  color: #71c55d;
+  color: #0899a3;
   float: left;
 }
 
@@ -1290,7 +1290,7 @@ section {
 #contact .social-links a {
   font-size: 18px;
   display: inline-block;
-  background: #71c55d;
+  background: #0899a3;
   color: #fff;
   line-height: 1;
   padding: 6px 0 8px 0;
@@ -1302,7 +1302,7 @@ section {
 }
 
 #contact .social-links a:hover {
-  background: #55b03f;
+  background: #05a9b4;
   color: #fff;
 }
 
@@ -1338,7 +1338,7 @@ section {
 # Footer
 --------------------------------------------------------------*/
 .footer {
-  background: #2a2c30;
+  background: #000000;
   padding-top: 50px;
 }
 
@@ -1392,5 +1392,5 @@ section {
 
 .footer .copyrights p a, .footer .copyrights .credits a {
   letter-spacing: 0;
-  color: #71c55d;
+  color: #0899a3;
 }
