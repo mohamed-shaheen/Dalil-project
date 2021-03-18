@@ -17,7 +17,8 @@ Add shop
           <ol>
             <li><a href="{% url 'address:home' %}">Home</a></li>
             <li><a href="{% url 'address:shop_list' %}">Shops</a></li>
-            <li>Add shop</li>
+            <li><a href="{{ shop.get_absolute_url }}">{{shop.SHname}}</a></li>
+            <li>Add Product</li>
           </ol>
         </div>
 
@@ -27,9 +28,8 @@ Add shop
     <section class="inner-page pt-4">
       <div class="container">
         <p class="m-5">
-            <form method="post" enctype="multipart/form-data" novalidate >
+            <form method="post" novalidate >
                 {% csrf_token %}
-                {{form.media}}
                 {% include  'includes/form.html' %}
                 
                 <button type="submit" class="btn btn-dark btn-lg btn-block">Add</button>  

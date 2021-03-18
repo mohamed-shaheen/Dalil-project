@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Shop, Product, GOVERNORATES_CHOICES
 from django.contrib.auth.decorators import login_required
-from .forms import NewShopForm
+from .forms import NewShopForm, ProductForm
 # Create your views here.
 
 
@@ -70,3 +70,23 @@ def add_shop(request):
 
     context = {'form' : form}
     return render(request,'shops/shop_add.html', context)     
+
+
+
+def add_product(request, id):
+    shop = get_object_or_404(Shop, pk=id)
+    if request.method == "POST":
+        form = ProductForm(request.POST)
+        if form.is_valid():
+            product = form.save(commit=False)
+            product.PRshop = shop
+            product.save()
+
+            return redirect('address:shop_detail', id=shop.pk, slug=shop.SHslug)
+    else:
+        form = ProductForm()
+
+    context = {'form' : form, 'shop' : shop}
+    return render(request,'products/product_add.html', context) 
+
+

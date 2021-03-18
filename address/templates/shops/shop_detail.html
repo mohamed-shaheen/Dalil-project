@@ -32,7 +32,7 @@
                           <h3>{{shop.SHname}}</h3>
                           <h4 class="mt-3">{{shop.get_SHgover_display}}</h4>
                           <h4 class="mt-3">{{shop.SHaddress}}</h4>
-                          <h4 class="mt-3">{{shop.SHnum}}</h4>
+                          <h4 class="mt-3">{{shop.SHnum|phone2numeric }}</h4>
                           <h4 class="mt-3">Created at : {{shop.SHcreated_dt}}</h4>
                           <h4 class="mt-3">Created by : {{shop.SHcreated_by}}</h4>
                           {% if shop.SHupdated_dt %}
@@ -56,8 +56,11 @@
                               </div>
                           </div>
                         <button type="submit" class="col-md-6 col-lg-6 mt-4 btn btn-dark btn-lg btn-block mt-3">Search</button>
-                      </form>
+                        </form>
                       <div class="table-responsive mt-5">
+                            <div class="mb-3">
+                              <a href="{% url 'address:add_product' shop.pk %}" class="btn btn-dark btn-lg">Add Product</a>
+                          </div>
                         <table class="table table-hover table-dark ">
                             <thead>
                               <tr>
