@@ -11,15 +11,15 @@ Dalil
  <section id="hero">
     <div class="hero-container" data-aos="fade-in">
       <h1>Welcome to Dalil</h1>
-      <h2> Fast search, name the product &amp; Governorate ..</h2>
+      <h2> Quick search, name the product &amp; Governorate ..</h2>
       <form action="{% url 'address:product_list' %}">
         <div class="form-group">
           <label for="exampleInputEmail1">Product Search</label>
-          <input name="product-bar" class="form-control form-control-lg" type="text" placeholder="Produ...">
+          <input name="q1" class="form-control form-control-lg" type="text" placeholder="Produ...">
         </div>
         <div class="form-group ">
           <label for="inputState">Governorate</label>
-          <select name="gover-bar" class="form-control form-control-lg">
+          <select name="q2" class="form-control form-control-lg">
             <option selected>Choose...</option>
             {% for key, value in govs %}
             <option value="{{key}}">{{ value }}</option>

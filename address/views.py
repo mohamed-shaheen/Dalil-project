@@ -14,9 +14,9 @@ def home_view(request):
 def all_products(request):
     products = Product.objects.all()
 
-    if 'product-bar' in request.GET:
-        pro_name = request.GET['product-bar']
-        gov_name = request.GET['gover-bar']
+    if 'q1' in request.GET:
+        pro_name = request.GET['q1']
+        gov_name = request.GET['q2']
         if pro_name and gov_name!='Choose...':
             products = products.filter(PRname__icontains=pro_name).filter(PRshop__SHgover__exact=gov_name)
         elif pro_name:
@@ -31,9 +31,9 @@ def all_products(request):
 def all_shops(request):
     shops = Shop.objects.all()
 
-    if 'shop-bar' in request.GET:
-        shop_name = request.GET['shop-bar']
-        gov_name = request.GET['gover-bar']
+    if 'q3' in request.GET:
+        shop_name = request.GET['q3']
+        gov_name = request.GET['q2']
         if shop_name and gov_name!='Choose...':
             shops = shops.filter(SHname__icontains=shop_name).filter(SHgover__exact=gov_name)
         elif shop_name:
@@ -47,13 +47,21 @@ def all_shops(request):
 def shop_detail(request, id, slug):
     shop = get_object_or_404(Shop, pk=id, SHslug=slug)
     products = Product.objects.filter(PRshop__id__exact=id)
-    if 'product-bar' in request.GET:
-        pro_name = request.GET['product-bar']
+    if 'q1' in request.GET:
+        pro_name = request.GET['q1']
         if pro_name:
             products = products.filter(PRname__icontains=pro_name)
 
     context = {'shop' : shop, 'products' : products}
     return render(request, 'shops/shop_detail.html', context)
+
+
+def product_detail(request, id, slug):
+    product = get_object_or_404(Product, pk=id, PRslug=slug)
+
+    context = {'product' : product}
+    return render(request, 'products/product_detail.html', context)
+
 
 @login_required
 def add_shop(request):
@@ -88,5 +96,8 @@ def add_product(request, id):
 
     context = {'form' : form, 'shop' : shop}
     return render(request,'products/product_add.html', context) 
+
+
+    
 
 

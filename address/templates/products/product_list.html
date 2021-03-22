@@ -29,10 +29,10 @@ Products
           <form method="GET">
              <div class="row">
                   <div class="col">
-                    <input name="product-bar" class="form-control form-control-lg" type="text" placeholder="Produ...">
+                    <input name="q1" class="form-control form-control-lg" type="text" placeholder="Produ...">
                   </div>
                   <div class="col">
-                    <select name="gover-bar" class="form-control form-control-lg">
+                    <select name="q2" class="form-control form-control-lg">
                         <option selected>Choose...</option>
                         {% for key, value in govs %}
                         <option value="{{key}}">{{ value }}</option>
@@ -61,7 +61,7 @@ Products
                 {% for product in products %}    
                   <tr>
                     <th scope="row">{{forloop.counter}}</th>
-                    <td>{{product.PRname}}</td>
+                    <td><a href="{{product.get_absolute_url}}">{{product.PRname}}</a></td>
                     <td>{{product.PRdesc}}</td>
                     <td>{{product.PRcategory}}</td>
                     <td><a href="{{product.PRshop.get_absolute_url}}">{{product.PRshop}}</a></td>
@@ -69,14 +69,14 @@ Products
                     <td>{{product.PRshop.SHaddress}}</td>
                     <td>
                         {% if product.PRref %}
-                            <a href="{{product.PRref_img}}">image</a>
+                            <a href="{{product.PRref_img}}" target="_blank">image</a>
                         {% else %}
                           None
                         {% endif %}      
                     </td>
                     <td>
                         {% if product.PRref %}
-                            <a href="{{product.PRref}}">ref link</a>
+                            <a href="{{product.PRref}}" target="_blank">ref link</a>
                         {% else %}
                           None
                         {% endif %}      

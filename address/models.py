@@ -98,8 +98,8 @@ class Product(models.Model):
         verbose_name = _("Product")
         verbose_name_plural = _("Products")    
 
-    #def get_absolute_url(self):
-    #    return reverse("", kwargs={"slug": self.PRslug})        
+    def get_absolute_url(self):
+        return reverse("address:product_detail", kwargs={"id" : self.id, "slug": self.PRslug})        
 
     def __str__(self):
         return self.PRname

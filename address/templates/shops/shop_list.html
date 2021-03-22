@@ -13,10 +13,10 @@ Products
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Products</h2>
+          <h2>Shops</h2>
           <ol>
             <li><a href="{% url 'address:home' %}">Home</a></li>
-            <li>Products</li>
+            <li>Shops</li>
           </ol>
         </div>
 
@@ -29,10 +29,10 @@ Products
             <form method="GET">
                 <div class="row">
                   <div class="col">
-                    <input name="shop-bar" class="form-control form-control-lg" type="text" placeholder="Sho...">
+                    <input name="q3" class="form-control form-control-lg" type="text" placeholder="Sho...">
                   </div>
                   <div class="col">
-                    <select name="gover-bar" class="form-control form-control-lg">
+                    <select name="q2" class="form-control form-control-lg">
                         <option selected>Choose...</option>
                         {% for key, value in govs %}
                         <option value="{{key}}">{{ value }}</option>
