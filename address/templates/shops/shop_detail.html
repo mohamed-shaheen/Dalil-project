@@ -67,6 +67,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Product name</th>
                                 <th scope="col">Description</th>
+                                <th scope="col">Price</th>
                                 <th scope="col">Category</th>
                                 <th scope="col">image</th>
                                 <th scope="col">refrance</th>
@@ -78,6 +79,13 @@
                                 <th scope="row">{{forloop.counter}}</th>
                                 <td><a href="{{product.get_absolute_url}}">{{product.PRname}}</a></td>
                                 <td>{{product.PRdesc}}</td>
+                                <td> 
+                                      {% if product.PRprice %}
+                                          {{product.PRprice}}
+                                      {% else %}
+                                      UNKNOWN
+                                      {% endif %} 
+                                </td>
                                 <td>{{product.PRcategory}}</td>
                                 <td>
                                     {% if product.PRref %}

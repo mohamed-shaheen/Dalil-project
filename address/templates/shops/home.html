@@ -11,28 +11,54 @@ Dalil
  <section id="hero">
     <div class="hero-container" data-aos="fade-in">
       <h1>Welcome to Dalil</h1>
-      <h2> Quick search, name the product &amp; Governorate ..</h2>
+      <h2 class="quickTitle"> Quick search, name the product &amp; Governorate ..</h2>
       <form action="{% url 'address:product_list' %}">
-        <div class="form-group">
-          <label for="exampleInputEmail1">Product Search</label>
-          <input name="q1" class="form-control form-control-lg" type="text" placeholder="Produ...">
-        </div>
-        <div class="form-group ">
-          <label for="inputState">Governorate</label>
-          <select name="q2" class="form-control form-control-lg">
-            <option selected>Choose...</option>
-            {% for key, value in govs %}
-            <option value="{{key}}">{{ value }}</option>
-            {% endfor %}
-            
-          </select>
-        </div>
-        <button type="submit" class="btn btn-dark btn-lg btn-block">Search</button>
+            <div class="row mx-2">
+                  <div class="form-group col">
+                    <label for="exampleInputEmail1">Product name</label>
+                    <input name="q1" class="form-control form-control-lg" type="text" placeholder="Produ...">
+                  </div>
+                  <div class="form-group col">
+                    <label for="inputState">Governorate</label>
+                    <select name="q2" class="form-control form-control-lg">
+                      <option value="" selected>Choose...</option>
+                      {% for key, value in govs %}
+                      <option value="{{key}}">{{ value }}</option>
+                      {% endfor %}
+                      
+                    </select>
+                  </div>
+          </div>
+          <div class="row mx-2">
+                  <div class="form-group col advancedSearch">
+                    <label for="exampleInputEmail1">Shop name</label>
+                    <input name="q3" class="form-control form-control-lg" type="text" placeholder="Sho...">
+                  </div>
+                  <div class="form-group col advancedSearch">
+                    <label for="exampleInputEmail1">address</label>
+                    <input name="q4" class="form-control form-control-lg" type="text" placeholder="addre...">
+                  </div>
+          </div>
+          <div class="row mx-2">                  
+                  <div class="form-group col advancedSearch">
+                    <label for="exampleInputEmail1">Description</label>
+                    <input name="q5" class="form-control form-control-lg" type="text" placeholder="Any thing related to product">
+                  </div>
+                  <div class="form-group col advancedSearch">
+                    <label for="inputState">Category</label>
+                    <select name="q6" class="form-control form-control-lg">
+                      <option value="" selected>Choose...</option>
+                      {% for cat in category %}
+                      <option value="{{cat.CAname}}">{{ cat.CAname }}</option>
+                      {% endfor %}
+                      
+                    </select>
+                  </div>
+          </div>
+            <button type="submit" class="btn btn-dark btn-lg btn-block bx-2">Search</button>
       </form>
       <div class="btns mt-4">
-        <a href="#"><i class="fa fa-apple fa-3x"></i> App Store</a>
-        <a href="#"><i class="fa fa-play fa-3x"></i> Google Play</a>
-        <a href="#"><i class="fa fa-windows fa-3x"></i> windows</a>
+        <button class="btn btn-dark advancedBtn"><i class="fa fa-cogs fa-3x"></i> Advanced search</button>
       </div>
     </div>
   </section><!-- End Hero Section -->

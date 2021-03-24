@@ -27,21 +27,46 @@ Products
       <div class="container">
         <p class="m-5">
           <form method="GET">
-             <div class="row">
+             <div class="row m-2">
                   <div class="col">
                     <input name="q1" class="form-control form-control-lg" type="text" placeholder="Produ...">
                   </div>
                   <div class="col">
                     <select name="q2" class="form-control form-control-lg">
-                        <option selected>Choose...</option>
+                        <option value="" selected>Choose governorates</option>
                         {% for key, value in govs %}
                         <option value="{{key}}">{{ value }}</option>
                         {% endfor %}  
                     </select>
                   </div>
               </div>
+              <div class="row m-2">
+                <div class="col advancedSearch">
+                  <input name="q3" class="form-control form-control-lg" type="text" placeholder="Shop name">
+                </div>
+                <div class="col advancedSearch">
+                  <input name="q4" class="form-control form-control-lg" type="text" placeholder="address">
+                </div>
+             </div>
+             <div class="row m-2">                  
+                      <div class="col advancedSearch">
+                        <input name="q5" class="form-control form-control-lg" type="text" placeholder="Any thing related to product">
+                      </div>
+                      <div class="col advancedSearch">
+                        <select name="q6" class="form-control form-control-lg">
+                          <option value="" selected>Choose category</option>
+                          {% for cat in category %}
+                          <option value="{{cat.CAname}}">{{ cat.CAname }}</option>
+                          {% endfor %}
+                          
+                        </select>
+                      </div>
+               </div>
             <button type="submit" class="btn btn-dark btn-lg btn-block mt-3">Search</button>
           </form>
+          <div class="btns mt-4">
+            <button class="btn btn-dark advancedBtn"><i class="fa fa-cogs fa-3x"></i> Advanced search</button>
+          </div>
           <div class="table-responsive mt-5">
             <table class="table table-hover table-dark ">
                 <thead>
@@ -50,6 +75,7 @@ Products
                     <th scope="col">Product name</th>
                     <th scope="col">Description</th>
                     <th scope="col">Category</th>
+                    <th scope="col">Price</th>
                     <th scope="col">Shop</th>
                     <th scope="col">Gover</th>
                     <th scope="col">address</th>
@@ -64,6 +90,15 @@ Products
                     <td><a href="{{product.get_absolute_url}}">{{product.PRname}}</a></td>
                     <td>{{product.PRdesc}}</td>
                     <td>{{product.PRcategory}}</td>
+                    <td>
+                      Price: 
+                      {% if product.PRprice %}
+                          {{product.PRprice}}
+                      {% else %}
+                      UNKNOWN
+                      {% endif %} 
+
+                    </td>
                     <td><a href="{{product.PRshop.get_absolute_url}}">{{product.PRshop}}</a></td>
                     <td>{{product.PRshop.get_SHgover_display }}</td>
                     <td>{{product.PRshop.SHaddress}}</td>

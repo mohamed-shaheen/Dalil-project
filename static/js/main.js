@@ -199,4 +199,13 @@
     aos_init();
   });
 
+  // Advanced search toggle
+
+  $(".advancedSearch").hide();
+
+  $('.advancedBtn').click(function(){
+    $('.advancedSearch').toggle();
+    $('.quickTitle').toggle();
+  });
+
 })(jQuery);

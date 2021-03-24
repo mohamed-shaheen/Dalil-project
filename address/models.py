@@ -85,6 +85,7 @@ class Product(models.Model):
     PRref = models.URLField(max_length=400, null=True, blank=True, verbose_name=_("Outside reference link"))
     PRref_img = models.URLField(max_length=500, null=True, blank=True, verbose_name=_("Link image"))    
     PRcategory = models.ForeignKey("Category", related_name="category_product", on_delete=models.CASCADE, verbose_name=_("Category"))
+    PRprice = models.DecimalField(max_digits=10, decimal_places=4, blank= True, null=True )
     PRslug = models.SlugField(blank=True, null=True, verbose_name=_("Slug"))
 
 
