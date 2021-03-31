@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
+    'accounts',
     'widget_tweaks',
     'address',
 
@@ -132,3 +133,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=[
     os.path.join(BASE_DIR, 'static'),
 ]
+
+
+
+LOGOUT_REDIRECT_URL = 'address:home'
+LOGIN_REDIRECT_URL = 'address:home'
+LOGIN_URL='login'

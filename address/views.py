@@ -1,4 +1,3 @@
-#from django.db.models.query_utils import Q
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Shop, Product, Category, GOVERNORATES_CHOICES
 from django.contrib.auth.decorators import login_required
@@ -15,14 +14,15 @@ def home_view(request):
 def all_products(request):
     products = Product.objects.all()
     category = Category.objects.all()
+    req = request.GET
 
-    if ('q1' and 'q2' and 'q3' and 'q4' and 'q5' and 'q6') in request.GET:
-        pro_name = request.GET['q1']
-        gov_name = request.GET['q2']
-        shop_name = request.GET['q3']
-        adrs_name = request.GET['q4']
-        desc_name = request.GET['q5']
-        cate_name = request.GET['q6']
+    if ('q1' in req) and ('q2' in req) and ('q3' in req) and ('q4' in req) and ('q5' in req) and ('q6' in req):
+        pro_name = req['q1']
+        gov_name = req['q2']
+        shop_name = req['q3']
+        adrs_name = req['q4']
+        desc_name = req['q5']
+        cate_name = req['q6']
         
         products = products.filter(
             PRname__icontains=pro_name).filter(
@@ -31,15 +31,10 @@ def all_products(request):
                         PRshop__SHaddress__icontains=adrs_name).filter(
                             PRdesc__icontains=desc_name).filter(
                                 PRcategory__CAname__icontains=cate_name)
+    elif ('q1' not in req) and ('q2' not in req) and ('q3' not in req) and ('q4' not in req) and ('q5' not in req) and ('q6' not in req) :
 
-        #else:
-        #    products = products.filter( 
-        #        Q(PRname__icontains=pro_name) & 
-        #        Q(PRshop__SHgover__icontains=gov_name) &
-        #        Q(PRshop__SHname__icontains=shop_name) & 
-        #        Q(PRshop__SHaddress__icontains=adrs_name) & 
-        #        Q(PRdesc__icontains=desc_name) & 
-        #        Q(PRcategory__CAname__icontains=cate_name) )
+        return redirect('address:product_list')
+
 
     context = {'products' : products, 'category' : category, 'govs' : GOVERNORATES_CHOICES}
     return render(request, 'products/product_list.html', context)   
