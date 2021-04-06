@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Confirmation
+{% endblock title %}
+
+{% block main %}
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Products</h2>
+          <ol>
+            <li><a href="{% url 'address:home' %}">Home</a></li>
+            <li>Confirmation</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page pt-4">
+      <div class="container">
+        <p class="m-5">
+
+            {% if success %}
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">Well done!</h4>
+                    <p>{{ user.username }}, you successfully confirmed your account E-mail .</p>
+                    <hr>
+                    <p class="mb-0">Now!!, you have full control of your account.</p>
+                </div>
+            {% else %}
+                <div class="alert alert-danger" role="alert">
+                    <h4 class="alert-heading">Error!</h4>
+                    <p>invalid token!.</p>
+                    <hr>
+                    <p class="mb-0">You can try again </p>
+                </div>
+            {% endif %}
+
+        </p>
+      </div>
+    </section>
+
+  </main>
+  <!-- End #main -->
+
+{% endblock main %}

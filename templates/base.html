@@ -73,7 +73,7 @@
                     </a>
                     <div class="dropdown-menu mr-3 " aria-labelledby="navbarDropdown">
                       
-                      <a class="dropdown-item " href="#">My profile</a>
+                      <a class="dropdown-item " href="{{ request.user.user_profile.get_absolute_url }}">My profile</a>
                       
                       <a class="dropdown-item" href="#">Edit my profile</a>
                       <a class="dropdown-item" href="#">Change password</a>

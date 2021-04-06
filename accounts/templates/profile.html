@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load avatar_tags %}
 
 {% block title %}
 Sing up
@@ -26,12 +27,10 @@ Sing up
     <section class="inner-page pt-4">
       <div class="container">
         <p class="m-5">
-            <form method="post" novalidate >
-                {% csrf_token %}
-                {% include  'includes/form.html' %}
-                
-                <button type="submit" class="btn btn-dark btn-lg btn-block">Sign up</button>  
-           </form>
+            <a href="{% url 'avatar_change' %}">Change your avatar</a>
+            {% avatar user 65 class="img-circle img-responsive" id="user_avatar" %}
+            <h1>{{profile.PRuser}}</h1>
+                 
         </p>
       </div>
     </section>
