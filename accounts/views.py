@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django_email_verification import send_email
 from .models import Profile
 from address.models import Shop
+from django.views.decorators.csrf import csrf_protect
 
 # Create your views here.
 
@@ -17,7 +18,7 @@ def signup(request):
         form = SignUpForm(request.POST)
         if form.is_valid():
             user = form.save()
-            auth_login(request,user)
+            #auth_login(request,user)
             user.is_active = False 
             send_email(user)
             return redirect('address:home')
