@@ -4,6 +4,7 @@ from .forms import SignUpForm
 from django.contrib.auth.models import User
 from django_email_verification import send_email
 from .models import Profile
+from address.models import Shop
 
 # Create your views here.
 
@@ -27,6 +28,8 @@ def signup(request):
 
 def profile(request, id, slug):
     profile = get_object_or_404(Profile, pk=id, PRslug=slug)
+    shops = Shop.objects.filter(SHcreated_by__exact=request.user)
 
-    context = {'profile' : profile}
+
+    context = {'profile' : profile, 'shops' : shops }
     return render(request, 'profile.html', context)

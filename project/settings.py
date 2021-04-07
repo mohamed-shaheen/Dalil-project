@@ -146,7 +146,7 @@ LOGOUT_REDIRECT_URL = 'address:home'
 LOGIN_REDIRECT_URL = 'address:home'
 LOGIN_URL='login'
 
-
+# email verified settings
 def verified_callback(user):
     user.is_active = True
 
@@ -154,10 +154,10 @@ def verified_callback(user):
 EMAIL_VERIFIED_CALLBACK = verified_callback
 EMAIL_FROM_ADDRESS = 'noreply@aliasaddress.com'
 EMAIL_MAIL_SUBJECT = 'Confirm your email'
-EMAIL_MAIL_HTML = 'mail_body.html'
-EMAIL_MAIL_PLAIN = 'mail_body.txt'
+EMAIL_MAIL_HTML = 'email-confirm/mail_body.html'
+EMAIL_MAIL_PLAIN = 'email-confirm/mail_body.txt'
 EMAIL_TOKEN_LIFE = 60 * 60
-EMAIL_PAGE_TEMPLATE = 'confirm_template.html'
+EMAIL_PAGE_TEMPLATE = 'email-confirm/confirm_template.html'
 EMAIL_PAGE_DOMAIN = 'http://127.0.0.1:8000/'
 
 # For Django Email Backend
@@ -167,3 +167,13 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = str(os.getenv('email'))
 EMAIL_HOST_PASSWORD = str(os.getenv('mail_key'))
 EMAIL_USE_TLS = True
+
+# Avatar settings
+#AVATAR_AUTO_GENERATE_SIZES = (80,)
+AVATAR_DEFAULT_URL =  'static/img/ninja_avatar.png'
+AVATAR_MAX_AVATARS_PER_USER = 3
+AVATAR_GRAVATAR_DEFAULT = 'https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-512.png'
+AVATAR_CLEANUP_DELETED = True
+AVATAR_ADD_TEMPLATE = 'avatarapp/add.html'
+AVATAR_CHANGE_TEMPLATE = 'avatarapp/change.html'
+AVATAR_DELETE_TEMPLATE = 'avatarapp/confirm_delete.html'

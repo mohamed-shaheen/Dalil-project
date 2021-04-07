@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load avatar_tags %}
+
+
+{% block title %}
+Change Avatar
+{% endblock title %}
+
+{% block main %}
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Change Avatar</h2>
+          <ol>
+            <li><a href="{% url 'address:home' %}">Home</a></li>
+            <li><a href="{{ request.user.user_profile.get_absolute_url }}">Profile</a></li>
+            <li>Change Avatar</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page pt-4">
+      <div class="container">
+        <p class="m-5">
+            <h1>Your current avatar: </h1>
+            {% avatar user 65 class="img-circle img-responsive" id="user_avatar" %}
+            {% if not avatars %}
+                <h4>You haven't uploaded an avatar yet. Please upload one now.</h4>
+            {% else %}
+                <form method="POST" action="{% url 'avatar_change' %}">
+                    <ul>
+                        {{ primary_avatar_form.as_ul }}
+                    </ul>
+                    <p>{% csrf_token %}<input class="btn btn-primary" type="submit" value="Choose new Default" /></p>
+                </form>
+            {% endif %}
+            <form enctype="multipart/form-data" method="POST" action="{% url 'avatar_add' %}">
+                {{ upload_avatar_form.as_p }}
+                <p>{% csrf_token %}<input type="submit" value="Upload New Image" /></p>
+            </form>
+        </p>
+      </div>
+    </section>
+
+  </main>
+  <!-- End #main -->
+
+{% endblock main %}

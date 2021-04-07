@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from address.models import Shop
 from django.utils.translation import ugettext_lazy as _
 import datetime
 from django.utils.text import slugify
@@ -36,6 +37,9 @@ class Profile(models.Model):
 
     def get_absolute_url(self):
         return reverse("accounts:profile", kwargs={"id" : self.pk,"slug": self.PRslug})
+
+    def get_shop_count(self):
+        return Shop.objects.filter(SHcreated_by__exact=self.PRuser).count()    
 
     def create_profile(sender, **kwargs):
         if kwargs['created']:
