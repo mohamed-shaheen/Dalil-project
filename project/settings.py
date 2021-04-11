@@ -152,7 +152,7 @@ def verified_callback(user):
 
 
 EMAIL_VERIFIED_CALLBACK = verified_callback
-EMAIL_FROM_ADDRESS = 'noreply<no_reply@domain.com>'
+EMAIL_FROM_ADDRESS = 'noreply Dalil<no_reply@domain.com>'
 EMAIL_MAIL_SUBJECT = 'Confirm your email'
 EMAIL_MAIL_HTML = 'email-confirm/mail_body.html'
 EMAIL_MAIL_PLAIN = 'email-confirm/mail_body.txt'

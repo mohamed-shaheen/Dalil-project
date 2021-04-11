@@ -41,7 +41,13 @@ Confirmation
                     <hr>
                     <p class="mb-0">You can try to sign up again <a href="{% url 'accounts:signup' %}">Signup</a>  </p>
                 </div>
-                <form>
+                <form method="POST" action="{% url 'accounts:re_send' %}">
+                  {% csrf_token %}
+                  <input name="email" class="form-control" label="example@example.com">
+                  <small class="form-text text-muted">{{error}}</small>
+                  <button type="submit">re send </button>
+              </form>
+  
             {% endif %}
 
         </p>

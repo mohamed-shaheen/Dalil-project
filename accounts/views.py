@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from django_email_verification import send_email
 from .models import Profile
 from address.models import Shop
+from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_protect
 
 # Create your views here.
@@ -34,3 +35,18 @@ def profile(request, id, slug):
 
     context = {'profile' : profile, 'shops' : shops }
     return render(request, 'profile.html', context)
+
+def re_send(request):
+    if 'email' in request.POST:
+        email = request.POST['email']
+        try:
+           user = User.objects.get(email=email)
+        except User.DoesNotExist:
+            error = 'This E-mail does not exist please try again :-)'
+            context = {'error' : error}
+            return render(request, 'email-confirm/confirm_template.html', context)
+    if user.is_active:
+        return redirect('address:home')
+    else:
+        send_email(user)
+        return redirect('accounts:login')       

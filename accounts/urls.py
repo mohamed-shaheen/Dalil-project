@@ -12,5 +12,6 @@ urlpatterns = [
     path('change_password/done/',auth_views.PasswordChangeDoneView.as_view(template_name='change_password_done.html'),name='password_change_done'),
     path('signup/', views.signup, name='signup'),
     path('profile/<int:id>/<slug:slug>', views.profile, name='profile'),
+    path('re_send/', views.re_send, name = 're_send')
 
 ]
