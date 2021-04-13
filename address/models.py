@@ -65,6 +65,10 @@ class Shop(models.Model):
     class Meta:
         verbose_name = _("Shop")
         verbose_name_plural = _("Shops")
+    
+    #@property
+    #def  lat_lng(self):
+    #    return list(getattr(self.SHlocation, 'coords', [])[::-1])   
 
     def get_absolute_url(self):
         return reverse("address:shop_detail", kwargs={"id" : self.id, "slug": self.SHslug})

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
+    'leaflet',
     'accounts',
     'django_email_verification',
     'widget_tweaks',
@@ -144,7 +145,27 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 LOGOUT_REDIRECT_URL = 'address:home'
 LOGIN_REDIRECT_URL = 'address:home'
-LOGIN_URL='login'
+LOGIN_URL='accounts:login'
+
+
+
+LEAFLET_CONFIG = {
+    # conf here
+    'DEFAULT_CENTER': (30.033333, 31.233334),
+    'DEFAULT_ZOOM': 16,
+    'MIN_ZOOM': 3,
+    'MAX_ZOOM': 18,
+    'DEFAULT_PRECISION': 6,
+    #'TILES': [],
+    'PLUGINS': {
+    'name-of-plugin': {
+        'css': ['/static/leaflet-locationpicker-master/src/leaflet-locationpicker.css'],
+        'js': ['/static/leaflet-locationpicker-master/src/leaflet-locationpicker.js'],
+        'auto-include': True,
+    },
+}
+}
+
 
 # email verified settings
 def verified_callback(user):

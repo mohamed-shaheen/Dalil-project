@@ -1,8 +1,16 @@
 {% extends 'base.html' %}
+{% load leaflet_tags %}
+{% load static %}
 
 {% block title %}
 Add shop
 {% endblock title %}
+{% block head %}
+<link href="{% static 'css/leafletmap.css' %}" rel="stylesheet">
+<script src="{% static 'js/leafletmap.js' %}"></script>
+   {% leaflet_js plugins="ALL" %}
+   {% leaflet_css plugins="ALL" %}
+{% endblock head %}
 
 {% block main %}
 
