@@ -5,12 +5,10 @@
 {% block title %}
 Add shop
 {% endblock title %}
-{% block head %}
-<link href="{% static 'css/leafletmap.css' %}" rel="stylesheet">
-<script src="{% static 'js/leafletmap.js' %}"></script>
-   {% leaflet_js plugins="ALL" %}
-   {% leaflet_css plugins="ALL" %}
-{% endblock head %}
+{% block extracss %}
+ {% leaflet_css plugins="ALL" %}
+ <link href="{% static 'css/leafletmap.css' %}" rel="stylesheet">
+{% endblock extracss %}
 
 {% block main %}
 
@@ -36,8 +34,10 @@ Add shop
       <div class="container">
         <p class="m-5">
             <form method="post" enctype="multipart/form-data" novalidate >
+
                 {% csrf_token %}
-                {{form.media}}
+                {#{% leaflet_map "map" callback="window.custm_map" %}#}
+                {{form.media.js}}
                 {% include  'includes/form.html' %}
                 
                 <button type="submit" class="btn btn-dark btn-lg btn-block">Add</button>  
@@ -50,3 +50,7 @@ Add shop
   <!-- End #main -->
 
 {% endblock main %}
+{% block extrajs %}
+{% leaflet_js plugins="ALL" %}
+<script src="{% static 'js/leafletmap.js' %}"></script>
+{% endblock extrajs %}

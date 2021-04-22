@@ -5,7 +5,8 @@ from django.utils.translation import ugettext_lazy as _
 from .models import Shop, Product
 
 
-
+class MapWidget(LeafletWidget):
+    geometry_field_class = 'SHlocation'
 class NewShopForm(forms.ModelForm):
     
     #SHlocation = geoforms.PointField(widget=geoforms.OSMWidget(
@@ -14,7 +15,7 @@ class NewShopForm(forms.ModelForm):
     class Meta:
         model = Shop     
         fields = ["SHname", "SHgover", "SHaddress", "SHnum", "SHlocation"]
-        widgets = {'SHlocation': LeafletWidget()}
+        widgets = {'SHlocation': MapWidget()}
 
 
 class ProductForm(forms.ModelForm):

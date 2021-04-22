@@ -158,11 +158,11 @@ LEAFLET_CONFIG = {
     'DEFAULT_PRECISION': 6,
     #'TILES': [],
     'PLUGINS': {
-    'name-of-plugin': {
-        'css': ['/static/leaflet-locationpicker-master/src/leaflet-locationpicker.css'],
-        'js': ['/static/leaflet-locationpicker-master/src/leaflet-locationpicker.js'],
-        'auto-include': True,
-    },
+        'forms': {
+            'css': [ '/static/leaflet-gps-master/src/leaflet-gps.css'],
+            'js': [ '/static/leaflet-gps-master/src/leaflet-gps.js'],
+            'auto-include': True,
+        },
 }
 }
 
@@ -173,8 +173,8 @@ def verified_callback(user):
 
 
 EMAIL_VERIFIED_CALLBACK = verified_callback
-EMAIL_FROM_ADDRESS = 'noreply Dalil<no_reply@domain.com>'
-EMAIL_MAIL_SUBJECT = 'Confirm your email'
+EMAIL_FROM_ADDRESS = 'Dalil team noreply<no_reply@domain.com>'
+EMAIL_MAIL_SUBJECT = 'Verify your email for Dalil'
 EMAIL_MAIL_HTML = 'email-confirm/mail_body.html'
 EMAIL_MAIL_PLAIN = 'email-confirm/mail_body.txt'
 EMAIL_TOKEN_LIFE = 60 * 60

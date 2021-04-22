@@ -27,8 +27,8 @@
 
   <!-- Template Main CSS File -->
   <link href="{% static 'css/style.css' %}?{% now 'U' %}" rel="stylesheet">
-  {% block head %}
-  {% endblock head %}
+  {% block extracss %}
+  {% endblock extracss %}
 
 </head>
 
@@ -77,9 +77,9 @@
                       <a class="dropdown-item " href="{{ request.user.user_profile.get_absolute_url }}">My profile</a>
                       
                       <a class="dropdown-item" href="#">Edit my profile</a>
-                      <a class="dropdown-item" href="#">Change password</a>
+                      <a class="dropdown-item" href="{% url 'accounts:password_change' %}">Change password</a>
                       <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">My orders</a>
+                      <a class="dropdown-item" href="{% url 'address:add_shop' %}">Add shop</a>
                       <a class="dropdown-item" href="#">Track my order</a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a>
@@ -214,6 +214,8 @@
 
   <!-- Template Main JS File -->
   <script src="{% static 'js/main.js' %}"></script>
+  {% block extrajs %}
+  {% endblock extrajs %}
 
 </body>
 
