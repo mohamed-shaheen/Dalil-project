@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Add shop
+Add Product
 {% endblock title %}
 
 {% block main %}
@@ -13,10 +13,10 @@ Add shop
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Add shop</h2>
+          <h2>Add Product</h2>
           <ol>
             <li><a href="{% url 'address:home' %}">Home</a></li>
-            <li><a href="{% url 'address:shop_list' %}">Shops</a></li>
+            <li><a href="{% url 'address:place_list' %}">Places</a></li>
             <li><a href="{{ shop.get_absolute_url }}">{{shop.SHname}}</a></li>
             <li>Add Product</li>
           </ol>

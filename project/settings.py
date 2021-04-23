@@ -152,10 +152,12 @@ LOGIN_URL='accounts:login'
 LEAFLET_CONFIG = {
     # conf here
     'DEFAULT_CENTER': (30.033333, 31.233334),
-    'DEFAULT_ZOOM': 16,
-    'MIN_ZOOM': 3,
+    'DEFAULT_ZOOM': 7,
+    'MIN_ZOOM': 2,
     'MAX_ZOOM': 18,
     'DEFAULT_PRECISION': 6,
+    'ATTRIBUTION_PREFIX': 'Dalil map',
+    #'MINIMAP': True,
     #'TILES': [],
     'PLUGINS': {
         'forms': {

@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title %}
-Add shop
+Add place
 {% endblock title %}
 {% block extracss %}
  {% leaflet_css plugins="ALL" %}
@@ -19,11 +19,11 @@ Add shop
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Add shop</h2>
+          <h2>Add Place</h2>
           <ol>
             <li><a href="{% url 'address:home' %}">Home</a></li>
-            <li><a href="{% url 'address:shop_list' %}">Shops</a></li>
-            <li>Add shop</li>
+            <li><a href="{% url 'address:place_list' %}">Places</a></li>
+            <li>Add Place</li>
           </ol>
         </div>
 
@@ -33,6 +33,7 @@ Add shop
     <section class="inner-page pt-4">
       <div class="container">
         <p class="m-5">
+          <div class="container-respnseve">
             <form method="post" enctype="multipart/form-data" novalidate >
 
                 {% csrf_token %}
@@ -42,6 +43,7 @@ Add shop
                 
                 <button type="submit" class="btn btn-dark btn-lg btn-block">Add</button>  
            </form>
+           </div>
         </p>
       </div>
     </section>

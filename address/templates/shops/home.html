@@ -15,11 +15,11 @@ Dalil
       <form action="{% url 'address:product_list' %}">
             <div class="row mx-2">
                   <div class="form-group col">
-                    <label for="exampleInputEmail1">Product name</label>
+                    <label for="ProductName">Product name</label>
                     <input name="q1" class="form-control form-control-lg" type="text" placeholder="Produ...">
                   </div>
                   <div class="form-group col">
-                    <label for="inputState">Governorate</label>
+                    <label for="Governorate">Governorate</label>
                     <select name="q2" class="form-control form-control-lg">
                       <option value="" selected>Choose...</option>
                       {% for key, value in govs %}
@@ -31,21 +31,21 @@ Dalil
           </div>
           <div class="row mx-2">
                   <div class="form-group col advancedSearch">
-                    <label for="exampleInputEmail1">Shop name</label>
+                    <label for="PlaceName">Place name</label>
                     <input name="q3" class="form-control form-control-lg" type="text" placeholder="Sho...">
                   </div>
                   <div class="form-group col advancedSearch">
-                    <label for="exampleInputEmail1">address</label>
+                    <label for="Address">address</label>
                     <input name="q4" class="form-control form-control-lg" type="text" placeholder="addre...">
                   </div>
           </div>
           <div class="row mx-2">                  
                   <div class="form-group col advancedSearch">
-                    <label for="exampleInputEmail1">Description</label>
+                    <label for="Description">Description</label>
                     <input name="q5" class="form-control form-control-lg" type="text" placeholder="Any thing related to product">
                   </div>
                   <div class="form-group col advancedSearch">
-                    <label for="inputState">Category</label>
+                    <label for="Category">Category</label>
                     <select name="q6" class="form-control form-control-lg">
                       <option value="" selected>Choose...</option>
                       {% for cat in category %}

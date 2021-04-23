@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Products
+Places
 {% endblock title %}
 
 {% block main %}
@@ -13,10 +13,10 @@ Products
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Shops</h2>
+          <h2>Places</h2>
           <ol>
             <li><a href="{% url 'address:home' %}">Home</a></li>
-            <li>Shops</li>
+            <li>Places</li>
           </ol>
         </div>
 
@@ -29,7 +29,7 @@ Products
             <form method="GET">
                 <div class="row">
                   <div class="col">
-                    <input name="q3" class="form-control form-control-lg" type="text" placeholder="Sho...">
+                    <input name="q3" class="form-control form-control-lg" type="text" placeholder="Plac...">
                   </div>
                   <div class="col">
                     <select name="q2" class="form-control form-control-lg">
@@ -47,7 +47,8 @@ Products
                 <thead>
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Shop name</th>
+                    <th scope="col">Place name</th>
+                    <th scope="col">Place type</th>
                     <th scope="col">Gover</th>
                     <th scope="col">Address</th>
                     <th scope="col">Number</th>
@@ -59,6 +60,7 @@ Products
                   <tr>
                     <th scope="row">{{forloop.counter}}</th>
                     <td><a href="{{shop.get_absolute_url}}">{{shop.SHname}}</a></td>
+                    <td>{{shop.SHtype}}</td>
                     <td>{{shop.get_SHgover_display}}</td>
                     <td>{{shop.SHaddress}}</td>
                     <td>{{shop.SHnum}}</td>

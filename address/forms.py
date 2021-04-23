@@ -14,7 +14,7 @@ class NewShopForm(forms.ModelForm):
 
     class Meta:
         model = Shop     
-        fields = ["SHname", "SHgover", "SHaddress", "SHnum", "SHlocation"]
+        fields = ["SHname", "SHtype", "SHgover", "SHaddress", "SHnum", "SHlocation"]
         widgets = {'SHlocation': MapWidget()}
 
 

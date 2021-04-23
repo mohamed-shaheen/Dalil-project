@@ -17,7 +17,7 @@
           <h2>{{product.PRname}}</h2>
           <ol>
             <li><a href="{% url 'address:home' %}">Home</a></li>
-            <li><a href="{% url 'address:shop_list' %}">Shops</a></li>
+            <li><a href="{% url 'address:Place_list' %}">Places</a></li>
             <li><a href="{{ product.PRshop.get_absolute_url }}">{{product.PRshop}}</a></li>
             <li>{{product.PRname}}</li>
           </ol>

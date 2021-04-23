@@ -41,7 +41,7 @@ Profile
               <h4 class="mt-3"><a href="{{ product.PRshop.get_absolute_url }}" target="_blank">{{product.PRshop}}</a></h4>
               <h4 class="mt-3"><a href="{% url 'avatar_delete' %}">Delete Avatar</a></h4>
               <h4 class="mt-3">
-                 <strong>Shops created: </strong>
+                 <strong>Places created: </strong>
                  {% if profile.get_shop_count > 0 %}
                    {{ profile.get_shop_count}}
                  {% else %}
@@ -59,7 +59,8 @@ Profile
                           <thead>
                             <tr>
                               <th scope="col">#</th>
-                              <th scope="col">Shop name</th>
+                              <th scope="col">Place name</th>
+                              <th scope="col">Place type</th>
                               <th scope="col">Gover</th>
                               <th scope="col">Address</th>
                               <th scope="col">Number</th>
@@ -71,12 +72,13 @@ Profile
                             <tr>
                               <th scope="row">{{forloop.counter}}</th>
                               <td><a href="{{shop.get_absolute_url}}">{{shop.SHname}}</a></td>
+                              <td>  {{shop.SHtype}}</td>
                               <td>{{shop.get_SHgover_display}}</td>
                               <td>  {{shop.SHaddress}}</td>
                               <td>{{shop.SHnum}}</td>
                               <td> {{shop.SHcreated_dt}}</td>
                           {% empty %}  
-                            <p class="clo alert alert-danger text-center"><strong> NO SHOPS HAS FOUND!!</strong></p>
+                            <p class="clo alert alert-danger text-center"><strong> NO PLACES HAS FOUND!!!</strong></p>
                           {% endfor %}  
                           </tbody>
                         </table>

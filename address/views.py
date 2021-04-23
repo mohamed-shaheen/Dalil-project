@@ -85,7 +85,7 @@ def add_shop(request):
             shop.SHcreated_by = request.user
             shop.save()
 
-            return redirect('address:shop_list')
+            return redirect('address:place_list')
     else:
         form = NewShopForm()
 
@@ -103,7 +103,7 @@ def add_product(request, id):
             product.PRshop = shop
             product.save()
 
-            return redirect('address:shop_detail', id=shop.pk, slug=shop.SHslug)
+            return redirect('address:place_detail', id=shop.pk, slug=shop.SHslug)
     else:
         form = ProductForm()
 
