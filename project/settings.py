@@ -190,6 +190,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = str(os.getenv('email'))
 EMAIL_HOST_PASSWORD = str(os.getenv('mail_key'))
 EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'Dalil noreply<no_reply@domain.com>'
 
 # Avatar settings
 #AVATAR_AUTO_GENERATE_SIZES = (80,)

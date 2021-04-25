@@ -137,13 +137,13 @@ span {
 --------------------------------------------------------------*/
 #header {
   background:  #ffffff;
-  position: fixed;
+  /*position: fixed;
   left: 0;
   top: 0;
   right: 0;
   z-index: 3;
   transition: all 0.5s ease;
-  padding: 20px 0;
+  padding: 20px 0;*/
 }
 
 #header #logo {
@@ -1394,3 +1394,18 @@ section {
   letter-spacing: 0;
   color: #0899a3;
 }
+
+
+
+/*--------------------------------------------------------------
+# forms style
+--------------------------------------------------------------*/
+
+#add-place-form {
+  background-image: url(../img/addplace.jpg) ;
+  height: 100% ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
