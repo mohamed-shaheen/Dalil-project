@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('address.urls' , namespace='address')),
     path('', include('accounts.urls' , namespace='accounts')),
-    #path('', include('contact.urls' , namespace='contact')),
+    path('', include('contact.urls' , namespace='contact')),
     path('avatar/', include('avatar.urls')),
     path('email/', include(email_urls)),
 ]

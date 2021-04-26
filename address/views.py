@@ -93,7 +93,7 @@ def add_shop(request):
     return render(request,'shops/shop_add.html', context)     
 
 
-
+@login_required
 def add_product(request, id):
     shop = get_object_or_404(Shop, pk=id)
     if request.method == "POST":

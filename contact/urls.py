@@ -1,9 +1,9 @@
-#from django.urls import path
-#from . import views
-#
-#app_name = 'contact'
+from django.urls import path
+from . import views
+
+app_name = 'contact'
 
 
-#urlpatterns = [
-#    path('', views.home_view, name='home'  ),
-#]
+urlpatterns = [
+    path('contact-us/', views.contact_us, name='contact_us'),
+]
