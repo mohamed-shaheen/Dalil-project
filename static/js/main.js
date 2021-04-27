@@ -208,4 +208,11 @@
     $('.quickTitle').toggle();
   });
 
+// hide & toggle  
+  $(".hide").hide();
+
+  $(".toggleBtn").click(function(){
+    $(".toggle").toggle();
+  });
+
 })(jQuery);

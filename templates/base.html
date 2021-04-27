@@ -11,21 +11,21 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
-  <!-- Favicons -->
+  {# Favicons #}
   <link href="{% static 'img/favicon.png' %}" rel="icon">
   <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
 
-  <!-- Google Fonts -->
+  {# Google Fonts #}
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Roboto:100,300,400,500,700|Philosopher:400,400i,700,700i" rel="stylesheet">
 
-  <!-- CSS Files -->
+  {# CSS Files #}
   <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
   <link href="{% static 'css/modal-video.min.css' %}" rel="stylesheet">
   <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet">
   <link href="{% static 'css/aos.css' %}" rel="stylesheet">
 
-  <!-- Template Main CSS File -->
+  {# Template Main CSS File #}
   <link href="{% static 'css/style.css' %}?{% now 'U' %}" rel="stylesheet">
   {% block extracss %}
   {% endblock extracss %}
@@ -34,7 +34,7 @@
 
 <body>
 
-  <!-- ======= Header ======= -->
+  {# ======= Header ======= #}
 
 
       
@@ -46,13 +46,16 @@
         
           <div class="collapse navbar-collapse mx-3" id="navbarSupportedContent">
                   <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                      <a class="nav-link" href="{% url 'address:home' %}">Home <span class="sr-only">(current)</span></a>
+                    <li class="nav-item {% block nav_home %} {% endblock %}">
+                      <a class="nav-link" href="{% url 'address:home' %}"> <i class="fa fa-fw fa-home"></i>Home</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item {% block nav_places %} {% endblock %}">
                       <a class="nav-link" href="{% url 'address:place_list' %}">Places</a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'address:place_list' %}">Products</a>
+                    </li>
+                    <li class="nav-item dropdown {% block nav_dropdown %} {% endblock %}">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                           Dropdown
                         </a>
@@ -63,8 +66,8 @@
                           <a class="dropdown-item" href="#">Something else here</a>
                         </div>
                     </li>
-                      <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
+                      <li class="nav-item {% block nav_contact %} {% endblock %}">
+                        <a class="nav-link" href="{% url 'contact:contact_us' %}"> <i class="fa fa-fw fa-envelope"></i>Contact us</a>
                       </li>
                   </ul>
                   {% if user.is_authenticated %} 
@@ -74,12 +77,12 @@
                     </a>
                     <div class="dropdown-menu mr-3 " aria-labelledby="navbarDropdown">
                       
-                      <a class="dropdown-item " href="{{ request.user.user_profile.get_absolute_url }}">My profile</a>
+                      <a class="dropdown-item {% block nav_profile %} {% endblock %} " href="{{ request.user.user_profile.get_absolute_url }}">My profile</a>
                       
                       <a class="dropdown-item" href="#">Edit my profile</a>
                       <a class="dropdown-item" href="{% url 'accounts:password_change' %}">Change password</a>
                       <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="{% url 'address:add_place' %}">Add place</a>
+                      <a class="dropdown-item {% block nav_add_place %} {% endblock %}" href="{% url 'address:add_place' %}">Add place</a>
                       <a class="dropdown-item" href="#">Track my order</a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a>
@@ -100,13 +103,13 @@
               {% endif%}
           </div>
         </nav>
-<!-- End Header -->
+{# End Header #}
 
  {% block main %} 
  
  {% endblock main %}
 
-  <!-- ======= Footer ======= -->
+  {#  ======= Footer ======= #}
   <footer class="footer">
     <div class="container">
       <div class="row">
@@ -187,22 +190,18 @@
       <div class="container">
         <p>&copy; Copyrights Dalil. All rights reserved.</p>
         <div class="credits">
-          <!--
-          All the links in the footer should remain intact.
-          You can delete the links only if you purchased the pro version.
-          Licensing information: https://bootstrapmade.com/license/
-          Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=eStartup
-        -->
+
           Devoloped by <a href="https://github.com/mohamed-shaheen">Mohamed shaheen</a>
         </div>
       </div>
     </div>
 
-  </footer><!-- End  Footer -->
+  </footer>
+  {# End  Footer #}
 
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
-  <!-- JS Files -->
+  {# JS Files #}
   <script src="{% static 'js/jquery.min.js' %}"></script>
   <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
   <script src="{% static 'js/jquery.easing.min.js' %}"></script>
@@ -212,7 +211,7 @@
   <script src="{% static 'js/hoverIntent.js' %}"></script>
   <script src="{% static 'js/aos.js' %}"></script>
 
-  <!-- Template Main JS File -->
+  {# Template Main JS File #}
   <script src="{% static 'js/main.js' %}"></script>
   {% block extrajs %}
   {% endblock extrajs %}

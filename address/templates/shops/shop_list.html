@@ -3,12 +3,12 @@
 {% block title %}
 Places
 {% endblock title %}
-
+{% block nav_places %} active {% endblock %}
 {% block main %}
 
 <main id="main">
 
-    <!-- ======= Breadcrumbs ======= -->
+  {#  ======= Breadcrumbs ======= #}
     <section class="breadcrumbs">
       <div class="container">
 
@@ -21,7 +21,8 @@ Places
         </div>
 
       </div>
-    </section><!-- End Breadcrumbs -->
+    </section>
+    {# End Breadcrumbs #}
 
     <section class="inner-page pt-4">
       <div class="container">
@@ -83,6 +84,6 @@ Places
     </section>
 
   </main>
-  <!-- End #main -->
+  {# End #main #}
 
 {% endblock main %}

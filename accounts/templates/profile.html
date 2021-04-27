@@ -5,12 +5,13 @@
 {% block title %}
 Profile
 {% endblock title %}
+{% block nav_profile %} active {% endblock %}
 
 {% block main %}
 
 <main id="main">
 
-    <!-- ======= Breadcrumbs ======= -->
+  {#  ======= Breadcrumbs ======= #}
     <section class="breadcrumbs">
       <div class="container">
 
@@ -23,7 +24,8 @@ Profile
         </div>
 
       </div>
-    </section><!-- End Breadcrumbs -->
+    </section>
+    {# End Breadcrumbs #}
 
     <section class="inner-page pt-4">
       <div class="container">
@@ -92,6 +94,6 @@ Profile
     </section>
 
   </main>
-  <!-- End #main -->
+  {# End #main #}
 
 {% endblock main %}

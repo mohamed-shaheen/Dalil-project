@@ -9,12 +9,13 @@ Add place
  {% leaflet_css plugins="ALL" %}
  <link href="{% static 'css/leafletmap.css' %}" rel="stylesheet">
 {% endblock extracss %}
+{% block nav_add_place %} active {% endblock %}
 
 {% block main %}
 
 <main id="main">
 
-    <!-- ======= Breadcrumbs ======= -->
+  {#  ======= Breadcrumbs ======= #}
     <section class="breadcrumbs">
       <div class="container">
 
@@ -28,7 +29,8 @@ Add place
         </div>
 
       </div>
-    </section><!-- End Breadcrumbs -->
+    </section>
+    {# End Breadcrumbs #}
 
     <section id="add-place-form" class="inner-page pt-4">
       <div class="container">
@@ -44,6 +46,7 @@ Add place
                 {#{% leaflet_map "map" callback="window.custm_map" %}#}
                 {{form.media.js}}
                 {% include  'includes/form.html' %}
+                <small class="form-text text-muted mb-4">Point your location with marker <i class="fa fa-map-marker fa-3x"></i></small>
                 
                 <button type="submit" class="btn btn-dark btn-lg btn-block">Add</button>  
            </form>
@@ -56,7 +59,7 @@ Add place
     </section>
 
   </main>
-  <!-- End #main -->
+  {# End #main #}
 
 {% endblock main %}
 {% block extrajs %}
