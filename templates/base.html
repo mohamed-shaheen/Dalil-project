@@ -50,21 +50,13 @@
                       <a class="nav-link" href="{% url 'address:home' %}"> <i class="fa fa-fw fa-home"></i>Home</a>
                     </li>
                     <li class="nav-item {% block nav_places %} {% endblock %}">
-                      <a class="nav-link" href="{% url 'address:place_list' %}">Places</a>
+                      <a class="nav-link" href="{% url 'address:place_list' %}"><i class="fa fa-map-signs"></i>Places</a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="{% url 'address:place_list' %}">Products</a>
+                    <li class="nav-item {% block nav_products %} {% endblock %}">
+                      <a class="nav-link" href="{% url 'address:product_list' %}"><i class="fa fa-fw fa-book"></i>Products</a>
                     </li>
-                    <li class="nav-item dropdown {% block nav_dropdown %} {% endblock %}">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Dropdown
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item" href="#">Action</a>
-                          <a class="dropdown-item" href="#">Another action</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
+                    <li class="nav-item {% block nav_about %} {% endblock %}">
+                      <a class="nav-link" href="#"><i class="fa fa-id-card-o"></i>About us</a>
                     </li>
                       <li class="nav-item {% block nav_contact %} {% endblock %}">
                         <a class="nav-link" href="{% url 'contact:contact_us' %}"> <i class="fa fa-fw fa-envelope"></i>Contact us</a>
@@ -73,19 +65,28 @@
                   {% if user.is_authenticated %} 
                   <li class="nav-item dropdown form-inline my-2 my-lg-0 mx-3 ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fa fa-user mr-2"></i>Profile
+                      Welcome, {{user.username}}
                     </a>
                     <div class="dropdown-menu mr-3 " aria-labelledby="navbarDropdown">
                       
-                      <a class="dropdown-item {% block nav_profile %} {% endblock %} " href="{{ request.user.user_profile.get_absolute_url }}">My profile</a>
+                      <a class="dropdown-item {% block nav_profile %} {% endblock %} " href="{{ request.user.user_profile.get_absolute_url }}">
+                        <i class="fa fa-user mr-2"></i>My profile
+                      </a>
                       
-                      <a class="dropdown-item" href="#">Edit my profile</a>
-                      <a class="dropdown-item" href="{% url 'accounts:password_change' %}">Change password</a>
+                      <a class="dropdown-item" href="#">
+                        <i class="fa fa-pencil-square-o mr-2"></i>Edit my profile
+                      </a>
+                      <a class="dropdown-item {% block nav_change_pass %} {% endblock %}" href="{% url 'accounts:password_change' %}">
+                        <i class="fa fa-key mr-2"></i>Change password
+                      </a>
                       <div class="dropdown-divider"></div>
-                      <a class="dropdown-item {% block nav_add_place %} {% endblock %}" href="{% url 'address:add_place' %}">Add place</a>
-                      <a class="dropdown-item" href="#">Track my order</a>
+                      <a class="dropdown-item {% block nav_add_place %} {% endblock %}" href="{% url 'address:add_place' %}">
+                        <i class="fa fa-plus mr-2"></i>Add place
+                      </a>
                       <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a>
+                      <a class="dropdown-item" href="{% url 'accounts:logout' %}">
+                        <i class="fa fa-sign-out mr-2"></i>Logout
+                      </a>
                     </div>
                   </li>  
               {% else %}

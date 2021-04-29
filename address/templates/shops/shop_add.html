@@ -35,25 +35,25 @@ Add place
     <section id="add-place-form" class="inner-page pt-4">
       <div class="container">
         
-          <div class="row justify-content-center">
-            <div class="col-lg-8 col-md-10 col-sm-12">
-            <div class="card my-2" >
-              <div class="card-body">
-                   <h3 class="card-title">Add place</h3>  
-            <form method="post" enctype="multipart/form-data" novalidate >
+           <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10 col-sm-12">
+                     <div class="card my-2" >
+                          <div class="card-body">
+                                <h3 class="card-title">Add place</h3>  
+                                <form method="post" enctype="multipart/form-data" novalidate >
 
-                {% csrf_token %}
-                {#{% leaflet_map "map" callback="window.custm_map" %}#}
-                {{form.media.js}}
-                {% include  'includes/form.html' %}
-                <small class="form-text text-muted mb-4">Point your location with marker <i class="fa fa-map-marker fa-3x"></i></small>
-                
-                <button type="submit" class="btn btn-dark btn-lg btn-block">Add</button>  
-           </form>
-              </div>
-           </div>
-            </div>
-           </div>
+                                    {% csrf_token %}
+                                    
+                                    {{form.media.js}}
+                                    {% include  'includes/form.html' %}
+                                    <small class="form-text text-muted mb-4">Point your location with marker <i class="fa fa-map-marker fa-3x"></i></small>
+                                    
+                                    <button type="submit" class="btn btn-dark btn-lg btn-block">Add <i class="fa fa-plus mr-2 mx-1"></i></button>  
+                              </form>
+                          </div>
+                      </div>
+                </div>
+          </div>
         
       </div>
     </section>

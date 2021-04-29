@@ -26,16 +26,23 @@ Add Product
     </section>
     {# End Breadcrumbs #}
 
-    <section class="inner-page pt-4">
+    <section id="add-product-form" class="inner-page pt-4">
       <div class="container">
-        <p class="m-5">
-            <form method="post" novalidate >
-                {% csrf_token %}
-                {% include  'includes/form.html' %}
-                
-                <button type="submit" class="btn btn-dark btn-lg btn-block">Add</button>  
-           </form>
-        </p>
+          <div class="row justify-content-center">
+              <div class="col-lg-8 col-md-10 col-sm-12">
+                   <div class="card my-2" >
+                        <div class="card-body">
+                              <h3 class="card-title">Add product</h3> 
+                              <form method="post" novalidate >
+                                  {% csrf_token %}
+                                  {% include  'includes/form.html' %}
+                                  
+                                  <button type="submit" class="btn btn-dark btn-lg btn-block">Add <i class="fa fa-plus mr-2 mx-1"></i></button>  
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
       </div>
     </section>
 

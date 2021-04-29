@@ -16,24 +16,26 @@ def all_products(request):
     category = Category.objects.all()
     req = request.GET
 
-    if ('q1' in req) and ('q2' in req) and ('q3' in req) and ('q4' in req) and ('q5' in req) and ('q6' in req):
-        pro_name = req['q1']
-        gov_name = req['q2']
-        shop_name = req['q3']
-        adrs_name = req['q4']
-        desc_name = req['q5']
-        cate_name = req['q6']
-        
-        products = products.filter(
-            PRname__icontains=pro_name).filter(
-                PRshop__SHgover__icontains=gov_name).filter(
-                    PRshop__SHname__icontains=shop_name).filter(
-                        PRshop__SHaddress__icontains=adrs_name).filter(
-                            PRdesc__icontains=desc_name).filter(
-                                PRcategory__CAname__icontains=cate_name)
-    elif ('q1' not in req) and ('q2' not in req) and ('q3' not in req) and ('q4' not in req) and ('q5' not in req) and ('q6' not in req) :
+    if req:
 
-        return redirect('address:product_list')
+        if ('q1' in req) and ('q2' in req) and ('q3' in req) and ('q4' in req) and ('q5' in req) and ('q6' in req):
+            pro_name = req['q1']
+            gov_name = req['q2']
+            shop_name = req['q3']
+            adrs_name = req['q4']
+            desc_name = req['q5']
+            cate_name = req['q6']
+            
+            products = products.filter(
+                PRname__icontains=pro_name).filter(
+                    PRshop__SHgover__icontains=gov_name).filter(
+                        PRshop__SHname__icontains=shop_name).filter(
+                            PRshop__SHaddress__icontains=adrs_name).filter(
+                                PRdesc__icontains=desc_name).filter(
+                                    PRcategory__CAname__icontains=cate_name)
+        elif ('q1' not in req) and ('q2' not in req) and ('q3' not in req) and ('q4' not in req) and ('q5' not in req) and ('q6' not in req) :
+
+            return redirect('address:product_list')        
 
 
     context = {'products' : products, 'category' : category, 'govs' : GOVERNORATES_CHOICES}

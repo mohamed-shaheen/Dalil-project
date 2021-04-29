@@ -28,25 +28,24 @@ Contact us
     </section>
     {# End Breadcrumbs #} 
 
-    <section id="add-place-form" class="inner-page pt-4">
+    <section id="contact-form" class="inner-page pt-4">
       <div class="container">
-        
-          <div class="row justify-content-center">
-            <div class="col-lg-8 col-md-10 col-sm-12">
-            <div class="card my-2" >
-              <div class="card-body">
-                   <h3 class="card-title">Contact us</h3>  
-            <form method="post" enctype="multipart/form-data" novalidate >
+           <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10 col-sm-12">
+                     <div class="card my-2" >
+                          <div class="card-body">
+                                <h3 class="card-title">Contact us </h3>  
+                                <form method="post" enctype="multipart/form-data" novalidate >
 
-                {% csrf_token %}
-                {% include  'includes/form.html' %}
-                
-                <button type="submit" class="btn btn-dark btn-lg btn-block">Contact us</button>  
-           </form>
-              </div>
-           </div>
+                                    {% csrf_token %}
+                                    {% include  'includes/form.html' %}
+                                    
+                                    <button type="submit" class="btn btn-dark btn-lg btn-block">Contact us <i class="fa fa-send-o mr-2 mx-1"></i></button>  
+                              </form>
+                          </div>
+                      </div>
+                </div>
             </div>
-           </div>
         
       </div>
     </section>
