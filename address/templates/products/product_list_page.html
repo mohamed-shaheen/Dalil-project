@@ -1,0 +1,40 @@
+{% load el_pagination_tags %}
+
+{% if request.is_ajax %}{% paginate products %}{% endif %}
+{% for product in products %}    
+<tr>
+  <th scope="row"></th>
+  <td><a href="{{product.get_absolute_url}}">{{product.PRname}}</a></td>
+  <td>{{product.PRdesc}}</td>
+  <td>{{product.PRcategory}}</td>
+  <td>
+    Price: 
+    {% if product.PRprice %}
+        {{product.PRprice}}
+    {% else %}
+    UNKNOWN
+    {% endif %} 
+
+  </td>
+  <td><a href="{{product.PRshop.get_absolute_url}}">{{product.PRshop}}</a></td>
+  <td>{{product.PRshop.get_SHgover_display }}</td>
+  <td>{{product.PRshop.SHaddress}}</td>
+  <td>
+      {% if product.PRref %}
+          <a href="{{product.PRref_img}}" target="_blank">image</a>
+      {% else %}
+        None
+      {% endif %}      
+  </td>
+  <td>
+      {% if product.PRref %}
+          <a href="{{product.PRref}}" target="_blank">ref link</a>
+      {% else %}
+        None
+      {% endif %}      
+  </td>
+</tr>
+{% empty %}  
+<p class="clo alert alert-danger text-center"><strong> NO PRODUCTS HAS FOUND!!</strong></p>
+{% endfor %}  
+

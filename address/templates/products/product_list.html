@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
-
+{% load static %}
+{% load el_pagination_tags %}
 {% block title %}
 Products
 {% endblock title %}
@@ -73,7 +74,7 @@ Products
             <table class="table table-hover table-dark ">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
+                    <th scope="col"></th>
                     <th scope="col">Product name</th>
                     <th scope="col">Description</th>
                     <th scope="col">Category</th>
@@ -85,45 +86,13 @@ Products
                     <th scope="col">refrance</th>
                   </tr>
                 </thead>
-                <tbody>
-                {% for product in products %}    
-                  <tr>
-                    <th scope="row">{{forloop.counter}}</th>
-                    <td><a href="{{product.get_absolute_url}}">{{product.PRname}}</a></td>
-                    <td>{{product.PRdesc}}</td>
-                    <td>{{product.PRcategory}}</td>
-                    <td>
-                      Price: 
-                      {% if product.PRprice %}
-                          {{product.PRprice}}
-                      {% else %}
-                      UNKNOWN
-                      {% endif %} 
-
-                    </td>
-                    <td><a href="{{product.PRshop.get_absolute_url}}">{{product.PRshop}}</a></td>
-                    <td>{{product.PRshop.get_SHgover_display }}</td>
-                    <td>{{product.PRshop.SHaddress}}</td>
-                    <td>
-                        {% if product.PRref %}
-                            <a href="{{product.PRref_img}}" target="_blank">image</a>
-                        {% else %}
-                          None
-                        {% endif %}      
-                    </td>
-                    <td>
-                        {% if product.PRref %}
-                            <a href="{{product.PRref}}" target="_blank">ref link</a>
-                        {% else %}
-                          None
-                        {% endif %}      
-                    </td>
-                  </tr>
-                {% empty %}  
-                  <p class="clo alert alert-danger text-center"><strong> NO PRODUCTS HAS FOUND!!</strong></p>
-                {% endfor %}  
+                {% paginate products %}
+                <tbody class="endless_content_wrapper">
+                  {% include page_template %}
                 </tbody>
               </table>
+              {% show_more "even more" "working" "btn btn-primary"%} 
+                     
             </div>  
         </p>
       </div>
@@ -133,3 +102,17 @@ Products
   {# End #main #}
 
 {% endblock main %}
+
+{% block extrajs %}
+{{ block.super }}
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="{%static 'js/el-pagination.js'%}"></script>
+<script>
+  $.endlessPaginate({
+      paginateOnScroll: true,
+      paginateOnScrollMargin: 20,
+      paginateOnScrollChunkSize: 5,
+      contentSelector: '.endless_content_wrapper',
+  });
+</script>
+{% endblock extrajs %}

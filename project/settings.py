@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'address',
     'contact',
     'avatar',
+    'el_pagination',
 
 ]
 
@@ -74,6 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.request', ## For EL-pagination
             ],
         },
     },
@@ -201,3 +203,7 @@ AVATAR_CLEANUP_DELETED = True
 AVATAR_ADD_TEMPLATE = 'avatarapp/add.html'
 AVATAR_CHANGE_TEMPLATE = 'avatarapp/change.html'
 AVATAR_DELETE_TEMPLATE = 'avatarapp/confirm_delete.html'
+
+
+#ENDLESS_PAGINATION
+EL_PAGINATION_PAGE_OUT_OF_RANGE_404 = True

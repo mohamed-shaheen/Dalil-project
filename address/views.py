@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, get_list_or_404
 from .models import Shop, Product, Category, GOVERNORATES_CHOICES
 from django.contrib.auth.decorators import login_required
+from el_pagination.decorators import page_template
 from .forms import NewShopForm, ProductForm
 # Create your views here.
 
@@ -10,14 +11,14 @@ def home_view(request):
     context={'category' : category, 'govs' : GOVERNORATES_CHOICES}
     return render(request, 'shops/home.html', context)
 
-
-def all_products(request):
-    products = Product.objects.all()
+@page_template('products/product_list_page.html')  
+def all_products(request, template='products/product_list.html', extra_context=None):
+    products = Product.objects.all().order_by('PRname')
     category = Category.objects.all()
     req = request.GET
 
-    if req:
-
+    if 'q1' in req:
+    
         if ('q1' in req) and ('q2' in req) and ('q3' in req) and ('q4' in req) and ('q5' in req) and ('q6' in req):
             pro_name = req['q1']
             gov_name = req['q2']
@@ -39,7 +40,9 @@ def all_products(request):
 
 
     context = {'products' : products, 'category' : category, 'govs' : GOVERNORATES_CHOICES}
-    return render(request, 'products/product_list.html', context)   
+    if extra_context is not None:
+        context.update(extra_context)
+    return render(request, template, context)   
 
 
 def all_shops(request):
