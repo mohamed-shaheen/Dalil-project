@@ -38,6 +38,10 @@ Login
                               <button type="submit" class="btn btn-dark btn-lg btn-block">Login <i class="fa fa-sign-in mr-2 mx-1"></i></button>  
                         </form>
                     </div>
+                    <div class="card-footer text-muted text-center">
+                      Create New account <a href="{%url 'accounts:signup'%}">Sign Up</a>
+                      <h5 class="mt-1">Lost your password? <a href="{% url 'accounts:password_reset_form' %}">Reset</a></h5>
+                   </div>
                   </div>
               </div>
           </div>

@@ -1516,3 +1516,37 @@ input:checked + .slider:before {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+#reset-form {
+  background-image: url(../img/addplace.jpg) ;
+  height: 100% ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#confirm-reset-form {
+  background-image: url(../img/addplace.jpg) ;
+  height: 100% ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+#edit-palce-form {
+  background-image: url(../img/addplace.jpg) ;
+  height: 100% ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/*--------------------------------------------------------------
+# icons style
+--------------------------------------------------------------*/
+
+.setting-icon{
+  width: 20px;
+  height: 20px;
+}

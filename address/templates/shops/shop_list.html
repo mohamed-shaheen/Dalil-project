@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
-
+{% load static %}
+{% load el_pagination_tags %}
 {% block title %}
 Places
 {% endblock title %}
@@ -47,7 +48,7 @@ Places
             <table class="table table-hover table-dark ">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
+                    <th scope="col"></th>
                     <th scope="col">Place name</th>
                     <th scope="col">Place type</th>
                     <th scope="col">Gover</th>
@@ -56,28 +57,12 @@ Places
                     <th scope="col">Offered products</th>
                   </tr>
                 </thead>
-                <tbody>
-                {% for shop in shops %}    
-                  <tr>
-                    <th scope="row">{{forloop.counter}}</th>
-                    <td><a href="{{shop.get_absolute_url}}">{{shop.SHname}}</a></td>
-                    <td>{{shop.SHtype}}</td>
-                    <td>{{shop.get_SHgover_display}}</td>
-                    <td>{{shop.SHaddress}}</td>
-                    <td>{{shop.SHnum}}</td>
-                    <td>
-                        {% if shop.get_product_count > 0 %}
-                            <strong>{{ shop.get_product_count }}</strong>
-                        {% else %}
-                          No products added
-                        {% endif %}      
-                    </td>
-                  </tr>
-                {% empty %}
-                <p class="clo alert alert-danger text-center"><strong> NO SHOPS HAS FOUND!!</strong></p>
-                {% endfor %}  
+                {% paginate shops %}
+                <tbody class="endless_content_wrapper">
+                  {% include page_template %}
                 </tbody>
               </table>
+              {% show_more "even more" "working" "btn btn-primary"%}
             </div>  
         </p>
       </div>
@@ -87,3 +72,15 @@ Places
   {# End #main #}
 
 {% endblock main %}
+{% block extrajs %}
+{{ block.super }}
+<script src="{%static 'js/el-pagination.js'%}"></script>
+<script>
+  $.endlessPaginate({
+      paginateOnScroll: true,
+      paginateOnScrollMargin: 20,
+      paginateOnScrollChunkSize: 5,
+      contentSelector: '.endless_content_wrapper',
+  });
+</script>
+{% endblock extrajs %}

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Edit-{{shop.SHname}}
+{% endblock title %}
+
+{% block main %}
+
+<main id="main">
+
+  {#  ======= Breadcrumbs ======= #}
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>Edit:{{shop.SHname}}</h2>
+          <ol>
+            <li><a href="{% url 'address:home' %}">Home</a></li>
+            <li><a href="{% url 'address:place_list' %}">Places</a></li>
+            <li><a href="{{ shop.get_absolute_url }}">{{shop.SHname}}</a></li>
+            <li>Edit-{{shop.SHname}}</li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+    {# End Breadcrumbs #}
+
+    <section id="edit-palce-form" class="inner-page pt-4">
+      <div class="container">
+          <div class="row justify-content-center">
+              <div class="col-lg-8 col-md-10 col-sm-12">
+                   <div class="card my-2" >
+                        <div class="card-body">
+                              <h3 class="card-title">Edit</h3> 
+                              <form method="post" novalidate >
+                                  {% csrf_token %}
+                                  {% include  'includes/form.html' %}
+                                  {% if shop.SHcreated_by == user or  user.is_superuser %}
+                                  <button type="submit" class="btn btn-dark btn-lg btn-block">Edit <i class="fa fa-pencil-square-o mr-2"></i></button>  
+                                  {%else%}
+                                  <div class="card-footer text-muted text-center">
+                                      <div class="card mb-4 alert-danger" ><strong>you're not allowed to edit this place</strong></div>
+                                  </div>
+                                  {%endif%} 
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </div>
+    </section>
+
+  </main>
+  {# End #main #}
+
+{% endblock main %}

@@ -1,7 +1,11 @@
-from django.shortcuts import render, get_object_or_404, redirect, get_list_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Shop, Product, Category, GOVERNORATES_CHOICES
 from django.contrib.auth.decorators import login_required
+from django.views.generic import UpdateView
+from django.utils.decorators import method_decorator
+from django.utils import timezone
 from el_pagination.decorators import page_template
+from django.http import Http404
 from .forms import NewShopForm, ProductForm
 # Create your views here.
 
@@ -17,26 +21,23 @@ def all_products(request, template='products/product_list.html', extra_context=N
     category = Category.objects.all()
     req = request.GET
 
-    if 'q1' in req:
+ 
     
-        if ('q1' in req) and ('q2' in req) and ('q3' in req) and ('q4' in req) and ('q5' in req) and ('q6' in req):
-            pro_name = req['q1']
-            gov_name = req['q2']
-            shop_name = req['q3']
-            adrs_name = req['q4']
-            desc_name = req['q5']
-            cate_name = req['q6']
-            
-            products = products.filter(
-                PRname__icontains=pro_name).filter(
-                    PRshop__SHgover__icontains=gov_name).filter(
-                        PRshop__SHname__icontains=shop_name).filter(
-                            PRshop__SHaddress__icontains=adrs_name).filter(
-                                PRdesc__icontains=desc_name).filter(
-                                    PRcategory__CAname__icontains=cate_name)
-        elif ('q1' not in req) and ('q2' not in req) and ('q3' not in req) and ('q4' not in req) and ('q5' not in req) and ('q6' not in req) :
-
-            return redirect('address:product_list')        
+    if ('q1' in req) and ('q2' in req) and ('q3' in req) and ('q4' in req) and ('q5' in req) and ('q6' in req):
+        pro_name = req['q1']
+        gov_name = req['q2']
+        shop_name = req['q3']
+        adrs_name = req['q4']
+        desc_name = req['q5']
+        cate_name = req['q6']
+        
+        products = products.filter(
+            PRname__icontains=pro_name).filter(
+                PRshop__SHgover__icontains=gov_name).filter(
+                    PRshop__SHname__icontains=shop_name).filter(
+                        PRshop__SHaddress__icontains=adrs_name).filter(
+                            PRdesc__icontains=desc_name).filter(
+                                PRcategory__CAname__icontains=cate_name)     
 
 
     context = {'products' : products, 'category' : category, 'govs' : GOVERNORATES_CHOICES}
@@ -44,22 +45,20 @@ def all_products(request, template='products/product_list.html', extra_context=N
         context.update(extra_context)
     return render(request, template, context)   
 
-
-def all_shops(request):
+@page_template('shops/shop_list_page.html') 
+def all_shops(request, template='shops/shop_list.html', extra_context=None):
     shops = Shop.objects.all()
-
-    if 'q3' in request.GET:
+    req = request.GET
+    if ('q2' in req) and ('q3' in req):
         shop_name = request.GET['q3']
         gov_name = request.GET['q2']
-        if shop_name and gov_name!='Choose...':
-            shops = shops.filter(SHname__icontains=shop_name).filter(SHgover__exact=gov_name)
-        elif shop_name:
-            shops = shops.filter(SHname__icontains=shop_name)
-        else:
-            shops = shops.filter(SHgover__exact=gov_name)
+        shops = shops.filter(SHname__icontains=shop_name).filter(SHgover__icontains=gov_name)
+
 
     context = {'shops' : shops, 'govs' : GOVERNORATES_CHOICES}
-    return render(request, 'shops/shop_list.html', context )
+    if extra_context is not None:
+        context.update(extra_context)
+    return render(request, template, context )
 
 
 def shop_detail(request, id, slug):
@@ -116,6 +115,20 @@ def add_product(request, id):
     return render(request,'products/product_add.html', context) 
 
 
-    
+@method_decorator(login_required, name= 'dispatch')    
+class ShopUpdateViews(UpdateView):
+    model = Shop
+    fields = ('SHname', 'SHtype', 'SHgover', 'SHaddress', 'SHnum')
+    template_name = 'shops/edit-shop.html'
+    pk_url_kwarg = 'id'
+    context_object_name = 'shop'  
 
-
+    def form_valid(self, form):
+        shop = form.save(commit=False)
+        if (shop.SHcreated_by == self.request.user) or (self.request.user.is_superuser):
+            shop.SHupdated_by = self.request.user
+            shop.SHupdated_dt = timezone.now()
+            shop.save()     
+            return redirect('address:place_detail', id=shop.pk, slug=shop.SHslug)
+        else:
+            raise Http404()

@@ -1,0 +1,22 @@
+{% load el_pagination_tags %}
+
+{% if request.is_ajax %}{% paginate shops %}{% endif %}
+{% for shop in shops %}    
+<tr>
+  <th scope="row"></th>
+  <td><a href="{{shop.get_absolute_url}}">{{shop.SHname}}</a></td>
+  <td>{{shop.SHtype}}</td>
+  <td>{{shop.get_SHgover_display}}</td>
+  <td>{{shop.SHaddress}}</td>
+  <td>{{shop.SHnum}}</td>
+  <td>
+      {% if shop.get_product_count > 0 %}
+          <strong>{{ shop.get_product_count }}</strong>
+      {% else %}
+        No products added
+      {% endif %}      
+  </td>
+</tr>
+{% empty %}
+<p class="clo alert alert-danger text-center"><strong> NO PLACES HAS FOUND!!</strong></p>
+{% endfor %}  
