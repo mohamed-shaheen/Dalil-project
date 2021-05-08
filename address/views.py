@@ -1,3 +1,4 @@
+from django.core.exceptions import PermissionDenied
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Shop, Product, Category, GOVERNORATES_CHOICES
 from django.contrib.auth.decorators import login_required
@@ -118,17 +119,25 @@ def add_product(request, id):
 @method_decorator(login_required, name= 'dispatch')    
 class ShopUpdateViews(UpdateView):
     model = Shop
-    fields = ('SHname', 'SHtype', 'SHgover', 'SHaddress', 'SHnum')
+    form_class = NewShopForm
+    #fields = ('SHname', 'SHtype', 'SHgover', 'SHaddress', 'SHnum')
     template_name = 'shops/edit-shop.html'
     pk_url_kwarg = 'id'
     context_object_name = 'shop'  
 
     def form_valid(self, form):
-        shop = form.save(commit=False)
-        if (shop.SHcreated_by == self.request.user) or (self.request.user.is_superuser):
+        
+            shop = form.save(commit=False)
             shop.SHupdated_by = self.request.user
             shop.SHupdated_dt = timezone.now()
             shop.save()     
-            return redirect('address:place_detail', id=shop.pk, slug=shop.SHslug)
-        else:
-            raise Http404()
+            return redirect('address:place_detail', id=shop.pk, slug=shop.SHslug) 
+
+    def dispatch(self, request, *args, **kwargs):
+            # here you can make your custom validation for any particular use
+            if ( self.get_object().SHcreated_by == request.user) or (request.user.is_superuser):
+                pass
+            else:    
+                raise PermissionDenied()
+            
+            return super().dispatch(request, *args, **kwargs)        

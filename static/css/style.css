@@ -168,8 +168,8 @@ span {
 
 
 .nav-logo {
-  width: 100px;
-  height: 60px;
+  width: 120px;
+  height: 40px;
 }
 
 /*--------------------------------------------------------------
@@ -1470,7 +1470,7 @@ input:checked + .slider:before {
 --------------------------------------------------------------*/
 
 #add-place-form {
-  background-image: url(../img/addplace.jpg) ;
+  background-image: url(../img/add-place.png) ;
   height: 100% ;
   background-position: center;
   background-repeat: no-repeat;
@@ -1510,7 +1510,7 @@ input:checked + .slider:before {
 }
 
 #signup-form {
-  background-image: url(../img/addplace.jpg) ;
+  background-image: url(../img/img-x.png) ;
   height: 100% ;
   background-position: center;
   background-repeat: no-repeat;
@@ -1535,7 +1535,7 @@ input:checked + .slider:before {
 
 
 #edit-palce-form {
-  background-image: url(../img/addplace.jpg) ;
+  background-image: url(../img/add-place.png) ;
   height: 100% ;
   background-position: center;
   background-repeat: no-repeat;

@@ -1,8 +1,13 @@
 {% extends 'base.html' %}
-
+{% load leaflet_tags %}
+{% load static %}
 {% block title %}
 Edit-{{shop.SHname}}
 {% endblock title %}
+{% block extracss %}
+ {% leaflet_css plugins="ALL" %}
+ <link href="{% static 'css/leafletmap.css' %}" rel="stylesheet">
+{% endblock extracss %}
 
 {% block main %}
 
@@ -24,7 +29,7 @@ Edit-{{shop.SHname}}
 
       </div>
     </section>
-    {# End Breadcrumbs #}
+    {# End Breadcrumbs #} 
 
     <section id="edit-palce-form" class="inner-page pt-4">
       <div class="container">
@@ -35,14 +40,10 @@ Edit-{{shop.SHname}}
                               <h3 class="card-title">Edit</h3> 
                               <form method="post" novalidate >
                                   {% csrf_token %}
+                                  {{form.media.js}}
                                   {% include  'includes/form.html' %}
-                                  {% if shop.SHcreated_by == user or  user.is_superuser %}
+                                  
                                   <button type="submit" class="btn btn-dark btn-lg btn-block">Edit <i class="fa fa-pencil-square-o mr-2"></i></button>  
-                                  {%else%}
-                                  <div class="card-footer text-muted text-center">
-                                      <div class="card mb-4 alert-danger" ><strong>you're not allowed to edit this place</strong></div>
-                                  </div>
-                                  {%endif%} 
                             </form>
                         </div>
                     </div>
@@ -55,3 +56,7 @@ Edit-{{shop.SHname}}
   {# End #main #}
 
 {% endblock main %}
+{% block extrajs %}
+{% leaflet_js plugins="ALL" %}
+<script src="{% static 'js/leafletmap.js' %}"></script>
+{% endblock extrajs %}
