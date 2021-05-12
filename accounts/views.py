@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login as auth_login
-from .forms import SignUpForm
+from .forms import SignUpForm, UserForm, ProfileForm
 from django.contrib.auth.models import User
+from django.views.generic import UpdateView
 from django_email_verification import send_email
 from .models import Profile
 from address.models import Shop
@@ -50,3 +51,25 @@ def re_send(request):
     else:
         send_email(user)
         return redirect('accounts:login')       
+
+
+def profile_edit(request):
+    profile = Profile.objects.get(PRuser=request.user)
+
+    if request.method=='POST':
+        userform = UserForm(request.POST,instance=request.user)
+        profileform = ProfileForm(request.POST,instance=profile )
+        if userform.is_valid() and profileform.is_valid():
+            userform.save()
+            myprofile = profileform.save(commit=False)
+            myprofile.PRuser = request.user
+            myprofile.save()
+            return redirect('accounts:profile', id=profile.pk, slug=profile.PRslug)
+
+    else :
+        userform = UserForm(instance=request.user)
+        profileform = ProfileForm(instance=profile)
+
+    context = {'userform':userform , 'profileform':profileform}  
+
+    return render(request,'edit-profile.html', context)        

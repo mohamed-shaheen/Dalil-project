@@ -1494,7 +1494,7 @@ input:checked + .slider:before {
 }
 
 #change-pass-form {
-  background-image: url(../img/addplace.jpg) ;
+  background-image: url(../img/change-pass.png) ;
   height: 100% ;
   background-position: center;
   background-repeat: no-repeat;
@@ -1518,7 +1518,7 @@ input:checked + .slider:before {
 }
 
 #reset-form {
-  background-image: url(../img/addplace.jpg) ;
+  background-image: url(../img/reset-pass.png) ;
   height: 100% ;
   background-position: center;
   background-repeat: no-repeat;
@@ -1526,7 +1526,7 @@ input:checked + .slider:before {
 }
 
 #confirm-reset-form {
-  background-image: url(../img/addplace.jpg) ;
+  background-image: url(../img/reset-pass.png) ;
   height: 100% ;
   background-position: center;
   background-repeat: no-repeat;
@@ -1535,7 +1535,7 @@ input:checked + .slider:before {
 
 
 #edit-palce-form {
-  background-image: url(../img/add-place.png) ;
+  background-image: url(../img/edit-place.png) ;
   height: 100% ;
   background-position: center;
   background-repeat: no-repeat;

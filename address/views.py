@@ -6,7 +6,6 @@ from django.views.generic import UpdateView
 from django.utils.decorators import method_decorator
 from django.utils import timezone
 from el_pagination.decorators import page_template
-from django.http import Http404
 from .forms import NewShopForm, ProductForm
 # Create your views here.
 
