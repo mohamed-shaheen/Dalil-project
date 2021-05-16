@@ -29,8 +29,8 @@ def signup(request):
     return render(request,'signup.html', context)
 
 
-def profile(request, id, slug):
-    profile = get_object_or_404(Profile, pk=id, PRslug=slug)
+def profile(request, slug):
+    profile = get_object_or_404(Profile, PRslug=slug)
     shops = Shop.objects.filter(SHcreated_by__exact=request.user)
 
 
@@ -64,12 +64,12 @@ def profile_edit(request):
             myprofile = profileform.save(commit=False)
             myprofile.PRuser = request.user
             myprofile.save()
-            return redirect('accounts:profile', id=profile.pk, slug=profile.PRslug)
+            return redirect('accounts:profile', slug=profile.PRslug)
 
     else :
         userform = UserForm(instance=request.user)
         profileform = ProfileForm(instance=profile)
 
-    context = {'userform':userform , 'profileform':profileform}  
+    context = {'userform':userform , 'profileform':profileform, 'profile':profile}  
 
     return render(request,'edit-profile.html', context)        

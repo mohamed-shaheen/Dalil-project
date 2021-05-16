@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'contact',
     'avatar',
     'el_pagination',
+    'django_summernote',
 
 ]
 
@@ -195,7 +196,7 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Dalil noreply<no_reply@domain.com>'
 
 # Avatar settings
-#AVATAR_AUTO_GENERATE_SIZES = (80,)
+AVATAR_AUTO_GENERATE_SIZES = (80, 100, 65, 120)
 AVATAR_DEFAULT_URL =  'static/img/ninja_avatar.png'
 AVATAR_MAX_AVATARS_PER_USER = 3
 AVATAR_GRAVATAR_DEFAULT = 'https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-512.png'
@@ -207,3 +208,7 @@ AVATAR_DELETE_TEMPLATE = 'avatarapp/confirm_delete.html'
 
 #ENDLESS_PAGINATION
 EL_PAGINATION_PAGE_OUT_OF_RANGE_404 = True
+
+
+#---SUMMERNOTE---
+SUMMERNOTE_THEME = 'bs4'

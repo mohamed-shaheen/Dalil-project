@@ -16,6 +16,7 @@ Profile - Edit
           <h2>Edit profile</h2>
           <ol>
             <li><a href="{% url 'address:home' %}">Home</a></li>
+            <li><a href="{{profile.get_absolute_url}}">{{profile.PRuser}}</a></li>
             <li>Edit profile</li>
           </ol>
         </div>
@@ -31,8 +32,9 @@ Profile - Edit
                <div class="card my-2" >
                     <div class="card-body">
                           <h3 class="card-title">Edit profile</h3> 
-                          <form method="post" novalidate >
+                          <form method="post" enctype="multipart/form-data" novalidate>
                               {% csrf_token %}
+                              {{form.media}}
                               {% include  'includes/usereditform.html' %}
                               {% include  'includes/profileeditform.html' %}
                               

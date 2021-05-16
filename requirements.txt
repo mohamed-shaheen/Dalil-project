@@ -2,8 +2,10 @@ asgiref==3.3.1
 Django==3.1.7
 django-appconf==1.0.4
 django-avatar==5.0.0
+django-el-pagination==3.3.0
 django-email-verification==0.1.0
 django-leaflet==0.27.1
+django-summernote==0.8.11.6
 django-widget-tweaks==1.4.8
 Pillow==8.2.0
 psycopg2==2.8.6

@@ -18,7 +18,7 @@ User._meta.get_field('email')._unique = True
 
 class Profile(models.Model):
     PRuser = models.OneToOneField(User, related_name='user_profile', verbose_name=_("user"), on_delete=models.CASCADE)
-    PRbio = models.CharField(max_length=100, verbose_name=_("Bio"))
+    PRbio = models.TextField(max_length=1000, verbose_name=_("Bio"))
     PRjoin_date = models.DateTimeField(default=datetime.datetime.now, verbose_name=_("join date"))
     PRslug = models.SlugField(blank=True, null=True, verbose_name=_("Slug"))
     
@@ -36,7 +36,7 @@ class Profile(models.Model):
         return '%s' %(self.PRuser)
 
     def get_absolute_url(self):
-        return reverse("accounts:profile", kwargs={"id" : self.pk,"slug": self.PRslug})
+        return reverse("accounts:profile", kwargs={"slug": self.PRslug})
 
     def get_shop_count(self):
         return Shop.objects.filter(SHcreated_by__exact=self.PRuser).count()    
