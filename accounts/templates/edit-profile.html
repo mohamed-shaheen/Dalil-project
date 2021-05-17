@@ -36,7 +36,9 @@ Profile - Edit
                               {% csrf_token %}
                               {{form.media}}
                               {% include  'includes/usereditform.html' %}
+                              {{form.media}}
                               {% include  'includes/profileeditform.html' %}
+                              
                               
                               <button type="submit" class="btn btn-dark btn-lg btn-block">Save Edits <i class="fa fa-pencil-square-o mr-2"></i></button>  
                         </form>

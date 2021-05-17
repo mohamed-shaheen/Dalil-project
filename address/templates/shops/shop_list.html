@@ -27,15 +27,23 @@ Places
 
     <section class="inner-page pt-4">
       <div class="container">
-        <p class=" m-5">
+
             <form method="GET">
                 <div class="row">
                   <div class="col">
-                    <input name="q3" class="form-control form-control-lg" type="text" placeholder="Plac...">
+                    <input name="q3" class="form-control form-control-lg" type="search" placeholder="Plac...">
+                  </div>
+                  <div class="col">
+                    <select name="q7" class="form-control form-control-lg">
+                        <option value="" selected>type...</option>
+                        {% for type in types %}
+                        <option value="{{type}}">{{ type }}</option>
+                        {% endfor %}  
+                     </select>
                   </div>
                   <div class="col">
                     <select name="q2" class="form-control form-control-lg">
-                        <option value="" selected>Choose...</option>
+                        <option value="" selected>gover...</option>
                         {% for key, value in govs %}
                         <option value="{{key}}">{{ value }}</option>
                         {% endfor %}  
@@ -64,7 +72,7 @@ Places
               </table>
               {% show_more "even more" "working" "btn btn-primary"%}
             </div>  
-        </p>
+
       </div>
     </section>
 

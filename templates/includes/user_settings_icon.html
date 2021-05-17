@@ -1,0 +1,28 @@
+{% load static %}
+                           
+    {% if profile.PRuser == user %}
+      <a class="dropdown-toggle" href="#" id="Dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img class="setting-icon" src="{% static 'img/gear-icon.png' %}" >
+      </a>
+      <div class="dropdown-menu mr-3 " aria-labelledby="navbarDropdown">
+        
+        <a class="dropdown-item" href="{% url 'avatar_change' %}">
+          <i class="fa fa-exchange mr-2"></i>Change your avatar
+        </a>
+        
+        <a class="dropdown-item" href="{% url 'accounts:edit_profile' %}">
+          <i class="fa fa-pencil-square-o mr-2"></i>Edit
+        </a>
+        <a class="dropdown-item" href="{% url 'accounts:password_change' %}">
+          <i class="fa fa-key mr-2"></i>Change password
+        </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="{% url 'address:add_place' %}">
+          <i class="fa fa-plus mr-2"></i>Add place
+        </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item alert-danger" href="{% url 'avatar_delete' %}">
+          <i class="fa fa-trash mr-2"></i>Delete Avatar
+        </a>
+      </div>
+    {%endif%} 

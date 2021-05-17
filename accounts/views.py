@@ -31,7 +31,7 @@ def signup(request):
 
 def profile(request, slug):
     profile = get_object_or_404(Profile, PRslug=slug)
-    shops = Shop.objects.filter(SHcreated_by__exact=request.user)
+    shops = Shop.objects.filter(SHcreated_by__exact=profile.PRuser)
 
 
     context = {'profile' : profile, 'shops' : shops }

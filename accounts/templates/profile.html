@@ -5,7 +5,6 @@
 {% block title %}
 Profile
 {% endblock title %}
-{% block nav_profile %} active {% endblock %}
 
 {% block main %}
 
@@ -33,47 +32,19 @@ Profile
             
             <div class="flex-row row">
               <div class="col-md-6 col-lg-6 mt-4">
-              {% if request.user|has_avatar %}
-                {% avatar user 120 class="img-circle img-responsive" id="user_avatar" %}
-              {% else %}
-                <img src="{% static 'img/ninja_avatar.png' %}" class="img-circle img-responsive" id="user_avatar" width="100" height="100" >
-              {% endif %}
+              
+                {% avatar profile.PRuser 120 class="img-circle img-responsive" id="user_avatar" %}
+
               <h3>
-                 {% if profile.PRuser.first_name%}
-                     {{profile.PRuser.first_name}}
+                 {% if profile.PRuser.first_name and profile.PRuser.last_name %}
+                     {{profile.PRuser.first_name}} {{profile.PRuser.last_name}} {% include  'includes/user_settings_icon.html' %}
+                 {% elif profile.PRuser.first_name %}
+                     {{profile.PRuser.first_name}} {% include  'includes/user_settings_icon.html' %}
                  {% else %}     
-                {{profile.PRuser}}
-                {% endif %}
+                     {{profile.PRuser}} {% include  'includes/user_settings_icon.html' %}
+                 {% endif %}
 
               </h3>
-              <h4>                            
-                {% if profile.PRuser == user %}
-                <a class="dropdown-toggle" href="#" id="Dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <img class="setting-icon" src="{% static 'img/gear-icon.png' %}" >
-                </a>
-                <div class="dropdown-menu mr-3 " aria-labelledby="navbarDropdown">
-                  
-                  <a class="dropdown-item" href="{% url 'avatar_change' %}">
-                    <i class="fa fa-plus fa-3x mr-2"></i>Change your avatar
-                  </a>
-                  
-                  <a class="dropdown-item" href="{% url 'accounts:edit_profile' %}">
-                    <i class="fa fa-pencil-square-o mr-2"></i>Edit
-                  </a>
-                  <a class="dropdown-item" href="{% url 'accounts:password_change' %}">
-                    <i class="fa fa-key mr-2"></i>Change password
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="{% url 'address:add_place' %}">
-                    <i class="fa fa-plus mr-2"></i>Add place
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item alert-danger" href="{% url 'avatar_delete' %}">
-                    <i class="fa fa-sign-out mr-2"></i>Delete Avatar
-                  </a>
-                </div>
-                {%endif%} 
-              </h4>
               <h4 class="my-3">
                  <strong>Places created: </strong>
                  {% if profile.get_shop_count > 0 %}
@@ -86,7 +57,7 @@ Profile
               </div>
               <div class="col-md-6 col-lg-6 mt-4">
                 {% if profile.PRbio %}
-                  {{profile.PRbio}}
+                  {{profile.PRbio | safe }}
                 {% endif %}
               </div>
 

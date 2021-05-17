@@ -1,6 +1,6 @@
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Shop, Product, Category, GOVERNORATES_CHOICES
+from .models import Shop, Product, Category, GOVERNORATES_CHOICES, Type
 from django.contrib.auth.decorators import login_required
 from django.views.generic import UpdateView
 from django.utils.decorators import method_decorator
@@ -48,14 +48,19 @@ def all_products(request, template='products/product_list.html', extra_context=N
 @page_template('shops/shop_list_page.html') 
 def all_shops(request, template='shops/shop_list.html', extra_context=None):
     shops = Shop.objects.all()
+    types = Type.objects.all()
     req = request.GET
-    if ('q2' in req) and ('q3' in req):
-        shop_name = request.GET['q3']
-        gov_name = request.GET['q2']
-        shops = shops.filter(SHname__icontains=shop_name).filter(SHgover__icontains=gov_name)
+    if ('q2' in req) and ('q3' in req) and ('q7' in req):
+        shop_name = req['q3']
+        gov_name = req['q2']
+        shop_type = req['q7']
+        shops = shops.filter(
+            SHname__icontains=shop_name).filter(
+                SHgover__icontains=gov_name).filter(
+                    SHtype__TYname__icontains=shop_type)
 
 
-    context = {'shops' : shops, 'govs' : GOVERNORATES_CHOICES}
+    context = {'shops' : shops, 'govs' : GOVERNORATES_CHOICES, 'types' : types}
     if extra_context is not None:
         context.update(extra_context)
     return render(request, template, context )
@@ -139,4 +144,29 @@ class ShopUpdateViews(UpdateView):
             else:    
                 raise PermissionDenied()
             
-            return super().dispatch(request, *args, **kwargs)        
+            return super().dispatch(request, *args, **kwargs)     
+
+
+@method_decorator(login_required, name= 'dispatch')
+class ProductUpdateViews(UpdateView):
+    model = Product
+    form_class = ProductForm
+    template_name = 'products/edit-product.html'
+    pk_url_kwarg = 'id'
+    context_object_name = 'product'             
+
+
+    def form_valid(self, form):
+        
+        product = form.save(commit=False)
+        product.save()     
+        return redirect('address:product_detail', id=product.pk, slug=product.PRslug) 
+
+    def dispatch(self, request, *args, **kwargs):
+            # here you can make your custom validation for any particular use
+            if ( self.get_object().PRshop.SHcreated_by == request.user) or (request.user.is_superuser):
+                pass
+            else:    
+                raise PermissionDenied()
+            
+            return super().dispatch(request, *args, **kwargs) 

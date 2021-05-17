@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Profile
-from django_summernote.fields import SummernoteTextFormField, SummernoteTextField
+from django_summernote.widgets import SummernoteWidget
 
 
 class SignUpForm(UserCreationForm):
@@ -20,7 +20,20 @@ class UserForm(forms.ModelForm):
 
 
 class ProfileForm(forms.ModelForm):
-    PRbio = SummernoteTextField()
     class Meta:
         model = Profile
         fields = ['PRbio']
+        widgets = {'PRbio': SummernoteWidget(attrs={
+            'summernote':{
+                'toolbar': [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link',]],
+                    ['view', ['fullscreen', 'codeview', 'help']],
+                ],
+            }
+        })}
