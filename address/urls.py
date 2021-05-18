@@ -1,3 +1,4 @@
+from os import name
 from django.urls import path
 from . import views
 
@@ -13,5 +14,7 @@ urlpatterns = [
     path('places/add', views.add_shop, name= 'add_place'),
     path('places/<int:id>/product/add', views.add_product, name= 'add_product'),
     path('places/<int:id>/<slug:slug>/edit/', views.ShopUpdateViews.as_view(), name='edit_place'),
-    path('places/product/<int:id>/<slug:slug>/edit', views.ProductUpdateViews.as_view(), name='edit_product')
+    path('places/product/<int:id>/<slug:slug>/edit', views.ProductUpdateViews.as_view(), name='edit_product'),
+    path('delete/place/<int:id>', views.shop_del, name = 'delete_shop'),
+    path('delete/product/<int:id>', views.product_del, name = 'delete_product')
 ]

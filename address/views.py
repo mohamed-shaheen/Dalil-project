@@ -1,12 +1,14 @@
 from django.core.exceptions import PermissionDenied
+from django.http import request
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Shop, Product, Category, GOVERNORATES_CHOICES, Type
 from django.contrib.auth.decorators import login_required
-from django.views.generic import UpdateView
+from django.views.generic import UpdateView, DeleteView
 from django.utils.decorators import method_decorator
 from django.utils import timezone
 from el_pagination.decorators import page_template
 from .forms import NewShopForm, ProductForm
+from django.urls import reverse_lazy
 # Create your views here.
 
 
@@ -65,8 +67,8 @@ def all_shops(request, template='shops/shop_list.html', extra_context=None):
         context.update(extra_context)
     return render(request, template, context )
 
-
-def shop_detail(request, id, slug):
+@page_template('shops/shop_list_product.html')
+def shop_detail(request, id, slug, template='shops/shop_detail.html', extra_context=None):
     shop = get_object_or_404(Shop, pk=id, SHslug=slug)
     products = Product.objects.filter(PRshop__id__exact=id)
     if 'q1' in request.GET:
@@ -75,7 +77,9 @@ def shop_detail(request, id, slug):
             products = products.filter(PRname__icontains=pro_name)
 
     context = {'shop' : shop, 'products' : products}
-    return render(request, 'shops/shop_detail.html', context)
+    if extra_context is not None:
+        context.update(extra_context)
+    return render(request, template, context)
 
 
 def product_detail(request, id, slug):
@@ -170,3 +174,23 @@ class ProductUpdateViews(UpdateView):
                 raise PermissionDenied()
             
             return super().dispatch(request, *args, **kwargs) 
+
+
+@login_required
+def shop_del(request, id):
+    shop = get_object_or_404(Shop, pk=id)
+    if (shop.SHcreated_by == request.user) or (request.user.is_superuser):
+        shop.delete()
+        return redirect('accounts:profile', slug=request.user.user_profile.PRslug)
+    else:
+        raise PermissionDenied()    
+
+
+@login_required
+def product_del(request, id):
+    product = get_object_or_404(Product, pk=id)
+    if (product.PRshop.SHcreated_by == request.user) or (request.user.is_superuser):
+        product.delete()
+        return redirect('address:place_detail', id=product.PRshop.pk, slug=product.PRshop.SHslug)
+    else:
+        raise PermissionDenied() 

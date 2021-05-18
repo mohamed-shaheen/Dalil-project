@@ -73,7 +73,7 @@
                         <i class="fa fa-user mr-2"></i>My profile
                       </a>
                       
-                      <a class="dropdown-item" href="#">
+                      <a class="dropdown-item" href="{% url 'accounts:edit_profile' %}">
                         <i class="fa fa-pencil-square-o mr-2"></i>Edit my profile
                       </a>
                       <a class="dropdown-item {% block nav_change_pass %} {% endblock %}" href="{% url 'accounts:password_change' %}">

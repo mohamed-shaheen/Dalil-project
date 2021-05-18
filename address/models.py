@@ -49,7 +49,7 @@ class Shop(models.Model):
     SHgover = models.CharField(max_length=50, choices=GOVERNORATES_CHOICES, verbose_name=_("Governorate"))
     SHaddress = models.CharField(max_length=300, verbose_name=_("Detailed address"))
     SHnum = models.CharField(validators=[phone_regex], max_length=15,null= True, blank=True, verbose_name=_("Phone number"))
-    SHlocation = models.PointField(verbose_name=_("Map location"))
+    SHlocation = models.PointField(srid=4326, verbose_name=_("Map location"))
     SHcreated_dt = models.DateTimeField(auto_now_add=True, verbose_name=_("Created date"))
     SHcreated_by = models.ForeignKey(User, related_name="user_shop", on_delete=models.CASCADE, verbose_name=_("Created by"))
     SHupdated_dt = models.DateTimeField(null=True, verbose_name=_("Updated date"))

@@ -7,7 +7,7 @@
   <td><a href="{{shop.get_absolute_url}}">{{shop.SHname}}</a></td>
   <td>{{shop.SHtype}}</td>
   <td>{{shop.get_SHgover_display}}</td>
-  <td>{{shop.SHaddress}}</td>
+  <td>{{shop.SHaddress |truncatechars:20}}</td>
   <td>{{shop.SHnum}}</td>
   <td>
       {% if shop.get_product_count > 0 %}

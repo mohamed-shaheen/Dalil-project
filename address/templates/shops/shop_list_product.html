@@ -1,0 +1,68 @@
+{% load el_pagination_tags %}
+
+{% if request.is_ajax %}{% paginate 5 products %}{% endif %}
+{% for product in products %}    
+<tr>
+  <th scope="row"></th>
+  <td><a href="{{product.get_absolute_url}}">{{product.PRname}}</a></td>
+  <td>{{product.PRdesc}}</td>
+  <td> 
+        {% if product.PRprice %}
+            {{product.PRprice}}
+        {% else %}
+        UNKNOWN
+        {% endif %} 
+  </td>
+  <td>{{product.PRcategory}}</td>
+  <td>
+      {% if product.PRref %}
+          <a href="{{product.PRref_img}}" target="_blank">image</a>
+      {% else %}
+        None
+      {% endif %}      
+  </td>
+  <td>
+      {% if product.PRref %}
+          <a href="{{product.PRref}}" target="_blank">ref link</a>
+      {% else %}
+        None
+      {% endif %}      
+  </td>
+  {% if shop.SHcreated_by == user or user.is_superuser %}
+
+  <td>
+    <a class="btn btn-secondary btn-sm" href="{% url 'address:edit_product'  product.pk   product.PRslug %}">
+      <i class="fa fa-pencil-square-o mr-2"></i>Edit
+    </a>
+  </td>  
+  <td>
+      <a class="btn btn-danger btn-sm" data-target="#confirm-del-{{products.pk}}" type="button" data-toggle="modal">
+        <i class="fa fa-trash mr-2"></i>DELETE
+      </a>
+  </td>
+  {# Modal #}
+  <div class="modal fade" id="confirm-del-{{product.pk}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalLabel">Delete Confirmation</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete "{{product.PRname}}"?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <a href="{% url 'address:delete_product' product.pk %}" class="btn btn-danger">DELETE</a>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+</tr>
+{% empty %}  
+<p class="clo alert alert-danger text-center"><strong> NO PRODUCTS HAS FOUND!!</strong></p>
+{% endfor %} 
