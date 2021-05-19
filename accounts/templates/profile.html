@@ -50,7 +50,7 @@ Profile
                  {% if profile.get_shop_count > 0 %}
                    {{ profile.get_shop_count}}
                  {% else %}
-                     No products added
+                     No places added
                  {% endif %} 
               </h4>
 
@@ -84,7 +84,6 @@ Profile
                               <th scope="col">products</th>
                               {% if profile.PRuser == user or user.is_superuser %}
                               <th scope="col">Edit</th>
-                              <th scope="col">DELETE</th>
                               {% endif %}    
                             </tr>
                           </thead>
@@ -97,7 +96,7 @@ Profile
                               <td>{{shop.get_SHgover_display}}</td>
                               <td>  {{shop.SHaddress |truncatechars:20}}</td>
                               <td>{{shop.SHnum}}</td>
-                              <td> {{shop.SHcreated_dt}}</td>
+                              <td> {{shop.SHcreated_dt|date:"j M, Y" }}</td>
                               <td>
                                 {% if shop.get_product_count > 0 %}
                                     <strong>{{ shop.get_product_count }}</strong>
@@ -106,38 +105,11 @@ Profile
                                 {% endif %}      
                             </td>
                             {% if shop.SHcreated_by == user or user.is_superuser %}
-
                             <td>
                               <a class="btn btn-secondary btn-sm" href="{% url 'address:edit_place'  shop.pk   shop.SHslug %}">
                                 <i class="fa fa-pencil-square-o mr-2"></i>Edit
                               </a>
                             </td>  
-                            <td>
-                                <a class="btn btn-danger btn-sm" data-target="#confirm-del-{{shop.pk}}" type="button" data-toggle="modal">
-                                  <i class="fa fa-trash mr-2"></i>DELETE
-                                </a>
-                            </td>
-                            {# Modal #}
-                            <div class="modal fade" id="confirm-del-{{shop.pk}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-                              <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h5 class="modal-title" id="ModalLabel">Delete Confirmation</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-                                  <div class="modal-body">
-                                    Are you sure you want to delete "{{shop.SHname}}"?
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <a href="{% url 'address:delete_shop' shop.pk %}" class="btn btn-danger">DELETE</a>
-                                    
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
                             {% endif %}
                           {% empty %}  
                             <p class="clo alert alert-danger text-center"><strong> NO PLACES HAS FOUND!!!</strong></p>

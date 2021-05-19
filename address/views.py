@@ -1,14 +1,13 @@
 from django.core.exceptions import PermissionDenied
-from django.http import request
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Shop, Product, Category, GOVERNORATES_CHOICES, Type
 from django.contrib.auth.decorators import login_required
-from django.views.generic import UpdateView, DeleteView
+from django.views.generic import UpdateView
 from django.utils.decorators import method_decorator
 from django.utils import timezone
 from el_pagination.decorators import page_template
 from .forms import NewShopForm, ProductForm
-from django.urls import reverse_lazy
+#from django.urls import reverse_lazy
 # Create your views here.
 
 

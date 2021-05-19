@@ -4,8 +4,8 @@
 {% for product in products %}    
 <tr>
   <th scope="row"></th>
-  <td><a href="{{product.get_absolute_url}}">{{product.PRname}}</a></td>
-  <td>{{product.PRdesc}}</td>
+  <td><a href="{{product.get_absolute_url}}">{{product.PRname |truncatechars:25}}</a></td>
+  <td>{{product.PRdesc |truncatechars:15}}</td>
   <td>{{product.PRcategory}}</td>
   <td>
     Price: 
@@ -16,7 +16,7 @@
     {% endif %} 
 
   </td>
-  <td><a href="{{product.PRshop.get_absolute_url}}">{{product.PRshop}}</a></td>
+  <td><a href="{{product.PRshop.get_absolute_url}}">{{product.PRshop |truncatechars:20}}</a></td>
   <td>{{product.PRshop.get_SHgover_display }}</td>
   <td>{{product.PRshop.SHaddress}}</td>
   <td>

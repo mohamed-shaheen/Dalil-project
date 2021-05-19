@@ -28,7 +28,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.2',]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -160,7 +160,7 @@ LEAFLET_CONFIG = {
     'MAX_ZOOM': 18,
     'DEFAULT_PRECISION': 6,
     'ATTRIBUTION_PREFIX': 'Dalil map',
-    'SRID': 4326,
+    #'SRID': 4326,
     #'MINIMAP': True,
     #'TILES': [],
     'PLUGINS': {
@@ -169,7 +169,7 @@ LEAFLET_CONFIG = {
             'js': [ '/static/leaflet-gps-master/src/leaflet-gps.js'],
             'auto-include': True,
         },
-}
+    }
 }
 
 
@@ -185,7 +185,7 @@ EMAIL_MAIL_HTML = 'email-confirm/mail_body.html'
 EMAIL_MAIL_PLAIN = 'email-confirm/mail_body.txt'
 EMAIL_TOKEN_LIFE = 60 * 60
 EMAIL_PAGE_TEMPLATE = 'email-confirm/confirm_template.html'
-EMAIL_PAGE_DOMAIN = 'http://192.168.1.2:8000/'
+EMAIL_PAGE_DOMAIN = 'http://127.0.0.1:8000/'
 
 # For Django Email Backend
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

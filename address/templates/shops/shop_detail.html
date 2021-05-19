@@ -127,8 +127,7 @@
                                 <th scope="col">image</th>
                                 <th scope="col">refrance</th>
                                 {% if shop.SHcreated_by == user or user.is_superuser %}
-                                <th scope="col">Edit</th>
-                                <th scope="col">DELETE</th>
+                                <th scope="coly">Edit</th>
                                 {% endif %}
                               </tr>
                             </thead>
@@ -137,7 +136,7 @@
                               {% include page_template %}
                             </tbody>
                           </table>
-                          {% show_more "even more" "working" "btn btn-primary"%}
+                          {% show_more "Show more" "working" "btn btn-info btn-sm"%}
                         </div>  
 
                 </div>

@@ -1,13 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth import login as auth_login
+#from django.contrib.auth import login as auth_login
 from .forms import SignUpForm, UserForm, ProfileForm
 from django.contrib.auth.models import User
-from django.views.generic import UpdateView
 from django_email_verification import send_email
 from .models import Profile
 from address.models import Shop
 from django.contrib.auth.models import User
-from django.views.decorators.csrf import csrf_protect
+#from django.views.decorators.csrf import csrf_protect
+from django.utils.translation import ugettext_lazy as _
 
 # Create your views here.
 
@@ -43,7 +43,7 @@ def re_send(request):
         try:
            user = User.objects.get(email=email)
         except User.DoesNotExist:
-            error = 'This E-mail does not exist please try again :-)'
+            error = _('This E-mail does not exist please try again :-)')
             context = {'error' : error}
             return render(request, 'email-confirm/confirm_template.html', context)
     if user.is_active:

@@ -9,7 +9,7 @@ admin.site.site_title = 'Dalil Admin Panel'
 
 @admin.register(Shop)
 class ShopAdmin(LeafletGeoAdmin):
-    list_display = ('SHname', 'SHtype', 'SHgover', 'SHaddress', 'SHlocation') 
+    list_display = ('SHname', 'SHtype', 'SHgover', 'SHaddress', 'SHlocation', 'SHcreated_dt') 
     list_filter = ('SHtype__TYname', 'SHgover')
     search_fields = ['SHname', 'SHcreated_by__username']
 
@@ -21,7 +21,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('PRname', 'PRshop', 'PRdesc', 'PRcategory') 
+    list_display = ('PRname', 'PRshop', 'PRdesc', 'PRcategory', 'PRcreated_dt') 
     list_filter = ('PRcategory__CAname', 'PRshop__SHgover', 'PRshop__SHtype__TYname')
     search_fields = ['PRname', 'PRshop__SHname', 'PRshop__SHcreated_by__username']
 

@@ -112,6 +112,7 @@ class Product(models.Model):
     PRref_img = models.URLField(max_length=500, null=True, blank=True, verbose_name=_("Link image"))    
     PRcategory = models.ForeignKey("Category", related_name="category_product", on_delete=models.CASCADE, verbose_name=_("Category"))
     PRprice = models.DecimalField(max_digits=10, decimal_places=2,  validators=[MinValueValidator(0.1, message=_("Must be a postive number."))], blank= True, null=True, verbose_name=_("Price") )
+    PRcreated_dt = models.DateTimeField(auto_now_add=True, blank=True, null=True, verbose_name=_("Created at"))
     PRslug = models.SlugField(blank=True, null=True, verbose_name=_("Slug"))
 
 
