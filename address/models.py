@@ -36,7 +36,7 @@ GOVERNORATES_CHOICES = [
     ('SHAQ', _('Sharqia')),
     ('SOHG', _('Sohag')),
     ('SOSI', _('South Sinai')),
-    ('SUZE', _('Suez')),
+    ('SUEZ', _('Suez')),
 
 ]
 

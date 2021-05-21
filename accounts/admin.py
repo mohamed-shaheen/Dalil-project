@@ -7,7 +7,7 @@ from django_summernote.admin import SummernoteModelAdmin
 @admin.register(Profile)
 class ProfileAdmin(SummernoteModelAdmin):
     list_display = ('PRuser',) 
-    search_fields = ['PRuser__username']
+    search_fields = ['PRuser__username', '=PRuser__id']
     summernote_fields = ('PRbio',)
 
 

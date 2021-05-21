@@ -1468,65 +1468,42 @@ input:checked + .slider:before {
 /*--------------------------------------------------------------
 # forms style
 --------------------------------------------------------------*/
+.auth-forms {
+  background-image: url(../img/auth-bk.png) ;
+  height: 100% ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.products-forms {
+  background-image: url(../img/products-bk.png) ;
+  height: 100% ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+.extra-forms {
+  background-image: url(../img/def-bk.png) ;
+  height: 100% ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.reset-forms {
+  background-image: url(../img/reset-pass.png) ;
+  height: 100% ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 #add-place-form {
   background-image: url(../img/add-place.png) ;
-  height: 100% ;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#add-product-form {
-  background-image: url(../img/addplace.jpg) ;
-  height: 100% ;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#contact-form {
-  background-image: url(../img/addplace.jpg) ;
-  height: 100% ;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#change-pass-form {
-  background-image: url(../img/change-pass.png) ;
-  height: 100% ;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#login-form {
-  background-image: url(../img/addplace.jpg) ;
-  height: 100% ;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#signup-form {
-  background-image: url(../img/img-x.png) ;
-  height: 100% ;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#reset-form {
-  background-image: url(../img/reset-pass.png) ;
-  height: 100% ;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-#confirm-reset-form {
-  background-image: url(../img/reset-pass.png) ;
   height: 100% ;
   background-position: center;
   background-repeat: no-repeat;

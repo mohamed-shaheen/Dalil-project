@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import About, Contact
+from .models import About
+from django.utils.translation import get_language_bidi
 from django.contrib.auth.models import User
 from .forms import ContactForm
 # Create your views here.
@@ -28,7 +29,10 @@ def contact_us(request):
 
 
 def about_us(request):
-    abouts =  get_object_or_404(About, ABon_page=True)
+    if get_language_bidi():
+        abouts = get_object_or_404(About, ABon_page=True, ABis_arabic=True)
+    else :    
+        abouts =  get_object_or_404(About, ABon_page=True, ABis_arabic=False)
 
     context = {'abouts' : abouts}
-    return render(request, 'about_us.html', context)   
+    return render(request, 'about_us.html', context)

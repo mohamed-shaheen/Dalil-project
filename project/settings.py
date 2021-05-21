@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'avatar',
     'el_pagination',
     'django_summernote',
+    'import_export',
 
 ]
 
@@ -159,7 +160,7 @@ LEAFLET_CONFIG = {
     'MIN_ZOOM': 2,
     'MAX_ZOOM': 18,
     'DEFAULT_PRECISION': 6,
-    'ATTRIBUTION_PREFIX': 'Dalil map',
+    'ATTRIBUTION_PREFIX': 'Dalil',
     #'SRID': 4326,
     #'MINIMAP': True,
     #'TILES': [],
@@ -183,7 +184,7 @@ EMAIL_FROM_ADDRESS = 'Dalil team noreply<no_reply@domain.com>'
 EMAIL_MAIL_SUBJECT = 'Verify your email for Dalil'
 EMAIL_MAIL_HTML = 'email-confirm/mail_body.html'
 EMAIL_MAIL_PLAIN = 'email-confirm/mail_body.txt'
-EMAIL_TOKEN_LIFE = 60 * 60
+EMAIL_TOKEN_LIFE = 60 * 60 * 24
 EMAIL_PAGE_TEMPLATE = 'email-confirm/confirm_template.html'
 EMAIL_PAGE_DOMAIN = 'http://127.0.0.1:8000/'
 

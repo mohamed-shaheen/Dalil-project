@@ -47,6 +47,7 @@ class About(models.Model):
     ABmain = models.TextField(max_length=15000, verbose_name=_('Main'))
     ABcreated_dt = models.DateTimeField(auto_now_add=True, verbose_name=_("Created at"))
     ABon_page = models.BooleanField(default=False, verbose_name=_("View as main"))
+    ABis_arabic = models.BooleanField(default=False, verbose_name=_("Is arabic"))
 
 
     class Meta:

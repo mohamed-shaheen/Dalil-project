@@ -38,7 +38,7 @@ def all_products(request, template='products/product_list.html', extra_context=N
                     PRshop__SHname__icontains=shop_name).filter(
                         PRshop__SHaddress__icontains=adrs_name).filter(
                             PRdesc__icontains=desc_name).filter(
-                                PRcategory__CAname__icontains=cate_name)     
+                                PRcategory__CAname__icontains=cate_name)    
 
 
     context = {'products' : products, 'category' : category, 'govs' : GOVERNORATES_CHOICES}
@@ -69,7 +69,7 @@ def all_shops(request, template='shops/shop_list.html', extra_context=None):
 @page_template('shops/shop_list_product.html')
 def shop_detail(request, id, slug, template='shops/shop_detail.html', extra_context=None):
     shop = get_object_or_404(Shop, pk=id, SHslug=slug)
-    products = Product.objects.filter(PRshop__id__exact=id)
+    products = Product.objects.filter(PRshop__id__exact=id).order_by('PRname')
     if 'q1' in request.GET:
         pro_name = request.GET['q1']
         if pro_name:

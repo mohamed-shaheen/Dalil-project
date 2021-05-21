@@ -16,5 +16,5 @@ class ContactAdmin(admin.ModelAdmin):
 class AboutAdmin(SummernoteModelAdmin):
     list_display = ('ABtitle', 'ABcreated_dt') 
     search_fields = ['ABtitle', 'ABcreated_dt']
-    list_filter = ('ABon_page',)
+    list_filter = ('ABon_page', 'ABis_arabic')
     summernote_fields = ('ABmain',)
