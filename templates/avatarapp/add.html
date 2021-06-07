@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load avatar_tags %}
 
 {% block title %}
-Add Avatar
+{# title #}
+{% translate "Add Avatar" %}
 {% endblock title %}
 
 {% block main %}
@@ -14,11 +16,12 @@ Add Avatar
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Add Avatar</h2>
+          {% translate "Add Avatar" as add_ava_tr %}
+          <h2>{{add_ava_tr}}</h2>
           <ol>
-            <li><a href="{% url 'address:home' %}">Home</a></li>
-            <li><a href="{{ request.user.user_profile.get_absolute_url }}">Profile</a></li>
-            <li>Add Avatar</li>
+            <li><a href="{% url 'address:home' %}">{% translate "Home" %}</a></li>
+            <li><a href="{{ request.user.user_profile.get_absolute_url }}">{% translate "Profile" %}</a></li>
+            <li>{{add_ava_tr}}</li>
           </ol>
         </div>
 
@@ -31,16 +34,16 @@ Add Avatar
               <div class="col-lg-8 col-md-10 col-sm-12">
                   <div class="card my-2" >
                         <div class="card-body">
-                        <h3>Your current avatar: </h3>
+                        <h3>{% translate "Your current avatar:"  %}</h3>
                         {% avatar user 100 class="img-circle img-responsive" id="user_avatar" %}
-                        {% if not avatars %}
-                            <p>You haven't uploaded an avatar yet. Please upload one now.</p>
+                        {% if not avatars %}      
+                          <p>{% translate "You haven't uploaded an avatar yet. Please upload one now."%}</p>
                         {% endif %}
                         <form enctype="multipart/form-data" class="row g-3" method="POST" action="{% url 'avatar_add' %}">
                             {% include  'includes/upload_avatar_form.html' %}
                             {% csrf_token %}
                             <div class="col-auto">
-                              <button type="submit" class="btn btn-primary mb-3">Upload New Image <i class="fa fa-upload mr-2 mx-1"></i></button> 
+                              <button type="submit" class="btn btn-primary mb-3">{% translate "Upload New Image" %} <i class="fa fa-upload mr-2 mx-1"></i></button> 
                           </div> 
                         </form>
                 </div>

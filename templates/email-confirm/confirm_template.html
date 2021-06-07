@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 {% block title %}
-Confirmation
+{# title #}
+{% translate "Confirmation" as confirm_tr %}
+{{confirm_tr}}
 {% endblock title %}
 
 {% block main %}
@@ -13,10 +15,10 @@ Confirmation
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Products</h2>
+          <h2>{{confirm_tr}}</h2>
           <ol>
-            <li><a href="{% url 'address:home' %}">Home</a></li>
-            <li>Confirmation</li>
+            <li><a href="{% url 'address:home' %}">{% translate "Home" %}</a></li>
+            <li>{{confirm_tr}}</li>
           </ol>
         </div>
 
@@ -29,26 +31,26 @@ Confirmation
 
             {% if success %}
                 <div class="alert alert-success" role="alert">
-                    <h4 class="alert-heading">Well done!</h4>
-                    <p>{{ user.username }}, you successfully confirmed your account E-mail .</p>
+                    <h4 class="alert-heading">{% translate "Well done!" %}</h4>
+                    <p>{{ user.username }}{% translate ", you successfully confirmed your account E-mail ." %}</p>
                     <hr>
-                    <p class="mb-0">Now!!, you have full control of your account.</p>
+                    <p class="mb-0">{% translate "Now!!, you have full control of your account." %}</p>
                 </div>
             {% else %}
                 <div class="alert alert-danger" role="alert">
-                    <h4 class="alert-heading">Error!</h4>
-                    <p>invalid token!.</p>
+                    <h4 class="alert-heading">{% translate "Error!" %}</h4>
+                    <p>{% translate "invalid token!." %}</p>
                     <hr>
-                    <p class="mb-0">You can try to sign up again 
-                      <a href="{% url 'accounts:signup' %}">Signup</a> 
-                      Or resend confirm email. 
+                    <p class="mb-0">{% translate "You can try to sign up again" %} 
+                      <a href="{% url 'accounts:signup' %}">{% translate "Signup" %}</a> 
+                      {% translate "Or resend confirm email." %} 
                     </p>
                 </div>
                 <form method="POST" action="{% url 'accounts:re_send' %}">
                   {% csrf_token %}
                   <input name="email" class="form-control" label="example@example.com">
                   <small class="form-text text-muted">{{error}}</small>
-                  <button type="submit">re send <i class="fa fa-send-o mr-2 mx-1"></i> </button>
+                  <button type="submit">{% translate "re send" %} <i class="fa fa-send-o mr-2 mx-1"></i> </button>
               </form>
   
             {% endif %}

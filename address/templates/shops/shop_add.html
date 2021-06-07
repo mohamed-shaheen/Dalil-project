@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load leaflet_tags %}
 {% load static %}
 
 {% block title %}
-Add place
+{# title #}
+{% translate "Add place" %}
 {% endblock title %}
 {% block extracss %}
  {% leaflet_css plugins="ALL" %}
@@ -20,11 +22,12 @@ Add place
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Add Place</h2>
+          {% translate "Add place" as add_place_tr %}
+          <h2>{{add_place_tr}}</h2>
           <ol>
-            <li><a href="{% url 'address:home' %}">Home</a></li>
-            <li><a href="{% url 'address:place_list' %}">Places</a></li>
-            <li>Add Place</li>
+            <li><a href="{% url 'address:home' %}">{% translate "Home" %}</a></li>
+            <li><a href="{% url 'address:place_list' %}">{% translate "Places"%}</a></li>
+            <li>{{add_place_tr}}</li>
           </ol>
         </div>
 
@@ -39,16 +42,16 @@ Add place
                 <div class="col-lg-8 col-md-10 col-sm-12">
                      <div class="card my-2" >
                           <div class="card-body">
-                                <h3 class="card-title">Add place</h3>  
+                                <h3 class="card-title">{{add_place_tr}}</h3>  
                                 <form method="post" enctype="multipart/form-data" novalidate >
 
                                     {% csrf_token %}
                                     
                                     {{form.media.js}}
                                     {% include  'includes/form.html' %}
-                                    <small class="form-text text-muted mb-4">Point your location with marker <i class="fa fa-map-marker fa-3x"></i></small>
+                                    <small class="form-text text-muted mb-4">{# help text #}{% translate "Point your location with marker" %} <i class="fa fa-map-marker fa-3x"></i></small>
                                     
-                                    <button type="submit" class="btn btn-dark btn-lg btn-block">Add <i class="fa fa-plus mr-2 mx-1"></i></button>  
+                                    <button type="submit" class="btn btn-dark btn-lg btn-block">{% translate "Add" %} <i class="fa fa-plus mr-2 mx-1"></i></button>  
                               </form>
                           </div>
                       </div>

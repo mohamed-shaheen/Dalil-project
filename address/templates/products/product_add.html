@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 {% block title %}
-Add Product
+{# title #}
+{% translate "Add Product" %}
 {% endblock title %}
 
 {% block main %}
@@ -13,12 +14,13 @@ Add Product
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Add Product</h2>
+          {% translate "Add product" as add_pro_tr %}
+          <h2>{{add_pro_tr}}</h2>
           <ol>
-            <li><a href="{% url 'address:home' %}">Home</a></li>
-            <li><a href="{% url 'address:place_list' %}">Places</a></li>
+            <li><a href="{% url 'address:home' %}">{% translate "Home" %}</a></li>
+            <li><a href="{% url 'address:place_list' %}">{% translate "Places" %}</a></li>
             <li><a href="{{ shop.get_absolute_url }}">{{shop.SHname}}</a></li>
-            <li>Add Product</li>
+            <li>{{add_pro_tr}}</li>
           </ol>
         </div>
 
@@ -32,12 +34,12 @@ Add Product
               <div class="col-lg-8 col-md-10 col-sm-12">
                    <div class="card my-2" >
                         <div class="card-body">
-                              <h3 class="card-title">Add product</h3> 
+                              <h3 class="card-title">{{add_pro_tr}}</h3> 
                               <form method="post" novalidate >
                                   {% csrf_token %}
                                   {% include  'includes/form.html' %}
                                   
-                                  <button type="submit" class="btn btn-dark btn-lg btn-block">Add <i class="fa fa-plus mr-2 mx-1"></i></button>  
+                                  <button type="submit" class="btn btn-dark btn-lg btn-block">{% translate "Add" %} <i class="fa fa-plus mr-2 mx-1"></i></button>  
                             </form>
                         </div>
                     </div>

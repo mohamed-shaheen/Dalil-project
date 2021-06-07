@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load static %}
 
 {% block title %}
-Contact us
+{# title #}
+{% translate "Contact us" %}
 {% endblock title %}
 {% block nav_contact %} active {% endblock %}
 
@@ -16,10 +18,11 @@ Contact us
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Contact us</h2>
+          {% translate "Contact us" as contact_tr %}
+          <h2>{% translate "Contact us" %}</h2>
           <ol>
-            <li><a href="{% url 'address:home' %}">Home</a></li>
-            <li>Contact us</li>
+            <li><a href="{% url 'address:home' %}">{% translate "Home" %}</a></li>
+            <li>{% translate "Contact us" %}</li>
           </ol>
         </div>
 
@@ -33,13 +36,13 @@ Contact us
                 <div class="col-lg-8 col-md-10 col-sm-12">
                      <div class="card my-2" >
                           <div class="card-body">
-                                <h3 class="card-title">Contact us </h3>  
+                                <h3 class="card-title">{{contact_tr}} </h3>  
                                 <form method="post" enctype="multipart/form-data" novalidate >
 
                                     {% csrf_token %}
                                     {% include  'includes/form.html' %}
                                     
-                                    <button type="submit" class="btn btn-dark btn-lg btn-block">Contact us <i class="fa fa-send-o mr-2 mx-1"></i></button>  
+                                    <button type="submit" class="btn btn-dark btn-lg btn-block">{% translate "Send" %} <i class="fa fa-send-o mr-2 mx-1"></i></button>  
                               </form>
                           </div>
                       </div>

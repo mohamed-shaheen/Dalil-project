@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 {% block title %}
-Edit - Product
+{# title #}
+{% translate "Edit - Product" %}
 {% endblock title %}
 
 {% block main %}
@@ -13,13 +14,15 @@ Edit - Product
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Edit Product</h2>
+          {% translate "Edit Product" as edit_product_tr %}
+          <h2>{{edit_product_tr}}</h2>
           <ol>
-            <li><a href="{% url 'address:home' %}">Home</a></li>
-            <li><a href="{% url 'address:place_list' %}">Places</a></li>
+            <li><a href="{% url 'address:home' %}">{% translate "Home" %}</a></li>
+            {% translate "Places" as places_tr %}
+            <li><a href="{% url 'address:place_list' %}">{{places_tr}}</a></li>
             <li><a href="{{ product.PRshop.get_absolute_url }}">{{product.PRshop.SHname}}</a></li>
             <li><a href="{{ product.get_absolute_url }}">{{product.PRname}}</a></li>
-            <li>Edit product</li>
+            <li>{{edit_product_tr}}</li>
           </ol>
         </div>
 
@@ -33,34 +36,34 @@ Edit - Product
               <div class="col-lg-8 col-md-10 col-sm-12">
                    <div class="card my-2" >
                         <div class="card-body">
-                              <h3 class="card-title">Edit product</h3> 
+                              <h3 class="card-title">{{edit_product_tr}}</h3> 
                               <form method="post" novalidate >
                                   {% csrf_token %}
                                   {% include  'includes/form.html' %}
                                   
-                                  <button type="submit" class="btn btn-dark btn-lg btn-block">Save Edits <i class="fa fa-pencil-square-o mr-2 mx-1"></i></button>  
+                                  <button type="submit" class="btn btn-dark btn-lg btn-block">{% translate "Save Edits" %} <i class="fa fa-pencil-square-o mr-2 mx-1"></i></button>  
                             </form>
                         </div>
                         <div class="card-footer text-muted text-center">
                           <a class="btn btn-danger btn-sm" data-target="#confirm-del-{{product.pk}}" type="button" data-toggle="modal">
-                            <i class="fa fa-trash mr-2"></i>DELETE
+                            <i class="fa fa-trash mr-2"></i>{% translate "DELETE" as del_tr %}{{del_tr}}
                           </a>
                           {# Modal #}
                           <div class="modal fade" id="confirm-del-{{product.pk}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h5 class="modal-title" id="ModalLabel">Delete Confirmation</h5>
+                                  <h5 class="modal-title" id="ModalLabel">{# modal #}{% translate "Delete Confirmation" %}</h5>
                                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                   </button>
                                 </div>
                                 <div class="modal-body">
-                                  Are you sure you want to delete "{{product.PRname}}"?
+                                  {% translate "Are you sure you want to delete" %} "{{product.PRname}}"?
                                 </div>
                                 <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                  <a href="{% url 'address:delete_product' product.pk %}" class="btn btn-danger">DELETE <i class="fa fa-trash-o mr-2"></i></a>
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">{# modal #}{% translate "Close" %}</button>
+                                  <a href="{% url 'address:delete_product' product.pk %}" class="btn btn-danger">{# modal #}{{del_tr}} <i class="fa fa-trash-o mr-2"></i></a>
                                   
                                 </div>
                               </div>

@@ -44,7 +44,7 @@ phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$', message="Phone number mus
 
 class Shop(models.Model):
 
-    SHname = models.CharField(max_length=50, help_text=_("The name of your project, then choice type"), verbose_name=_("Naming the place"))
+    SHname = models.CharField(max_length=50, help_text=_("The name of your place, then choose type"), verbose_name=_("Naming the place"))
     SHtype = models.ForeignKey("Type", related_name="type_product", on_delete=models.CASCADE, verbose_name=_("Place Type"))
     SHgover = models.CharField(max_length=50, choices=GOVERNORATES_CHOICES, verbose_name=_("Governorate"))
     SHaddress = models.CharField(max_length=300, verbose_name=_("Detailed address"))
@@ -111,7 +111,7 @@ class Product(models.Model):
     PRref = models.URLField(max_length=400, null=True, blank=True, verbose_name=_("Outside reference link"))
     PRref_img = models.URLField(max_length=500, null=True, blank=True, verbose_name=_("Link image"))    
     PRcategory = models.ForeignKey("Category", related_name="category_product", on_delete=models.CASCADE, verbose_name=_("Category"))
-    PRprice = models.DecimalField(max_digits=10, decimal_places=2,  validators=[MinValueValidator(0.1, message=_("Must be a postive number."))], blank= True, null=True, verbose_name=_("Price") )
+    PRprice = models.DecimalField(max_digits=10, decimal_places=2,  validators=[MinValueValidator(0.1, message=_("Must be a positive number."))], blank= True, null=True, verbose_name=_("Price") )
     PRcreated_dt = models.DateTimeField(auto_now_add=True, blank=True, null=True, verbose_name=_("Created at"))
     PRslug = models.SlugField(blank=True, null=True, verbose_name=_("Slug"))
 

@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% load avatar_tags %}
 
 
 {% block title %}
-Change Avatar
+{# title #}
+{% translate "Change Avatar" %}
 {% endblock title %}
 
 {% block main %}
@@ -15,11 +17,12 @@ Change Avatar
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Change Avatar</h2>
+          {% translate "Change Avatar" as change_ava_tr %}
+          <h2>{{change_ava_tr}}</h2>
           <ol>
-            <li><a href="{% url 'address:home' %}">Home</a></li>
-            <li><a href="{{ request.user.user_profile.get_absolute_url }}">Profile</a></li>
-            <li>Change Avatar</li>
+            <li><a href="{% url 'address:home' %}">{% translate "Home" %}</a></li>
+            <li><a href="{{ request.user.user_profile.get_absolute_url }}">{% translate "Profile" %}</a></li>
+            <li>{{change_ava_tr}}</li>
           </ol>
         </div>
 
@@ -32,17 +35,17 @@ Change Avatar
           <div class="col-lg-8 col-md-10 col-sm-12">
               <div class="card my-2" >
                     <div class="card-body">
-                          <h3>Your current avatar: </h3>
+                          <h3>{% translate "Your current avatar:"  %} </h3>
                           {% avatar user 65 class="img-circle img-responsive" id="user_avatar" %}
                           {% if not avatars %}
-                              <h4>You haven't uploaded an avatar yet. Please upload one now.</h4>
+                              <h4>{% translate "You haven't uploaded an avatar yet. Please upload one now."%}</h4>
                           {% else %}
                               <form method="POST" action="{% url 'avatar_change' %}">
                               
                                 {% include  'includes/primary_avatar_form.html' %}
                                 {% csrf_token %}
                                 <div class="col-auto">
-                                  <button type="submit" class="btn btn-primary mb-3">Choose neew defult <i class="fa fa-picture-o mr-2 mx-1"></i></button> 
+                                  <button type="submit" class="btn btn-primary mb-3">{% translate "Choose new defult" %} <i class="fa fa-picture-o mr-2 mx-1"></i></button> 
                               </div> 
                               </form>
                           {% endif %}
@@ -50,7 +53,7 @@ Change Avatar
                             {% include  'includes/upload_avatar_form.html' %}
                             {% csrf_token %}
                             <div class="col-auto">
-                              <button type="submit" class="btn btn-primary mb-3">Upload New Image <i class="fa fa-upload mr-2 mx-1"></i></button> 
+                              <button type="submit" class="btn btn-primary mb-3">{% translate "Upload New Image" %} <i class="fa fa-upload mr-2 mx-1"></i></button> 
                           </div> 
                         </form>
                      </div>

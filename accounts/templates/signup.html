@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 {% block title %}
-Sing up
+{# title #}
+{% translate "Sing up" %}
 {% endblock title %}
 
 {% block main %}
@@ -13,10 +14,11 @@ Sing up
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Sign up</h2>
+          {% translate "Sign up" as signup_tr %}
+          <h2>{{signup_tr}}</h2>
           <ol>
-            <li><a href="{% url 'address:home' %}">Home</a></li>
-            <li>Sign up</li>
+            <li><a href="{% url 'address:home' %}">{% translate "Home" %}</a></li>
+            <li>{{signup_tr}}</li>
           </ol>
         </div>
 
@@ -30,16 +32,16 @@ Sing up
           <div class="col-lg-8 col-md-10 col-sm-12">
                <div class="card my-2" >
                     <div class="card-body">
-                          <h3 class="card-title">Signup</h3> 
+                          <h3 class="card-title">{{signup_tr}}</h3> 
                           <form method="post" novalidate >
                               {% csrf_token %}
                               {% include  'includes/form.html' %}
                               
-                              <button type="submit" class="btn btn-dark btn-lg btn-block">Creat New User <i class="fa fa-user-plus mr-2 mx-1"></i></button>  
+                              <button type="submit" class="btn btn-dark btn-lg btn-block">{% translate "Creat New User" %} <i class="fa fa-user-plus mr-2 mx-1"></i></button>  
                         </form>
                     </div>
                     <div class="card-footer text-muted text-center">
-                      Already have an account? <a href="{%url 'accounts:login'%}">Login</a>
+                      {% translate "Already have an account?" %} <a href="{%url 'accounts:login'%}">{% translate "Login" %}</a>
                    </div>
                   </div>
               </div>

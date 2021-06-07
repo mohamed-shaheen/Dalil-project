@@ -1,3 +1,4 @@
+{% load i18n %}
 {% load el_pagination_tags %}
 
 {% if request.is_ajax %}{% paginate products %}{% endif %}
@@ -8,11 +9,11 @@
   <td>{{product.PRdesc |truncatechars:15}}</td>
   <td>{{product.PRcategory}}</td>
   <td>
-    Price: 
+    {% translate "Price:" %} 
     {% if product.PRprice %}
         {{product.PRprice}}
     {% else %}
-    UNKNOWN
+    {% translate "UNKNOWN" %}
     {% endif %} 
 
   </td>
@@ -21,20 +22,20 @@
   <td>{{product.PRshop.SHaddress}}</td>
   <td>
       {% if product.PRref %}
-          <a href="{{product.PRref_img}}" target="_blank">image</a>
+          <a href="{{product.PRref_img}}" target="_blank">{% translate "image" %}</a>
       {% else %}
-        None
+      {% translate "None" %}
       {% endif %}      
   </td>
   <td>
       {% if product.PRref %}
-          <a href="{{product.PRref}}" target="_blank">ref link</a>
+          <a href="{{product.PRref}}" target="_blank">{% translate "ref link" %}</a>
       {% else %}
-        None
+      {% translate "None" %}
       {% endif %}      
   </td>
 </tr>
 {% empty %}  
-<p class="clo alert alert-danger text-center"><strong> NO PRODUCTS HAS FOUND!!</strong></p>
+<p class="clo alert alert-danger text-center"><strong> {% translate "NO PRODUCTS HAS FOUND!!" %}</strong></p>
 {% endfor %}  
 

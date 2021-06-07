@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 {% block title %}
-Login
+{# title #}
+{% translate "Login" %}
 {% endblock title %}
 
 {% block main %}
@@ -13,10 +14,11 @@ Login
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2>Login</h2>
+          {% translate "Login" as login_tr %}
+          <h2>{{login_tr}}</h2>
           <ol>
-            <li><a href="{% url 'address:home' %}">Home</a></li>
-            <li>Login</li>
+            <li><a href="{% url 'address:home' %}">{% translate "Home" %}</a></li>
+            <li>{{login_tr}}</li>
           </ol>
         </div>
 
@@ -30,17 +32,17 @@ Login
            <div class="col-lg-8 col-md-10 col-sm-12">
                <div class="card my-2" >
                     <div class="card-body">
-                          <h3 class="card-title">Login</h3> 
+                          <h3 class="card-title">{{login-tr}}</h3> 
                           <form method="post" novalidate >
                               {% csrf_token %}
                               {% include  'includes/form.html' %}
                               
-                              <button type="submit" class="btn btn-dark btn-lg btn-block">Login <i class="fa fa-sign-in mr-2 mx-1"></i></button>  
+                              <button type="submit" class="btn btn-dark btn-lg btn-block">{{login-tr}} <i class="fa fa-sign-in mr-2 mx-1"></i></button>  
                         </form>
                     </div>
                     <div class="card-footer text-muted text-center">
-                      Create New account <a href="{%url 'accounts:signup'%}">Sign Up</a>
-                      <h5 class="mt-1">Lost your password? <a href="{% url 'accounts:password_reset_form' %}">Reset</a></h5>
+                      {% translate "Create New account" %} <a href="{%url 'accounts:signup'%}">{% translate "Sign up"%}</a>
+                      <h5 class="mt-1">{% translate "Lost your password?" %} <a href="{% url 'accounts:password_reset_form' %}">{% translate "Reset" %}</a></h5>
                    </div>
                   </div>
               </div>

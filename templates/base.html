@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 
 <!DOCTYPE html>
 <html dir="auto" lang="en">
@@ -47,57 +48,79 @@
           <div class="collapse navbar-collapse mx-3" id="navbarSupportedContent">
                   <ul class="navbar-nav mr-auto">
                     <li class="nav-item {% block nav_home %} {% endblock %}">
-                      <a class="nav-link" href="{% url 'address:home' %}"> <i class="fa fa-fw fa-home"></i>Home</a>
+                      {% translate "Home" as hometr %}
+                      <a class="nav-link" href="{% url 'address:home' %}"> <i class="fa fa-fw fa-home"></i>{{hometr}}</a>
                     </li>
                     <li class="nav-item {% block nav_places %} {% endblock %}">
-                      <a class="nav-link" href="{% url 'address:place_list' %}"><i class="fa fa-map-signs"></i>Places</a>
+                      {% translate "Places" as placestr %}
+                      <a class="nav-link" href="{% url 'address:place_list' %}"><i class="fa fa-map-signs"></i>{{placestr}}</a>
                     </li>
                     <li class="nav-item {% block nav_products %} {% endblock %}">
-                      <a class="nav-link" href="{% url 'address:product_list' %}"><i class="fa fa-fw fa-book"></i>Products</a>
+                      {% translate "Products" as protr %}
+                      <a class="nav-link" href="{% url 'address:product_list' %}"><i class="fa fa-fw fa-book"></i>{{protr}}</a>
                     </li>
                     <li class="nav-item {% block nav_about %} {% endblock %}">
-                      <a class="nav-link" href="{% url 'contact:about_us' %}"><i class="fa fa-id-card-o"></i>About us</a>
+                      {% translate "About us" as abouttr %}
+                      <a class="nav-link" href="{% url 'contact:about_us' %}"><i class="fa fa-id-card-o"></i>{{abouttr}}</a>
                     </li>
                       <li class="nav-item {% block nav_contact %} {% endblock %}">
-                        <a class="nav-link" href="{% url 'contact:contact_us' %}"> <i class="fa fa-fw fa-envelope"></i>Contact us</a>
+                        {% translate "Contact us" as contacttr %}
+                        <a class="nav-link" href="{% url 'contact:contact_us' %}"> <i class="fa fa-fw fa-envelope"></i>{{contacttr}}</a>
                       </li>
+                      {% load i18n %}
+
+<form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+    <input name="next" type="hidden" value="{{ redirect_to }}">
+    <select name="language">
+        {% get_current_language as LANGUAGE_CODE %}
+        {% get_available_languages as LANGUAGES %}
+        {% get_language_info_list for LANGUAGES as languages %}
+        {% for language in languages %}
+            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                {{ language.name_local }} ({{ language.code }})
+            </option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Go">
+</form>
+
                   </ul>
                   {% if user.is_authenticated %} 
                   <li class="nav-item dropdown form-inline my-2 my-lg-0 mx-3 ">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Welcome, {{user.username}}
+                      {% translate "Welcome," %} {{user.username}}
                     </a>
                     <div class="dropdown-menu mr-3 " aria-labelledby="navbarDropdown">
                       
                       <a class="dropdown-item" href="{{ request.user.user_profile.get_absolute_url }}">
-                        <i class="fa fa-user mr-2"></i>My profile
+                        <i class="fa fa-user mr-2"></i>{% translate "My profile" %}
                       </a>
                       
                       <a class="dropdown-item" href="{% url 'accounts:edit_profile' %}">
-                        <i class="fa fa-pencil-square-o mr-2"></i>Edit my profile
+                        <i class="fa fa-pencil-square-o mr-2"></i>{% translate "Edit profile" %}
                       </a>
                       <a class="dropdown-item {% block nav_change_pass %} {% endblock %}" href="{% url 'accounts:password_change' %}">
-                        <i class="fa fa-key mr-2"></i>Change password
+                        <i class="fa fa-key mr-2"></i>{% translate "Change password" %}
                       </a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item {% block nav_add_place %} {% endblock %}" href="{% url 'address:add_place' %}">
-                        <i class="fa fa-plus mr-2"></i>Add place
+                        <i class="fa fa-plus mr-2"></i>{% translate "Add place" %}
                       </a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="{% url 'accounts:logout' %}">
-                        <i class="fa fa-sign-out mr-2"></i>Logout
+                        <i class="fa fa-sign-out mr-2"></i>{% translate "Logout" %}
                       </a>
                     </div>
                   </li>  
               {% else %}
                     <li class="nav-item form-inline my-2 my-lg-0 mx-1">
                       <a href="{% url 'accounts:login' %}" class="btn btn-sm btn-outline-secondary">
-                        <i class="fa fa-sign-in mr-2"></i>Login
+                        <i class="fa fa-sign-in mr-2"></i>{% translate "Login" %}
                       </a>
                     </li>
                     <li class="nav-item form-inline my-2 my-lg-0 mx-1">
                       <a href="{% url 'accounts:signup' %}" class="btn btn-sm btn-outline-secondary">
-                        <i class="fa fa-user-plus mr-2"></i>Signup
+                        <i class="fa fa-user-plus mr-2"></i>{% translate "Sign up"%}
                       </a>
                     </li>
                   </ul>
@@ -126,7 +149,7 @@
         <div class="col-sm-6 col-md-3 col-lg-2">
           <div class="list-menu">
 
-            <h4><a class="nav-link" href="{% url 'address:place_list' %}"><i class="fa fa-map-signs"></i>Places</a></h4>
+            <h4><a class="nav-link" href="{% url 'address:place_list' %}"><i class="fa fa-map-signs"></i>{{placestr}}</a></h4>
 
           </div>
         </div>
@@ -134,16 +157,7 @@
         <div class="col-sm-6 col-md-3 col-lg-2">
           <div class="list-menu">
 
-            <h4><a class="nav-link" href="{% url 'address:product_list' %}"><i class="fa fa-fw fa-book"></i>Products</a></h4>
-
-
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-3 col-lg-2">
-          <div class="list-menu">
-
-            <h4><a class="nav-link" href="{% url 'contact:contact_us' %}"> <i class="fa fa-fw fa-envelope"></i>Contact us</a></h4>
+            <h4><a class="nav-link" href="{% url 'address:product_list' %}"><i class="fa fa-fw fa-book"></i>{{protr}}</a></h4>
 
 
           </div>
@@ -152,7 +166,16 @@
         <div class="col-sm-6 col-md-3 col-lg-2">
           <div class="list-menu">
 
-            <h4><a class="nav-link" href="{% url 'contact:about_us' %}"><i class="fa fa-id-card-o"></i>About us</a></h4>
+            <h4><a class="nav-link" href="{% url 'contact:contact_us' %}"> <i class="fa fa-fw fa-envelope"></i>{{contacttr}}</a></h4>
+
+
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-3 col-lg-2">
+          <div class="list-menu">
+
+            <h4><a class="nav-link" href="{% url 'contact:about_us' %}"><i class="fa fa-id-card-o"></i>{{abouttr}}</a></h4>
 
           </div>
         </div>
