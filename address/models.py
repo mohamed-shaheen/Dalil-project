@@ -1,9 +1,11 @@
+# -*- coding: utf-8 -*-
 from django.contrib.gis.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import slugify
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.core.validators import RegexValidator, MinValueValidator
+from unidecode import unidecode
 # Create your models here.
 
 
@@ -54,12 +56,14 @@ class Shop(models.Model):
     SHcreated_by = models.ForeignKey(User, related_name="user_shop", on_delete=models.CASCADE, verbose_name=_("Created by"))
     SHupdated_dt = models.DateTimeField(null=True, verbose_name=_("Updated date"))
     SHupdated_by = models.ForeignKey(User, null=True, blank=True, related_name="+", on_delete=models.CASCADE, verbose_name=_("Updated by"))
-    SHslug = models.SlugField(blank=True, null=True, verbose_name=_("Slug"))
+    #SHslug = models.SlugField(blank=True, null=True, verbose_name=_("Slug"))
+    SHslug = models.SlugField(blank=True, null=True, verbose_name=_("Slug"), allow_unicode=True)
 
     
     def save(self, *args, **kwargs):
         if not self.SHslug :
-           self.SHslug = slugify(self.SHname )
+           #self.SHslug = slugify(unidecode(self.SHname) )
+           self.SHslug = slugify(self.SHname, allow_unicode=True)
         super(Shop, self).save(*args, **kwargs)
 
     class Meta:
@@ -89,7 +93,7 @@ class Type(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.TYslug :
-            self.TYslug = slugify(self.TYname )
+            self.TYslug = slugify(unidecode(self.TYname) )
         super(Type, self).save(*args, **kwargs)
 
     class Meta:
@@ -113,12 +117,12 @@ class Product(models.Model):
     PRcategory = models.ForeignKey("Category", related_name="category_product", on_delete=models.CASCADE, verbose_name=_("Category"))
     PRprice = models.DecimalField(max_digits=10, decimal_places=2,  validators=[MinValueValidator(0.1, message=_("Must be a positive number."))], blank= True, null=True, verbose_name=_("Price") )
     PRcreated_dt = models.DateTimeField(auto_now_add=True, blank=True, null=True, verbose_name=_("Created at"))
-    PRslug = models.SlugField(blank=True, null=True, verbose_name=_("Slug"))
+    PRslug = models.SlugField(blank=True, null=True, verbose_name=_("Slug"), allow_unicode=True)
 
 
     def save(self, *args, **kwargs):
         if not self.PRslug :
-           self.PRslug = slugify(self.PRname )
+           self.PRslug = slugify( self.PRname, allow_unicode=True )
         super(Product, self).save(*args, **kwargs)
 
 
@@ -139,12 +143,12 @@ class Category(models.Model):
     CAname = models.CharField(max_length=50, verbose_name=_("Category name"))
     CAdesc = models.TextField(max_length=400, verbose_name=_("Description"))
     CAref_img = models.URLField(max_length=500, null=True, verbose_name=_("Link image"))
-    CAslug = models.SlugField(blank=True, null=True, verbose_name=_("Slug"))
+    CAslug = models.SlugField(blank=True, null=True, verbose_name=_("Slug"), allow_unicode=True)
 
 
     def save(self, *args, **kwargs):
         if not self.CAslug :
-           self.CAslug = slugify(self.CAname )
+           self.CAslug = slugify(self.CAname, allow_unicode=True )
         super(Category, self).save(*args, **kwargs)
 
 

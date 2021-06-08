@@ -1,8 +1,8 @@
 {% load static %}
 {% load i18n %}
-
+{% get_current_language_bidi as LANGUAGE_BIDI %}
 <!DOCTYPE html>
-<html dir="auto" lang="en">
+<html dir="{% if LANGUAGE_BIDI %} rtl {%else%} ltr {%endif%}" lang="{{LANGUAGE_CODE}}">
 
 <head>
   <meta charset="utf-8">
@@ -20,7 +20,13 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Roboto:100,300,400,500,700|Philosopher:400,400i,700,700i" rel="stylesheet">
 
   {# CSS Files #}
+  {% if LANGUAGE_BIDI %}
+  <link href="{% static 'css/bootstrap-rtl.min.css' %}" rel="stylesheet">
+  {#<link href="{% static 'css/bootstrap-rtl.css' %}" rel="stylesheet">#}
+  {%else%}
   <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  {#<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">#}
+  {%endif%}
   <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
   <link href="{% static 'css/modal-video.min.css' %}" rel="stylesheet">
   <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet">
@@ -39,50 +45,49 @@
 
 
       
-        <nav id="header" class="navbar navbar-expand-lg navbar-light header" style="background-color: #C0C0C0;">
+        <nav  id="header" class="navbar navbar-expand-lg navbar-light header" style="background-color: #C0C0C0;">
               <a class="navbar-brand mx-3" href="{% url 'address:home' %}"><img class="nav-logo d-inline-block align-top" src="{% static 'img/dalil-logo.png' %}" alt="Dalil"></a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
               </button>
         
           <div class="collapse navbar-collapse mx-3" id="navbarSupportedContent">
-                  <ul class="navbar-nav mr-auto">
+                  <ul class="navbar-nav {% if LANGUAGE_BIDI %} ml-auto {%else%} mr-auto {%endif%}">
                     <li class="nav-item {% block nav_home %} {% endblock %}">
-                      {% translate "Home" as hometr %}
-                      <a class="nav-link" href="{% url 'address:home' %}"> <i class="fa fa-fw fa-home"></i>{{hometr}}</a>
+                      {% translate "Home" as home_tr %}
+                      <a class="nav-link" href="{% url 'address:home' %}"> <i class="fa fa-fw fa-home"></i>{{home_tr}}</a>
                     </li>
                     <li class="nav-item {% block nav_places %} {% endblock %}">
-                      {% translate "Places" as placestr %}
-                      <a class="nav-link" href="{% url 'address:place_list' %}"><i class="fa fa-map-signs"></i>{{placestr}}</a>
+                      {% translate "Places" as places_tr %}
+                      <a class="nav-link" href="{% url 'address:place_list' %}"><i class="fa fa-map-signs"></i>{{places_tr}}</a>
                     </li>
                     <li class="nav-item {% block nav_products %} {% endblock %}">
-                      {% translate "Products" as protr %}
-                      <a class="nav-link" href="{% url 'address:product_list' %}"><i class="fa fa-fw fa-book"></i>{{protr}}</a>
+                      {% translate "Products" as pro_tr %}
+                      <a class="nav-link" href="{% url 'address:product_list' %}"><i class="fa fa-fw fa-book"></i>{{pro_tr}}</a>
                     </li>
                     <li class="nav-item {% block nav_about %} {% endblock %}">
-                      {% translate "About us" as abouttr %}
-                      <a class="nav-link" href="{% url 'contact:about_us' %}"><i class="fa fa-id-card-o"></i>{{abouttr}}</a>
+                      {% translate "About us" as about_tr %}
+                      <a class="nav-link" href="{% url 'contact:about_us' %}"><i class="fa fa-id-card-o"></i>{{about_tr}}</a>
                     </li>
                       <li class="nav-item {% block nav_contact %} {% endblock %}">
-                        {% translate "Contact us" as contacttr %}
-                        <a class="nav-link" href="{% url 'contact:contact_us' %}"> <i class="fa fa-fw fa-envelope"></i>{{contacttr}}</a>
+                        {% translate "Contact us" as contact_tr %}
+                        <a class="nav-link" href="{% url 'contact:contact_us' %}"> <i class="fa fa-fw fa-envelope"></i>{{contact_tr}}</a>
                       </li>
-                      {% load i18n %}
 
-<form action="{% url 'set_language' %}" method="post">{% csrf_token %}
-    <input name="next" type="hidden" value="{{ redirect_to }}">
-    <select name="language">
-        {% get_current_language as LANGUAGE_CODE %}
-        {% get_available_languages as LANGUAGES %}
-        {% get_language_info_list for LANGUAGES as languages %}
-        {% for language in languages %}
-            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                {{ language.name_local }} ({{ language.code }})
-            </option>
-        {% endfor %}
-    </select>
-    <input type="submit" value="Go">
-</form>
+                      <form class="nav-item form-inline" action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                          <input name="next" type="hidden" value="{{ redirect_to }}" type="submit">
+                          <select name="language" onchange="this.form.submit()">
+                              {% get_current_language as LANGUAGE_CODE %}
+                              {% get_available_languages as LANGUAGES %}
+                              {% get_language_info_list for LANGUAGES as languages %}
+                              {% for language in languages %}
+                                  <option class="dropdown-item" value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                                      {{ language.name_local }}
+                                  </option>
+                              {% endfor %}
+                          </select>
+                          
+                      </form>
 
                   </ul>
                   {% if user.is_authenticated %} 
@@ -149,7 +154,7 @@
         <div class="col-sm-6 col-md-3 col-lg-2">
           <div class="list-menu">
 
-            <h4><a class="nav-link" href="{% url 'address:place_list' %}"><i class="fa fa-map-signs"></i>{{placestr}}</a></h4>
+            <h4><a class="nav-link" href="{% url 'address:place_list' %}"><i class="fa fa-map-signs"></i>{{places_tr}}</a></h4>
 
           </div>
         </div>
@@ -157,16 +162,7 @@
         <div class="col-sm-6 col-md-3 col-lg-2">
           <div class="list-menu">
 
-            <h4><a class="nav-link" href="{% url 'address:product_list' %}"><i class="fa fa-fw fa-book"></i>{{protr}}</a></h4>
-
-
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-3 col-lg-2">
-          <div class="list-menu">
-
-            <h4><a class="nav-link" href="{% url 'contact:contact_us' %}"> <i class="fa fa-fw fa-envelope"></i>{{contacttr}}</a></h4>
+            <h4><a class="nav-link" href="{% url 'address:product_list' %}"><i class="fa fa-fw fa-book"></i>{{pro_tr}}</a></h4>
 
 
           </div>
@@ -175,7 +171,16 @@
         <div class="col-sm-6 col-md-3 col-lg-2">
           <div class="list-menu">
 
-            <h4><a class="nav-link" href="{% url 'contact:about_us' %}"><i class="fa fa-id-card-o"></i>{{abouttr}}</a></h4>
+            <h4><a class="nav-link" href="{% url 'contact:contact_us' %}"> <i class="fa fa-fw fa-envelope"></i>{{contact_tr}}</a></h4>
+
+
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-3 col-lg-2">
+          <div class="list-menu">
+
+            <h4><a class="nav-link" href="{% url 'contact:about_us' %}"><i class="fa fa-id-card-o"></i>{{about_tr}}</a></h4>
 
           </div>
         </div>
@@ -183,7 +188,7 @@
       </div>
     </div>
 
-    <div class="copyrights">
+    <div dir="ltr" class="copyrights">
       <div class="container">
         {% now "Y" as current_year %}
         <p>&copy; {{ current_year }} All rights reserved.</p>
@@ -201,7 +206,11 @@
 
   {# JS Files #}
   <script src="{% static 'js/jquery.min.js' %}"></script>
+  {% if LANGUAGE_BIDI %}
+  <script src="{% static 'js/bootstrap-rtl.bundle.min.js' %}"></script>
+  {%else%}
   <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  {%endif%}
   <script src="{% static 'js/jquery.easing.min.js' %}"></script>
   <script src="{% static 'js/modal-video.min.js' %}"></script>
   <script src="{% static 'js/owl.carousel.min.js' %}"></script>

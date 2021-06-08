@@ -37,6 +37,7 @@ urlpatterns += i18n_patterns(
     path('404/', TemplateView.as_view(template_name="404.html")),
     path('403/', TemplateView.as_view(template_name="403.html")),
     path('500/', TemplateView.as_view(template_name="500.html")),
+    prefix_default_language=True
 )
 
 if settings.DEBUG:

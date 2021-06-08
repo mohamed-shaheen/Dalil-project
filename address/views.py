@@ -130,6 +130,9 @@ class ShopUpdateViews(UpdateView):
     #fields = ('SHname', 'SHtype', 'SHgover', 'SHaddress', 'SHnum')
     template_name = 'shops/edit-shop.html'
     pk_url_kwarg = 'id'
+    slug_url_kwarg = 'slug'
+    slug_field = 'SHslug'
+    query_pk_and_slug = True
     context_object_name = 'shop'  
 
     def form_valid(self, form):
@@ -156,6 +159,9 @@ class ProductUpdateViews(UpdateView):
     form_class = ProductForm
     template_name = 'products/edit-product.html'
     pk_url_kwarg = 'id'
+    slug_url_kwarg = 'slug'
+    slug_field = 'PRslug'
+    query_pk_and_slug = True
     context_object_name = 'product'             
 
 

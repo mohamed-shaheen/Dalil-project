@@ -3,6 +3,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.text import slugify
 #from django.urls import reverse
 from django.utils.text import Truncator
+from unidecode import unidecode
 # Create your models here.
 
 TYPE_CHOICES = [
@@ -28,7 +29,7 @@ class Contact(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.COslug :
-           self.COslug = slugify(self.COsubject )
+           self.COslug = slugify(unidecode(self.COsubject) )
         super(Contact, self).save(*args, **kwargs)
 
     class Meta:

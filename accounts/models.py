@@ -20,7 +20,7 @@ class Profile(models.Model):
     PRuser = models.OneToOneField(User, related_name='user_profile', verbose_name=_("user"), on_delete=models.CASCADE)
     PRbio = models.TextField(max_length=1000, verbose_name=_("Bio"))
     PRjoin_date = models.DateTimeField(default=datetime.datetime.now, verbose_name=_("join date"))
-    PRslug = models.SlugField(blank=True, null=True, verbose_name=_("Slug"))
+    PRslug = models.SlugField(blank=True, null=True, verbose_name=_("Slug"), unique=True)
     
 
     class Meta:

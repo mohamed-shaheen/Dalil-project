@@ -9,7 +9,7 @@
   <td>{{product.PRdesc |truncatechars:10}}</td>
   <td> 
         {% if product.PRprice %}
-            {{product.PRprice}}
+            {{product.PRprice}} {% translate "E£" %}
         {% else %}
          {% translate "UNKNOWN" %}
         {% endif %} 

@@ -1,4 +1,5 @@
 from django import forms
+from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Profile
@@ -6,7 +7,7 @@ from django_summernote.widgets import SummernoteWidget
 
 
 class SignUpForm(UserCreationForm):
-    email = forms.CharField(max_length=255,required=True,widget=forms.EmailInput())
+    email = forms.CharField(max_length=255,required=True,widget=forms.EmailInput(), label=_("Email"))
 
     class Meta:
         model = User

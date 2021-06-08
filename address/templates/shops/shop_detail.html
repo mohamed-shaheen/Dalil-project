@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load l10n %}
 {% load static %}
 {% load el_pagination_tags %}
 {% block title %}
@@ -18,7 +19,7 @@
           <h2>{{shop.SHname}} </h2>
           <ol>
             <li><a href="{% url 'address:home' %}">{% translate "Home" %}</a></li>
-            <li><a href="{% url 'address:place_list' %}">{% translate "Places"%</a></li>
+            <li><a href="{% url 'address:place_list' %}">{% translate "Places"%}</a></li>
             <li>{{shop.SHname}}</li>
           </ol>
         </div>
@@ -92,10 +93,12 @@
                           {% endif %}
                           
                         </div>
-                        <div class="col-md-6 col-lg-6 mt-4">
-                              <div class="embed-responsive embed-responsive-16by9">
-                                  <iframe class="embed-responsive-item"   src="https://maps.google.com/maps?q={{shop.SHlocation.y}},{{shop.SHlocation.x}}&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                        <div lang="en-US" class="col-md-6 col-lg-6 mt-4">
+                          {% localize off %}
+                              <div step="any" lang="en-US" class="embed-responsive embed-responsive-16by9">
+                                  <iframe step="any" class="embed-responsive-item"   src="https://maps.google.com/maps?q={{shop.SHlocation.y}},{{shop.SHlocation.x}}&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
                               </div>
+                          {% endlocalize %}
                         </div> 
                 </div>
 
@@ -136,11 +139,8 @@
                             <tbody class="endless_content_wrapper">
                               {% include page_template %}
                             </tbody>
-                            {# pagnation button #}
-                            {% translate "even more" as even_more_tr %}
-                            {% translate "working" as working_tr %}
                           </table>
-                          {% show_more "{{even_more_tr}}" "{{working_tr}}" "btn btn-info btn-sm"%}
+                          {% show_more "even more" "working" "btn btn-info btn-sm"%}
                         </div>  
 
                 </div>

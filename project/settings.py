@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'el_pagination',
     'django_summernote',
     'import_export',
+    'unidecode',
 
 ]
 
@@ -127,14 +128,15 @@ AUTH_PASSWORD_VALIDATORS = [
 
 from django.utils.translation import gettext_lazy as _
 
+LANGUAGE_CODE = 'ar'
+
 LANGUAGES = [
   ('ar', _('Arabic')),
   ('en', _('English')),
 ]
 
-LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'egypt'
 
 USE_I18N = True
 
@@ -255,3 +257,4 @@ SUMMERNOTE_CONFIG = {
 
 
 }
+ALLOW_UNICODE_SLUGS = True
