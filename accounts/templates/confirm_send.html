@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}
+{# title #}
+{% translate "Confirmation" %}
+{% endblock title %}
+
+{% block main %}
+
+<main id="main">
+
+  {#  ======= Breadcrumbs ======= #}
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          {% translate "Confirmation"  as confirm_mail %}
+          <h2>{{confirm_mail}}</h2>
+          <ol>
+            <li><a href="{% url 'address:home' %}">{% translate "Home" %}</a></li>
+            <li>{{confirm_mail}}</li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+    {# End Breadcrumbs #}
+
+    <section class="inner-page pt-4">
+      <div class="container">
+        <div class="m-2">
+          <div class="alert alert-primary" role="alert">
+              {% translate "We've send message to confirm your email, check your spam folder" %}
+          </div>
+          <div class="alert alert-info m-2" role="alert">
+            {% translate "Make sure to confirm your email, you can't sign in withou Confirmation" %}
+          </div>
+          <h3 class="m-3">{% translate "If the email didn't arrive try to resend confirm email again." %} </h3>
+          <form method="POST" action="{% url 'accounts:re_send2' %}">
+            {% csrf_token %}
+            <input name="email" class="form-control" label="example@example.com">
+            <small class="form-text text-muted">{{error}}</small>
+            <button class="btn btn-outline-success" type="submit">{% translate "re send" %} <i class="fa fa-send-o mr-2 mx-1"></i> </button>
+        </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  {# End #main #}
+
+{% endblock main %}

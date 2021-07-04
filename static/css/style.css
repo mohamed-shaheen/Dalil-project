@@ -1477,7 +1477,16 @@ input:checked + .slider:before {
 }
 
 
-.products-forms {
+#products-forms {
+  background-image: url(../img/products2-bk.png) ;
+  height: 100% ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+#products-edit-forms {
   background-image: url(../img/products-bk.png) ;
   height: 100% ;
   background-position: center;
@@ -1488,6 +1497,14 @@ input:checked + .slider:before {
 
 .extra-forms {
   background-image: url(../img/def-bk.png) ;
+  height: 100% ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#about-us {
+  background-image: url(../img/def2-bk.png) ;
   height: 100% ;
   background-position: center;
   background-repeat: no-repeat;

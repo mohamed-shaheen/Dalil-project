@@ -136,7 +136,7 @@ LANGUAGES = [
 ]
 
 
-TIME_ZONE = 'egypt'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -202,12 +202,13 @@ EMAIL_PAGE_DOMAIN = 'http://127.0.0.1:8000/'
 
 # For Django Email Backend
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'mail.privateemail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = str(os.getenv('email'))
 EMAIL_HOST_PASSWORD = str(os.getenv('mail_key'))
+EMAIL_USE_SSL = False
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'Dalil noreply<no_reply@domain.com>'
+DEFAULT_FROM_EMAIL = 'Dalil noreply<no_reply@dalil-eg.com>'
 
 # Avatar settings
 AVATAR_AUTO_GENERATE_SIZES = (80, 100, 65, 120)

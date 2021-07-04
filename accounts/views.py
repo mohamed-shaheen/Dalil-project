@@ -23,7 +23,7 @@ def signup(request):
             #auth_login(request,user)
             user.is_active = False 
             send_email(user)
-            return redirect('address:home')
+            return redirect('accounts:signup_info')
     context = {'form':form}      
 
     return render(request,'signup.html', context)
@@ -40,18 +40,34 @@ def profile(request, slug):
 def re_send(request):
     if 'email' in request.POST:
         email = request.POST['email']
-        try:
-           user = User.objects.get(email=email)
-        except User.DoesNotExist:
+        user_exist = User.objects.filter(email=email).exists()
+        if user_exist:
+            user = User.objects.get(email=email)
+            if user.is_active:
+                return redirect('address:home')
+            else:  
+                send_email(user)
+                return redirect('accounts:login') 
+        else: 
             error = _('This E-mail does not exist please try again :-)')
             context = {'error' : error}
-            return render(request, 'email-confirm/confirm_template.html', context)
-    if user.is_active:
-        return redirect('address:home')
-    else:
-        send_email(user)
-        return redirect('accounts:login')       
+            return render(request, 'email-confirm/confirm_template.html', context)     
 
+def re_send2(request):
+    if 'email' in request.POST:
+        email = request.POST['email']
+        user_exist = User.objects.filter(email=email).exists()
+        if user_exist:
+            user = User.objects.get(email=email)
+            if user.is_active:
+                return redirect('address:home')
+            else:  
+                send_email(user)
+                return redirect('accounts:login') 
+        else: 
+            error = _('This E-mail does not exist please try again :-)')
+            context = {'error' : error}
+            return render(request, 'confirm_send.html', context) 
 
 def profile_edit(request):
     profile = Profile.objects.get(PRuser=request.user)

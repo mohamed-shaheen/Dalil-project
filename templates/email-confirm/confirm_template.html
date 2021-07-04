@@ -50,7 +50,7 @@
                   {% csrf_token %}
                   <input name="email" class="form-control" label="example@example.com">
                   <small class="form-text text-muted">{{error}}</small>
-                  <button type="submit">{% translate "re send" %} <i class="fa fa-send-o mr-2 mx-1"></i> </button>
+                  <button class="btn btn-outline-success" type="submit">{% translate "re send" %} <i class="fa fa-send-o mr-2 mx-1"></i> </button>
               </form>
   
             {% endif %}

@@ -16,7 +16,7 @@ class ShopAdmin(LeafletGeoAdmin, ImportExportModelAdmin):
 
 
 @admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(ImportExportModelAdmin):
     list_display = ('CAname', 'CAdesc') 
     search_fields = ['CAname']
 
@@ -29,6 +29,6 @@ class ProductAdmin(ImportExportModelAdmin):
 
 
 @admin.register(Type)
-class TypeAdmin(admin.ModelAdmin):
+class TypeAdmin(ImportExportModelAdmin):
     list_display = ('TYname', 'TYdesc')
     search_fields = ['TYname'] 

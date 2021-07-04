@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-06-08 22:03+0200\n"
+"POT-Creation-Date: 2021-07-05 01:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,10 +19,8 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: .\accounts\forms.py:10
-#, fuzzy
-#| msgid "E-mail"
-msgid "Email"
+#: .\accounts\forms.py:10 .\contact\models.py:19
+msgid "E-mail"
 msgstr "البريد الإلكتروني"
 
 #: .\accounts\models.py:20
@@ -61,6 +59,7 @@ msgstr "تغيير كلمة المرور"
 
 #: .\accounts\templates\change_password.html:22
 #: .\accounts\templates\change_password_done.html:20
+#: .\accounts\templates\confirm_send.html:20
 #: .\accounts\templates\edit-profile.html:20 .\accounts\templates\login.html:20
 #: .\accounts\templates\password_reset_complete.html:20
 #: .\accounts\templates\password_reset_confirm.html:20
@@ -98,6 +97,32 @@ msgstr "تم تغيير كلمة السر الخاصة بك :)"
 #: .\accounts\templates\change_password_done.html:36
 msgid "RETURN HOME"
 msgstr "العودة للصفحة الرئيسية"
+
+#: .\accounts\templates\confirm_send.html:5
+#: .\accounts\templates\confirm_send.html:17
+#: .\templates\email-confirm\confirm_template.html:5
+msgid "Confirmation"
+msgstr "تأكيد"
+
+#: .\accounts\templates\confirm_send.html:33
+msgid "We've send message to confirm your email, check your spam folder"
+msgstr ""
+"لقد أرسلنا رسالة لتأكيد بريدك الإلكتروني ، تحقق من مجلد الرسائل غير المرغوب "
+"فيها"
+
+#: .\accounts\templates\confirm_send.html:36
+msgid "Make sure to confirm your email, you can't sign in withou Confirmation"
+msgstr "تأكد من تأكيد بريدك الإلكتروني ، فلا يمكنك تسجيل الدخول بدون تأكيد"
+
+#: .\accounts\templates\confirm_send.html:38
+msgid "If the email didn't arrive try to resend confirm email again."
+msgstr ""
+"إذا لم يصل البريد الإلكتروني ، فحاول إعادة إرسال رسالة التأكيد مرة أخرى."
+
+#: .\accounts\templates\confirm_send.html:43
+#: .\templates\email-confirm\confirm_template.html:53
+msgid "re send"
+msgstr "إعادة إرسال"
 
 #: .\accounts\templates\edit-profile.html:5
 msgid "Profile - Edit"
@@ -287,7 +312,7 @@ msgstr "إنشاء مستخدم جديد"
 msgid "Already have an account?"
 msgstr "هل لديك حساب؟"
 
-#: .\accounts\views.py:46
+#: .\accounts\views.py:52 .\accounts\views.py:68
 msgid "This E-mail does not exist please try again :-)"
 msgstr "هذا البريد الإلكتروني غير موجود ، يرجى المحاولة مرة أخرى :-)"
 
@@ -598,7 +623,7 @@ msgid "E£"
 msgstr "ج.م"
 
 #: .\address\templates\products\product_detail.html:59
-#: .\address\templates\products\product_list_page.html:16
+#: .\address\templates\products\product_list_page.html:15
 #: .\address\templates\shops\shop_list_product.html:14
 msgid "UNKNOWN"
 msgstr "غير معروف"
@@ -612,8 +637,8 @@ msgid "Ref link"
 msgstr "رابط المرجع"
 
 #: .\address\templates\products\product_detail.html:69
-#: .\address\templates\products\product_list_page.html:27
-#: .\address\templates\products\product_list_page.html:34
+#: .\address\templates\products\product_list_page.html:26
+#: .\address\templates\products\product_list_page.html:33
 #: .\address\templates\shops\shop_list_product.html:22
 #: .\address\templates\shops\shop_list_product.html:29
 msgid "None"
@@ -653,7 +678,7 @@ msgid "Advanced search"
 msgstr "البحث المتقدم"
 
 #: .\address\templates\products\product_list.html:88
-#: .\address\templates\products\product_list_page.html:25
+#: .\address\templates\products\product_list_page.html:24
 #: .\address\templates\shops\shop_detail.html:131
 #: .\address\templates\shops\shop_list_product.html:20
 msgid "image"
@@ -672,16 +697,12 @@ msgstr "أكثر"
 msgid "working"
 msgstr "جاري العمل"
 
-#: .\address\templates\products\product_list_page.html:12
-msgid "Price:"
-msgstr "السعر:"
-
-#: .\address\templates\products\product_list_page.html:32
+#: .\address\templates\products\product_list_page.html:31
 #: .\address\templates\shops\shop_list_product.html:27
 msgid "ref link"
 msgstr "رابط المرجع"
 
-#: .\address\templates\products\product_list_page.html:39
+#: .\address\templates\products\product_list_page.html:38
 #: .\address\templates\shops\shop_list_product.html:46
 msgid "NO PRODUCTS HAS FOUND!!"
 msgstr "لم يتم العثور على منتجات"
@@ -772,10 +793,6 @@ msgstr "حقوق الملكية"
 #: .\contact\models.py:15
 msgid "Others"
 msgstr "آخرى"
-
-#: .\contact\models.py:19
-msgid "E-mail"
-msgstr "البريد الإلكتروني"
 
 #: .\contact\models.py:20
 msgid "Subject"
@@ -923,10 +940,6 @@ msgstr "تغيير كلمة المرور"
 msgid "Logout"
 msgstr "تسجيل الخروج"
 
-#: .\templates\email-confirm\confirm_template.html:5
-msgid "Confirmation"
-msgstr "تأكيد"
-
 #: .\templates\email-confirm\confirm_template.html:34
 msgid "Well done!"
 msgstr "مرحى!"
@@ -958,10 +971,6 @@ msgstr "تسجيل"
 #: .\templates\email-confirm\confirm_template.html:46
 msgid "Or resend confirm email."
 msgstr "أو إعادة إرسال تأكيد البريد الإلكتروني."
-
-#: .\templates\email-confirm\confirm_template.html:53
-msgid "re send"
-msgstr "إعادة إرسال"
 
 #: .\templates\email-confirm\mail_body.html:6
 msgid "Email Confirmation"
@@ -995,3 +1004,28 @@ msgstr ""
 #: .\templates\includes\user_settings_icon.html:11
 msgid "Change your avatar"
 msgstr "تغيير الصورة"
+
+#, fuzzy
+#~| msgid "E-mail"
+#~ msgid "Email"
+#~ msgstr "البريد الإلكتروني"
+
+#, fuzzy
+#~| msgid "Confirmation"
+#~ msgid "Confirmation email"
+#~ msgstr "تأكيد البريد الإلكتروني"
+
+#, fuzzy
+#~| msgid ""
+#~| "We've emailed you instructions for setting your password. If they "
+#~| "haven't arrived in a few minutes, check your spam folder."
+#~ msgid ""
+#~ "We've emailed you instructions for confirm your email address. If they "
+#~ "haven't arrived in a few minutes, check your spam folder."
+#~ msgstr ""
+#~ "لقد أرسلنا إليك عبر البريد الإلكتروني تعليمات حول تأكيد البريد الإلكتروني "
+#~ "الخاص بك. إذا لم تصل خلال بضع دقائق ، فتحقق من مجلد الرسائل غير المرغوب "
+#~ "فيها."
+
+#~ msgid "Price:"
+#~ msgstr "السعر:"

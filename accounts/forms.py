@@ -7,7 +7,7 @@ from django_summernote.widgets import SummernoteWidget
 
 
 class SignUpForm(UserCreationForm):
-    email = forms.CharField(max_length=255,required=True,widget=forms.EmailInput(), label=_("Email"))
+    email = forms.CharField(max_length=255,required=True,widget=forms.EmailInput(), label=_("E-mail"))
 
     class Meta:
         model = User
