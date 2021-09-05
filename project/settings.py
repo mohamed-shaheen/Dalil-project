@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
     'django.contrib.gis',
     'leaflet',
     'accounts',
@@ -54,6 +56,7 @@ INSTALLED_APPS = [
     'unidecode',
 
 ]
+SITE_ID = 1   #define the site id
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

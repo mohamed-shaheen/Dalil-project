@@ -1,8 +1,19 @@
 from os import name
 from django.urls import path
 from . import views
+from django.contrib.sitemaps.views import sitemap
+from .sitemaps import ShopSitemap, ProductSitemap
+from contact.sitemaps import StaticSitemap
 
 app_name = 'address'
+
+
+sitemaps = {
+    'shop':ShopSitemap,
+    'product':ProductSitemap,
+    'static':StaticSitemap,
+}
+
 
 
 urlpatterns = [
@@ -16,5 +27,6 @@ urlpatterns = [
     path('places/<int:id>-<str:slug>/edit/', views.ShopUpdateViews.as_view(), name='edit_place'),
     path('places/product/<int:id>-<str:slug>/edit', views.ProductUpdateViews.as_view(), name='edit_product'),
     path('delete/place/<int:id>', views.shop_del, name = 'delete_shop'),
-    path('delete/product/<int:id>', views.product_del, name = 'delete_product')
+    path('delete/product/<int:id>', views.product_del, name = 'delete_product'),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
 ]
