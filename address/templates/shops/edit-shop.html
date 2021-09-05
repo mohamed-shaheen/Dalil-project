@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load leaflet_tags %}
+{% load static %}
+{% block title %}
+{# title #}
+{% translate "Edit-" %}{{shop.SHname}}
+{% endblock title %}
+{% block extracss %}
+ {% leaflet_css plugins="ALL" %}
+ <link href="{% static 'css/leafletmap.css' %}" rel="stylesheet">
+{% endblock extracss %}
+
+{% block main %}
+
+<main id="main">
+
+  {#  ======= Breadcrumbs ======= #}
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>{% translate "Edit:" %}{{shop.SHname}}</h2>
+          <ol>
+            <li><a href="{% url 'address:home' %}">{% translate "Home" %}</a></li>
+            <li><a href="{% url 'address:place_list' %}">{% translate "Places"%}</a></li>
+            <li><a href="{{ shop.get_absolute_url }}">{{shop.SHname}}</a></li>
+            <li>{% translate "Edit-" %}{{shop.SHname}}</li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+    {# End Breadcrumbs #} 
+
+    <section id="edit-palce-form" class="inner-page pt-4">
+      <div class="container">
+          <div class="row justify-content-center">
+              <div class="col-lg-8 col-md-10 col-sm-12">
+                   <div class="card my-2" >
+                        <div class="card-body">
+                              <h3 class="card-title">{% translate "Edit" %}</h3> 
+                              <form method="post" novalidate >
+                                  {% csrf_token %}
+                                  {{form.media.js}}
+                                  {% include  'includes/form.html' %}
+                                  
+                                  <button type="submit" class="btn btn-dark btn-lg btn-block">{% translate "Save Edits" %} <i class="fa fa-pencil-square-o mr-2"></i></button>  
+                            </form>
+                        </div>
+                        <div class="card-footer text-muted text-center">
+                          <a class="btn btn-danger btn-sm" data-target="#confirm-del-{{shop.pk}}" type="button" data-toggle="modal">
+                            <i class="fa fa-trash mr-2"></i>{% translate "DELETE" as del_tr %}{{del_tr}}
+                          </a>
+                          {# Modal #}
+                          <div class="modal fade" id="confirm-del-{{shop.pk}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="ModalLabel">{% translate "Delete Confirmation" %}</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  {% translate "Are you sure you want to delete" %} "{{shop.SHname}}"?
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">{# modal #}{% translate "Close" %}</button>
+                                  <a href="{% url 'address:delete_shop' shop.pk %}" class="btn btn-danger">{{del_tr}} <i class="fa fa-trash-o mr-2"></i></a>
+                                  
+                                </div>
+                              </div>
+                            </div>
+                          </div>  
+                          {# end Modal #}
+                       </div>
+                    </div>
+                </div>
+            </div>
+      </div>
+    </section>
+
+  </main>
+  {# End #main #}
+
+{% endblock main %}
+{% block extrajs %}
+{% leaflet_js plugins="ALL" %}
+<script src="{% static 'js/leafletmap.js' %}"></script>
+{% endblock extrajs %}

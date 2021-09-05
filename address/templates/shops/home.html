@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}
+{# title #}
+{% translate "Dalil" %}
+{% endblock title %}
+
+{% block nav_home %}active{% endblock %}
+
+{% block main %}
+
+ {# ======= Hero Section ======= #}
+ <section id="hero">
+    <div class="hero-container" data-aos="fade-in">
+      <h1>{% translate "Welcome to Dalil" %}</h1>
+      <h2 class="quickTitle">{% translate "Quick search, name the product" %}  &amp; {% translate "Governorate" %} ..</h2>
+      <form action="{% url 'address:product_list' %}">
+            <div class="row mx-2"> 
+               {% translate "Product name" as pro_nm_tr %}
+                  <div class="form-group col">
+                    <label for="ProductName">{{pro_nm_tr}}</label>
+                    <input name="q1" class="form-control form-control-lg" type="text" placeholder="{{pro_nm_tr}}">
+                  </div>
+                  <div class="form-group col">
+                    <label for="Governorate">{% translate "Governorate" %}</label>
+                    <select name="q2" class="form-control form-control-lg">
+                      {% translate "Choose..."  as choose_tr %}
+                      <option value="" selected>{{choose_tr}}</option>
+                      {% for key, value in govs %}
+                      <option value="{{key}}">{{ value }}</option>
+                      {% endfor %}
+                      
+                    </select>
+                  </div>
+          </div>
+          <div class="row mx-2">
+                  <div class="form-group col advancedSearch">
+                    {% translate "Place name" as place_nm_tr %}
+                    <label for="PlaceName">{{place_nm_tr}}</label>
+                    <input name="q3" class="form-control form-control-lg" type="text" placeholder="{{place_nm_tr}}">
+                  </div>
+                  <div class="form-group col advancedSearch">
+                     {% translate "Address" as address_tr %}
+                    <label for="Address">{{address_tr}}</label>
+                    <input name="q4" class="form-control form-control-lg" type="text" placeholder="{{address_tr}}">
+                  </div>
+          </div>
+          <div class="row mx-2">                  
+                  <div class="form-group col advancedSearch">
+                    <label for="Description">{% translate "Description" %}</label>
+                     {#place holder description#}{% translate "Any thing related to product"  as any_th_re_tr %}
+                    <input name="q5" class="form-control form-control-lg" type="text" placeholder="{{any_th_re_tr}}">
+                  </div>
+                  <div class="form-group col advancedSearch">
+                    <label for="Category">{% translate "Category" %}</label>
+                    <select name="q6" class="form-control form-control-lg">
+                      <option value="" selected>{{choose_tr}}</option>
+                      {% for cat in category %}
+                      <option value="{{cat.CAname}}">{{ cat.CAname }}</option>
+                      {% endfor %}
+                      
+                    </select>
+                  </div>
+          </div>
+          <div class="mx-2">
+            <button type="submit" class="btn btn-dark btn-lg btn-block bx-2">{% translate "Search" %} <i class="fa fa-search"></i></button>
+          </div>  
+      </form>
+      <div class="btns mt-4">
+        <button class="btn btn-dark advancedBtn"><i class="fa fa-search-plus quickTitle"></i><i class="fa fa-search-minus advancedSearch"></i> {% translate "Advanced search" %}</button>
+      </div>
+    </div>
+  </section>
+  {# End Hero Section #}
+
+  <main id="main">
+
+    
+
+  </main>
+  {# End main #}
+
+{% endblock main %}

@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% load el_pagination_tags %}
+{% block title %}
+{# title #}
+{% translate "Products" %}
+{% endblock title %}
+{% block nav_products %} active{% endblock %}
+
+{% block main %}
+
+<main id="main">
+
+  {#  ======= Breadcrumbs ======= #}
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          {% translate "Products" as pro_tr %}
+          <h2>{{pro_tr}}</h2>
+          <ol>
+            <li><a href="{% url 'address:home' %}">{% translate "Home" %}</a></li>
+            <li>{{pro_tr}}</li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+    {# End Breadcrumbs #}
+
+    <section class="inner-page pt-4">
+      <div class="container">
+        <div class="m-2">
+          <form method="GET">
+             <div class="row m-2">
+                  <div class="col">
+                    <input name="q1" class="form-control form-control-lg" type="text" placeholder="{{pro_tr}}">
+                  </div>
+                  <div class="col">
+                    <select name="q2" class="form-control form-control-lg">
+                        <option value="" selected>{% translate "Choose governorate" %}</option>
+                        {% for key, value in govs %}
+                        <option value="{{key}}">{{ value }}</option>
+                        {% endfor %}  
+                    </select>
+                  </div>
+              </div>
+              <div class="row m-2">
+                <div class="col advancedSearch">
+                  <input name="q3" class="form-control form-control-lg" type="text" placeholder="{% translate 'Place name' %}">
+                </div>
+                <div class="col advancedSearch">
+                  <input name="q4" class="form-control form-control-lg" type="text" placeholder="{% translate 'address' %}">
+                </div>
+             </div>
+             <div class="row m-2">                  
+                      <div class="col advancedSearch">
+                        <input name="q5" class="form-control form-control-lg" type="text" placeholder="{% translate 'Any thing related to product' %}">
+                      </div>
+                      <div class="col advancedSearch">
+                        <select name="q6" class="form-control form-control-lg">
+                          <option value="" selected>{% translate "Choose category" %}</option>
+                          {% for cat in category %}
+                          <option value="{{cat.CAname}}">{{ cat.CAname }}</option>
+                          {% endfor %}
+                          
+                        </select>
+                      </div>
+               </div>
+            <button type="submit" class="btn btn-dark btn-lg btn-block mt-3">{% translate "Search" %} <i class="fa fa-search"></i></button>
+          </form>
+          <div class="btns mt-4">
+            <button class="btn btn-dark advancedBtn"><i class="fa fa-search-plus quickTitle"></i><i class="fa fa-search-minus advancedSearch"></i>{% translate "Advanced search" %} </button>
+          </div>
+          <div class="table-responsive mt-5">
+            <table class="table table-hover table-dark ">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">{% translate "Product name" %}</th>
+                    <th scope="col">{% translate "Description" %}</th>
+                    <th scope="col">{% translate "Category" %}</th>
+                    <th scope="col">{% translate "Price" %}</th>
+                    <th scope="col">{% translate "Place name"%}</th>
+                    <th scope="col">{% translate "Gover"%}</th>
+                    <th scope="col">{% translate "Address"%}</th>
+                    <th scope="col">{% translate "image" %}</th>
+                    <th scope="col">{% translate "refrance" %}</th>
+                  </tr>
+                </thead>
+                {% paginate products %}
+                <tbody class="endless_content_wrapper">
+                  {% include page_template %}
+                </tbody>
+                {# pagnation button #}
+                {% translate "even more" as even_more_tr %}
+                {% translate "working" as working_tr %}
+              </table>
+              {% show_more "even more" "working" "btn btn-info btn-sm"%} 
+                     
+            </div>  
+          </div>
+      </div>
+    </section>
+
+  </main>
+  {# End #main #}
+
+{% endblock main %}
+
+{% block extrajs %}
+{{ block.super }}
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="{%static 'js/el-pagination.js'%}"></script>
+<script>
+  $.endlessPaginate({
+      paginateOnScroll: true,
+      paginateOnScrollMargin: 20,
+      paginateOnScrollChunkSize: 5,
+      contentSelector: '.endless_content_wrapper',
+  });
+</script>
+{% endblock extrajs %}

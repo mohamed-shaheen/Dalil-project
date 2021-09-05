@@ -1,0 +1,40 @@
+{% load i18n %}
+{% load el_pagination_tags %}
+
+{% if request.is_ajax %}{% paginate products %}{% endif %}
+{% for product in products %}    
+<tr>
+  <th scope="row"></th>
+  <td><a href="{{product.get_absolute_url}}">{{product.PRname |truncatechars:25}}</a></td>
+  <td>{{product.PRdesc |truncatechars:15}}</td>
+  <td>{{product.PRcategory}}</td>
+  <td>
+    {% if product.PRprice %}
+        {{product.PRprice}}{% translate "E£" %}
+    {% else %}
+    {% translate "UNKNOWN" %}
+    {% endif %} 
+
+  </td>
+  <td><a href="{{product.PRshop.get_absolute_url}}">{{product.PRshop |truncatechars:20}}</a></td>
+  <td>{{product.PRshop.get_SHgover_display }}</td>
+  <td>{{product.PRshop.SHaddress}}</td>
+  <td>
+      {% if product.PRref %}
+          <a href="{{product.PRref_img}}" target="_blank">{% translate "image" %}</a>
+      {% else %}
+      {% translate "None" %}
+      {% endif %}      
+  </td>
+  <td>
+      {% if product.PRref %}
+          <a href="{{product.PRref}}" target="_blank">{% translate "ref link" %}</a>
+      {% else %}
+      {% translate "None" %}
+      {% endif %}      
+  </td>
+</tr>
+{% empty %}  
+<p class="clo alert alert-danger text-center"><strong> {% translate "NO PRODUCTS HAS FOUND!!" %}</strong></p>
+{% endfor %}  
+

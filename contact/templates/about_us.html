@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}
+{# title #}
+{% translate "About us" %}
+{% endblock title %}
+{% block nav_about %}active {% endblock %}
+
+{% block main %}
+
+<main id="main">
+
+  {#  ======= Breadcrumbs ======= #}
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          {% translate "About us" as about_tr %}
+          <h2>{{about_tr}}</h2>
+          <ol>
+            <li><a href="{% url 'address:home' %}">{% translate "Home" %}</a></li>
+            <li>{{about_tr}}</li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+    {# End Breadcrumbs #} 
+
+    <section id="about-us" class="inner-page pt-4">
+      <div class="container">
+           <div class="row justify-content-center">
+                <div class="col-lg-12 col-md-10 col-sm-12">
+                     <div class="card my-2" >
+                          <div class="card-body">
+                                <h3 class="card-title">{{abouts.ABtitle}} </h3>
+                                  {{abouts.ABmain | safe}}
+                          </div>
+                      </div>
+                </div>
+            </div>
+        
+      </div>
+    </section>
+
+  </main>
+  {# End #main #}
+
+{% endblock main %}

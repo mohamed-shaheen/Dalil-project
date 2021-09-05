@@ -1,0 +1,22 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% translate "Email Confirmation" %}</title>
+</head>
+<body>
+<h1>{% translate "You are almost there," %} {{ user.username }}!</h1><br>
+<h2>{% translate "Please click" %} <a href="{{ link }}">{% translate "here" %}</a> {% translate "to confirm your email address" %}</h2>
+<h2>{% translate "The link expires on" %} {{ expiry|time:"TIME_FORMAT" }}</h2>
+<p>
+    {% translate "If you didn’t ask to verify this address, you can ignore this email." %}
+</p>
+<p>
+    {% translate "Thanks," %}
+</p>
+<p>
+    {% translate "Dalil :)" %}
+</p>
+</body>
+</html>

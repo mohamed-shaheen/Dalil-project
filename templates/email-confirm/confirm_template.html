@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}
+{# title #}
+{% translate "Confirmation" as confirm_tr %}
+{{confirm_tr}}
+{% endblock title %}
+
+{% block main %}
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>{{confirm_tr}}</h2>
+          <ol>
+            <li><a href="{% url 'address:home' %}">{% translate "Home" %}</a></li>
+            <li>{{confirm_tr}}</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page pt-4">
+      <div class="container">
+        <p class="m-5">
+
+            {% if success %}
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">{% translate "Well done!" %}</h4>
+                    <p>{{ user.username }}{% translate ", you successfully confirmed your account E-mail ." %}</p>
+                    <hr>
+                    <p class="mb-0">{% translate "Now!!, you have full control of your account." %}</p>
+                </div>
+            {% else %}
+                <div class="alert alert-danger" role="alert">
+                    <h4 class="alert-heading">{% translate "Error!" %}</h4>
+                    <p>{% translate "invalid token!." %}</p>
+                    <hr>
+                    <p class="mb-0">{% translate "You can try to sign up again" %} 
+                      <a href="{% url 'accounts:signup' %}">{% translate "Signup" %}</a> 
+                      {% translate "Or resend confirm email." %} 
+                    </p>
+                </div>
+                <form method="POST" action="{% url 'accounts:re_send' %}">
+                  {% csrf_token %}
+                  <input name="email" class="form-control" label="example@example.com">
+                  <small class="form-text text-muted">{{error}}</small>
+                  <button class="btn btn-outline-success" type="submit">{% translate "re send" %} <i class="fa fa-send-o mr-2 mx-1"></i> </button>
+              </form>
+  
+            {% endif %}
+
+        </p>
+      </div>
+    </section>
+
+  </main>
+  <!-- End #main -->
+
+{% endblock main %}

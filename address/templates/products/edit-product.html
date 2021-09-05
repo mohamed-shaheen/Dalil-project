@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}
+{# title #}
+{% translate "Edit - Product" %}
+{% endblock title %}
+
+{% block main %}
+
+<main id="main">
+
+  {#  ======= Breadcrumbs ======= #}
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          {% translate "Edit Product" as edit_product_tr %}
+          <h2>{{edit_product_tr}}</h2>
+          <ol>
+            <li><a href="{% url 'address:home' %}">{% translate "Home" %}</a></li>
+            {% translate "Places" as places_tr %}
+            <li><a href="{% url 'address:place_list' %}">{{places_tr}}</a></li>
+            <li><a href="{{ product.PRshop.get_absolute_url }}">{{product.PRshop.SHname}}</a></li>
+            <li><a href="{{ product.get_absolute_url }}">{{product.PRname}}</a></li>
+            <li>{{edit_product_tr}}</li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+    {# End Breadcrumbs #}
+
+    <section id="products-edit-forms" class="inner-page pt-4">
+      <div class="container">
+          <div class="row justify-content-center">
+              <div class="col-lg-8 col-md-10 col-sm-12">
+                   <div class="card my-2" >
+                        <div class="card-body">
+                              <h3 class="card-title">{{edit_product_tr}}</h3> 
+                              <form method="post" novalidate >
+                                  {% csrf_token %}
+                                  {% include  'includes/form.html' %}
+                                  
+                                  <button type="submit" class="btn btn-dark btn-lg btn-block">{% translate "Save Edits" %} <i class="fa fa-pencil-square-o mr-2 mx-1"></i></button>  
+                            </form>
+                        </div>
+                        <div class="card-footer text-muted text-center">
+                          <a class="btn btn-danger btn-sm" data-target="#confirm-del-{{product.pk}}" type="button" data-toggle="modal">
+                            <i class="fa fa-trash mr-2"></i>{% translate "DELETE" as del_tr %}{{del_tr}}
+                          </a>
+                          {# Modal #}
+                          <div class="modal fade" id="confirm-del-{{product.pk}}" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="ModalLabel">{# modal #}{% translate "Delete Confirmation" %}</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  {% translate "Are you sure you want to delete" %} "{{product.PRname}}"?
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">{# modal #}{% translate "Close" %}</button>
+                                  <a href="{% url 'address:delete_product' product.pk %}" class="btn btn-danger">{# modal #}{{del_tr}} <i class="fa fa-trash-o mr-2"></i></a>
+                                  
+                                </div>
+                              </div>
+                            </div>
+                          </div>  
+                          {# end Modal #}
+                       </div>
+                    </div>
+                </div>
+            </div>
+      </div>
+    </section>
+
+  </main>
+  {# End #main #}
+
+{% endblock main %}

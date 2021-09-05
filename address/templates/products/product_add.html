@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}
+{# title #}
+{% translate "Add Product" %}
+{% endblock title %}
+
+{% block main %}
+
+<main id="main">
+
+  {#  ======= Breadcrumbs ======= #}
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          {% translate "Add product" as add_pro_tr %}
+          <h2>{{add_pro_tr}}</h2>
+          <ol>
+            <li><a href="{% url 'address:home' %}">{% translate "Home" %}</a></li>
+            <li><a href="{% url 'address:place_list' %}">{% translate "Places" %}</a></li>
+            <li><a href="{{ shop.get_absolute_url }}">{{shop.SHname}}</a></li>
+            <li>{{add_pro_tr}}</li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+    {# End Breadcrumbs #}
+
+    <section id="products-forms" class="inner-page pt-4">
+      <div class="container">
+          <div class="row justify-content-center">
+              <div class="col-lg-8 col-md-10 col-sm-12">
+                   <div class="card my-2" >
+                        <div class="card-body">
+                              <h3 class="card-title">{{add_pro_tr}}</h3> 
+                              <form method="post" novalidate >
+                                  {% csrf_token %}
+                                  {% include  'includes/form.html' %}
+                                  
+                                  <button type="submit" class="btn btn-dark btn-lg btn-block">{% translate "Add" %} <i class="fa fa-plus mr-2 mx-1"></i></button>  
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      </div>
+    </section>
+
+  </main>
+  {# End #main #}
+
+{% endblock main %}

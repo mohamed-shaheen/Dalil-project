@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load avatar_tags %}
+{% load static %}
+
+{% block title %}
+{# title #}
+{% translate "Profile" %}
+{% endblock title %}
+
+{% block main %}
+
+<main id="main">
+
+  {#  ======= Breadcrumbs ======= #}
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          {% translate "Profile" as profile_tr %}
+          <h2>{{profile_tr}}</h2>
+          <ol>
+            <li><a href="{% url 'address:home' %}">{% translate "Home" %}</a></li>
+            <li>{{profile_tr}}</li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+    {# End Breadcrumbs #}
+
+    <section class="inner-page pt-4">
+      <div class="container">
+        <div class="m-2">
+            
+            <div class="flex-row row">
+              <div class="col-md-6 col-lg-6 mt-4">
+              
+                {% avatar profile.PRuser 120 class="img-circle img-responsive" id="user_avatar" %}
+
+              <h3>
+                 {% if profile.PRuser.first_name and profile.PRuser.last_name %}
+                     {{profile.PRuser.first_name}} {{profile.PRuser.last_name}} {% include  'includes/user_settings_icon.html' %}
+                 {% elif profile.PRuser.first_name %}
+                     {{profile.PRuser.first_name}} {% include  'includes/user_settings_icon.html' %}
+                 {% else %}     
+                     {{profile.PRuser}} {% include  'includes/user_settings_icon.html' %}
+                 {% endif %}
+
+              </h3>
+              <h4 class="my-3">
+                 <strong>{% translate "Places created:" %} </strong>
+                 {% if profile.get_shop_count > 0 %}
+                   {{ profile.get_shop_count}}
+                 {% else %}
+                    {% translate "No places added" %} 
+                 {% endif %} 
+              </h4>
+
+              </div>
+              <div class="col-md-6 col-lg-6 mt-4">
+                {% if profile.PRbio %}
+                  {{profile.PRbio | safe }}
+                {% endif %}
+              </div>
+
+              <hr>
+              {# Rounded switch #} 
+              <label class="switch">
+                <input type="checkbox" class="toggleBtn">
+                <span class="slider round"></span>
+              </label>
+
+              <div class="container toggle">
+                    <div class="table-responsive mt-5">
+                      <table class="table table-hover table-dark ">
+                          <thead>
+                            <tr>
+                              <th scope="col"></th>
+                              <th scope="col">{% translate "Place name"%}</th>
+                              <th scope="col">{% translate "Place type"%}</th>
+                              <th scope="col">{% translate "Gover"%}</th>
+                              <th scope="col">{% translate "Address"%}</th>
+                              <th scope="col">{% translate "Number"%}</th>
+                              <th scope="col">{% translate "Created at"%}</th>
+                              <th scope="col">{% translate "Products" %}</th>
+                              {% if profile.PRuser == user or user.is_superuser %}
+                              <th scope="col">{% translate "Edit"%}</th>
+                              {% endif %}    
+                            </tr>
+                          </thead>
+                          <tbody>
+                          {% for shop in shops %}    
+                            <tr>
+                              <th scope="row">{{forloop.counter}}</th>
+                              <td><a href="{{shop.get_absolute_url}}">{{shop.SHname}}</a></td>
+                              <td>  {{shop.SHtype}}</td>
+                              <td>{{shop.get_SHgover_display}}</td>
+                              <td>  {{shop.SHaddress |truncatechars:20}}</td>
+                              <td>{{shop.SHnum}}</td>
+                              <td> {{shop.SHcreated_dt|date:"j M, Y" }}</td>
+                              <td>
+                                {% if shop.get_product_count > 0 %}
+                                    <strong>{{ shop.get_product_count }}</strong>
+                                {% else %}
+                                   {% translate "No products added" %}
+                                {% endif %}      
+                            </td>
+                            {% if shop.SHcreated_by == user or user.is_superuser %}
+                            <td>
+                              <a class="btn btn-secondary btn-sm" href="{% url 'address:edit_place'  shop.pk   shop.SHslug %}">
+                                <i class="fa fa-pencil-square-o mr-2"></i>{% translate "Edit"%}
+                              </a>
+                            </td>  
+                            {% endif %}
+                          {% empty %}  
+                            <p class="clo alert alert-danger text-center"><strong>{% translate "NO PLACES HAS FOUND!!!" %} </strong></p>
+                          {% endfor %}  
+                          </tbody>
+                        </table>
+      </div>
+ 
+
+  </div>
+                 
+</div>
+      </div>
+    </section>
+
+  </main>
+  {# End #main #}
+
+{% endblock main %}

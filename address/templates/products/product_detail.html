@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}
+{{product.PRname}}
+{% endblock title %}
+
+{% block main %}
+
+<main id="main">
+
+  {#  ======= Breadcrumbs ======= #}
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2>{{product.PRname}}</h2>
+          <ol>
+            <li><a href="{% url 'address:home' %}">{% translate "Home" %}</a></li>
+            <li><a href="{% url 'address:place_list' %}">{% translate "Places" %}</a></li>
+            <li><a href="{{ product.PRshop.get_absolute_url }}">{{product.PRshop}}</a></li>
+            <li>{{product.PRname}}</li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+    {# End Breadcrumbs #}
+
+    <section class="inner-page pt-4">
+      <div class="container">
+        <div class=" m-2">
+                <div class="flex-row row">
+                            <div class="col-md-6 col-lg-6 mt-4">
+                            <h3>{{product.PRname}}
+                              {% if product.PRshop.SHcreated_by == user %}
+                              <a class="dropdown-toggle" href="#" id="Dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img class="setting-icon" src="{% static 'img/gear-icon.png' %}" >
+                              </a>
+                              <div class="dropdown-menu mr-3 " aria-labelledby="navbarDropdown">
+                                
+                                <a class="dropdown-item" href="{% url 'address:edit_product'  product.pk   product.PRslug %}">
+                                  <i class="fa fa-pencil-square-o mr-2"></i>{% translate "Edit" %}
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item alert-danger" href="#">
+                                  <i class="fa fa-trash mr-2"></i>{% translate "Delete Product" %}
+                                </a>
+                              </div>
+                            {%endif%} 
+                            </h3>
+                            <h4 class="mt-3">{% translate "Category :" %} {{product.PRcategory}}</h4>
+                            <h4 class="mt-3">
+                                    {% translate "Price: " %}
+                                    {% if product.PRprice %}
+                                        {{product.PRprice}} {% translate "E£" %}
+                                    {% else %}
+                                    {% translate "UNKNOWN" %}
+                                    {% endif %}     
+                            </h4>
+                            <h4 class="mt-3"><a href="{{ product.PRshop.get_absolute_url }}" target="_blank">{{product.PRshop}}</a></h4>
+                            <h4 class="mt-3">{{product.PRshop.get_SHgover_display}}</h4>
+                            <h4 class="mt-3">
+                                    {% translate "Outside reference:" %} 
+                                    {% if product.PRref %}
+                                        <a href="{{product.PRref}}" target="_blank">{% translate "Ref link" %}</a>
+                                    {% else %}
+                                    {% translate "None" %}
+                                    {% endif %}     
+                            </h4>
+                            </div>
+                            <div class="col-md-6 col-lg-6 mt-4">
+                                <div class="embed-responsive embed-responsive-16by9">
+                                            {% if product.PRref_img %}
+                                                <img class="embed-responsive-item" src="{{product.PRref_img}}" alt="{{product.PRname}} image">
+                                            {% else %}
+                                                <img class="embed-responsive-item" src="{% static 'img/default.png' %}" alt="No image for {{product.PRname}}">
+                                            {% endif %}  
+                                </div>
+                            </div> 
+                    </div>
+                    <hr>
+                    
+                    <h3 class="row m-1">{% translate "Description :" %}</h3>
+                    <div class="row m-3"> 
+                       <h4>{{product.PRdesc}}</h4> 
+                    </div>
+               
+
+                </div>
+              </div>
+      </div>
+    </section>
+
+  </main>
+  {# End #main #}
+
+{% endblock main %}

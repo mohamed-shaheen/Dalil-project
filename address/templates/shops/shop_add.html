@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load leaflet_tags %}
+{% load static %}
+
+{% block title %}
+{# title #}
+{% translate "Add place" %}
+{% endblock title %}
+{% block extracss %}
+ {% leaflet_css plugins="ALL" %}
+ <link href="{% static 'css/leafletmap.css' %}" rel="stylesheet">
+{% endblock extracss %}
+{% block nav_add_place %} active {% endblock %}
+
+{% block main %}
+
+<main id="main">
+
+  {#  ======= Breadcrumbs ======= #}
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          {% translate "Add place" as add_place_tr %}
+          <h2>{{add_place_tr}}</h2>
+          <ol>
+            <li><a href="{% url 'address:home' %}">{% translate "Home" %}</a></li>
+            <li><a href="{% url 'address:place_list' %}">{% translate "Places"%}</a></li>
+            <li>{{add_place_tr}}</li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+    {# End Breadcrumbs #}
+
+    <section id="add-place-form" class="inner-page pt-4">
+      <div class="container">
+        
+           <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10 col-sm-12">
+                     <div class="card my-2" >
+                          <div class="card-body">
+                                <h3 class="card-title">{{add_place_tr}}</h3>  
+                                <form method="post" enctype="multipart/form-data" novalidate >
+
+                                    {% csrf_token %}
+                                    
+                                    {{form.media.js}}
+                                    {% include  'includes/form.html' %}
+                                    <small class="form-text text-muted mb-4">{# help text #}{% translate "Point your location with marker" %} <i class="fa fa-map-marker fa-3x"></i></small>
+                                    
+                                    <button type="submit" class="btn btn-dark btn-lg btn-block">{% translate "Add" %} <i class="fa fa-plus mr-2 mx-1"></i></button>  
+                              </form>
+                          </div>
+                      </div>
+                </div>
+          </div>
+        
+      </div>
+    </section>
+
+  </main>
+  {# End #main #}
+
+{% endblock main %}
+{% block extrajs %}
+{% leaflet_js plugins="ALL" %}
+<script src="{% static 'js/leafletmap.js' %}"></script>
+{% endblock extrajs %}

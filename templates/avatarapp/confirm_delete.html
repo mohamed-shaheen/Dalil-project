@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load avatar_tags %}
+
+{% block title %}
+{# title #}
+{% translate "Delete Avatar" %}
+{% endblock title %}
+
+{% block main %}
+
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          {% translate "Delete Avatar" as del_ava_tr %}
+          <h2>{{del_ava_tr}}</h2>
+          <ol>
+            <li><a href="{% url 'address:home' %}">{% translate "Home" %}</a></li>
+            <li><a href="{{ request.user.user_profile.get_absolute_url }}">{% translate "Profile" %}</a></li>
+            <li>{{del_ava_tr}}</li>
+          </ol>
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <section class="inner-page pt-4 extra-forms">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 col-md-10 col-sm-12">
+               <div class="card my-2" >
+                    <div class="card-body">
+                          <h3 class="card-title">{% translate "Please select the avatars that you would like to delete"  %}</h3> 
+                          {% if not avatars %}
+                              {% url 'avatar_change' as avatar_change_url %}
+                              <h4>{% translate "You have no avatars to delete. Please"  %} <a href="{{ avatar_change_url }}">{% translate "upload one" %}</a> {% translate "now." %}</h4>
+                          {% else %}
+                              <form method="POST" class="row g-3" action="{% url 'avatar_delete' %}">
+                                
+                                    {% include  'includes/del_avatar_form.html' %}
+                                    {% csrf_token %}
+                                  <div class="col-auto">
+                                      <button type="submit" class="btn btn-danger mb-3">{% translate "DELEtE"  %} <i class="fa fa-trash-o mr-2 mx-1"></i></button> 
+                                  </div> 
+                              </form>
+                          {% endif %}
+                      </div>
+                    </div>
+              </div>
+            </div>
+      </div>
+    </section>
+
+  </main>
+  <!-- End #main -->
+
+{% endblock main %}

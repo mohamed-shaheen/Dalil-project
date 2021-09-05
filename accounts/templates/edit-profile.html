@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}
+{# title #}
+{% translate "Profile - Edit" %}
+{% endblock title %}
+
+{% block main %}
+
+<main id="main">
+
+  {#  ======= Breadcrumbs ======= #}
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          {% translate "Edit profile" as editprofile %}
+          <h2>{{editprofile}}</h2>
+          <ol>
+            <li><a href="{% url 'address:home' %}">{% translate "Home" %}</a></li>
+            <li><a href="{{profile.get_absolute_url}}">{{profile.PRuser}}</a></li>
+            <li>{{editprofile}}</li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+    {# End Breadcrumbs #}
+
+    <section class="inner-page pt-4 auth-forms">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 col-md-10 col-sm-12">
+               <div class="card my-2" >
+                    <div class="card-body">
+                          <h3 class="card-title">{{editprofile}}</h3> 
+                          <form method="post" enctype="multipart/form-data" novalidate>
+                              {% csrf_token %}
+                              {{form.media}}
+                              {% include  'includes/usereditform.html' %}
+                              {{form.media}}
+                              {% include  'includes/profileeditform.html' %}
+                              
+                              
+                              <button type="submit" class="btn btn-dark btn-lg btn-block">{% translate "Save Edits" %} <i class="fa fa-pencil-square-o mr-2"></i></button>  
+                        </form>
+                    </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </section>
+
+  </main>
+  {# End #main #}
+
+{% endblock main %}

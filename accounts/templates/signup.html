@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}
+{# title #}
+{% translate "Sing up" %}
+{% endblock title %}
+
+{% block main %}
+
+<main id="main">
+
+  {#  ======= Breadcrumbs ======= #}
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          {% translate "Sign up" as signup_tr %}
+          <h2>{{signup_tr}}</h2>
+          <ol>
+            <li><a href="{% url 'address:home' %}">{% translate "Home" %}</a></li>
+            <li>{{signup_tr}}</li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+    {# End Breadcrumbs #}
+
+    <section class="inner-page pt-4 auth-forms">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8 col-md-10 col-sm-12">
+               <div class="card my-2" >
+                    <div class="card-body">
+                          <h3 class="card-title">{{signup_tr}}</h3> 
+                          <form method="post" novalidate >
+                              {% csrf_token %}
+                              {% include  'includes/form.html' %}
+                              
+                              <button type="submit" class="btn btn-dark btn-lg btn-block">{% translate "Creat New User" %} <i class="fa fa-user-plus mr-2 mx-1"></i></button>  
+                        </form>
+                    </div>
+                    <div class="card-footer text-muted text-center">
+                      {% translate "Already have an account?" %} <a href="{%url 'accounts:login'%}">{% translate "Login" %}</a>
+                   </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </section>
+
+  </main>
+  {# End #main #}
+
+{% endblock main %}

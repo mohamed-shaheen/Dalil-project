@@ -1,0 +1,1031 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-05 01:21+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: .\accounts\forms.py:10 .\contact\models.py:19
+msgid "E-mail"
+msgstr "البريد الإلكتروني"
+
+#: .\accounts\models.py:20
+msgid "user"
+msgstr "المستخدم"
+
+#: .\accounts\models.py:21
+msgid "Bio"
+msgstr "السيرة الشخصية"
+
+#: .\accounts\models.py:22
+msgid "join date"
+msgstr "تاريخ الانضمام"
+
+#: .\accounts\models.py:23 .\address\models.py:60 .\address\models.py:91
+#: .\address\models.py:120 .\address\models.py:146 .\contact\models.py:27
+msgid "Slug"
+msgstr "سبيكة أسمية"
+
+#: .\accounts\models.py:27 .\accounts\templates\profile.html:8
+#: .\accounts\templates\profile.html:20 .\templates\avatarapp\add.html:23
+#: .\templates\avatarapp\change.html:24
+#: .\templates\avatarapp\confirm_delete.html:23
+msgid "Profile"
+msgstr "الصفحة الشخصية"
+
+#: .\accounts\models.py:28
+msgid "Profiles"
+msgstr "الصفحات الشخصية"
+
+#: .\accounts\templates\change_password.html:5
+#: .\accounts\templates\change_password.html:19
+#: .\accounts\templates\change_password_done.html:21
+msgid "Change Password"
+msgstr "تغيير كلمة المرور"
+
+#: .\accounts\templates\change_password.html:22
+#: .\accounts\templates\change_password_done.html:20
+#: .\accounts\templates\confirm_send.html:20
+#: .\accounts\templates\edit-profile.html:20 .\accounts\templates\login.html:20
+#: .\accounts\templates\password_reset_complete.html:20
+#: .\accounts\templates\password_reset_confirm.html:20
+#: .\accounts\templates\password_reset_done.html:20
+#: .\accounts\templates\password_reset_form.html:20
+#: .\accounts\templates\profile.html:23 .\accounts\templates\signup.html:20
+#: .\address\templates\products\edit-product.html:20
+#: .\address\templates\products\product_add.html:20
+#: .\address\templates\products\product_detail.html:20
+#: .\address\templates\products\product_list.html:23
+#: .\address\templates\shops\edit-shop.html:25
+#: .\address\templates\shops\shop_add.html:28
+#: .\address\templates\shops\shop_detail.html:21
+#: .\address\templates\shops\shop_list.html:22
+#: .\contact\templates\about_us.html:23
+#: .\contact\templates\contact_form.html:24 .\templates\avatarapp\add.html:22
+#: .\templates\avatarapp\change.html:23
+#: .\templates\avatarapp\confirm_delete.html:22 .\templates\base.html:57
+#: .\templates\email-confirm\confirm_template.html:20
+msgid "Home"
+msgstr "الصفحة الرئيسية"
+
+#: .\accounts\templates\change_password_done.html:5
+msgid "Change Password Successful"
+msgstr "تم تغيير كلمة المرور بنجاح"
+
+#: .\accounts\templates\change_password_done.html:17
+msgid "Success"
+msgstr "نجاح"
+
+#: .\accounts\templates\change_password_done.html:34
+msgid " Your Password has been changed :) "
+msgstr "تم تغيير كلمة السر الخاصة بك :)"
+
+#: .\accounts\templates\change_password_done.html:36
+msgid "RETURN HOME"
+msgstr "العودة للصفحة الرئيسية"
+
+#: .\accounts\templates\confirm_send.html:5
+#: .\accounts\templates\confirm_send.html:17
+#: .\templates\email-confirm\confirm_template.html:5
+msgid "Confirmation"
+msgstr "تأكيد"
+
+#: .\accounts\templates\confirm_send.html:33
+msgid "We've send message to confirm your email, check your spam folder"
+msgstr ""
+"لقد أرسلنا رسالة لتأكيد بريدك الإلكتروني ، تحقق من مجلد الرسائل غير المرغوب "
+"فيها"
+
+#: .\accounts\templates\confirm_send.html:36
+msgid "Make sure to confirm your email, you can't sign in withou Confirmation"
+msgstr "تأكد من تأكيد بريدك الإلكتروني ، فلا يمكنك تسجيل الدخول بدون تأكيد"
+
+#: .\accounts\templates\confirm_send.html:38
+msgid "If the email didn't arrive try to resend confirm email again."
+msgstr ""
+"إذا لم يصل البريد الإلكتروني ، فحاول إعادة إرسال رسالة التأكيد مرة أخرى."
+
+#: .\accounts\templates\confirm_send.html:43
+#: .\templates\email-confirm\confirm_template.html:53
+msgid "re send"
+msgstr "إعادة إرسال"
+
+#: .\accounts\templates\edit-profile.html:5
+msgid "Profile - Edit"
+msgstr "الصفحة الشخصية - تعديل"
+
+#: .\accounts\templates\edit-profile.html:17 .\templates\base.html:105
+msgid "Edit profile"
+msgstr "تعديل الصفحة الشخصية"
+
+#: .\accounts\templates\edit-profile.html:45
+#: .\address\templates\products\edit-product.html:44
+#: .\address\templates\shops\edit-shop.html:48
+msgid "Save Edits"
+msgstr "حفظ التعديلات"
+
+#: .\accounts\templates\login.html:5 .\accounts\templates\login.html:17
+#: .\accounts\templates\password_reset_complete.html:33
+#: .\accounts\templates\signup.html:44 .\templates\base.html:123
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+#: .\accounts\templates\login.html:44
+msgid "Create New account"
+msgstr "إنشاء حساب جديد"
+
+#: .\accounts\templates\login.html:44 .\accounts\templates\signup.html:17
+#: .\templates\base.html:128
+msgid "Sign up"
+msgstr "تسجيل"
+
+#: .\accounts\templates\login.html:45
+msgid "Lost your password?"
+msgstr "فقدت كلمة المرور الخاصة بك؟"
+
+#: .\accounts\templates\login.html:45
+msgid "Reset"
+msgstr "إعادة تعيين"
+
+#: .\accounts\templates\password_reset_complete.html:5
+#: .\accounts\templates\password_reset_complete.html:17
+msgid "Password reset complete"
+msgstr "اكتملت إعادة تعيين كلمة المرور"
+
+#: .\accounts\templates\password_reset_complete.html:32
+msgid "The password has been changed!"
+msgstr "تم تغيير كلمة السر!"
+
+#: .\accounts\templates\password_reset_confirm.html:5
+#: .\accounts\templates\password_reset_confirm.html:17
+msgid "Password reset confirm"
+msgstr "تأكيد إعادة تعيين كلمة المرور"
+
+#: .\accounts\templates\password_reset_confirm.html:35
+msgid "Confirm password"
+msgstr "تأكيد كلمة المرور"
+
+#: .\accounts\templates\password_reset_confirm.html:40
+msgid "Confirm new Password"
+msgstr "تأكيد كلمة المرور الجديدة"
+
+#: .\accounts\templates\password_reset_done.html:5
+#: .\accounts\templates\password_reset_done.html:17
+msgid "Password reset done"
+msgstr "تمت إعادة تعيين كلمة المرور"
+
+#: .\accounts\templates\password_reset_done.html:33
+msgid ""
+"We've emailed you instructions for setting your password. If they haven't "
+"arrived in a few minutes, check your spam folder."
+msgstr ""
+"لقد أرسلنا إليك عبر البريد الإلكتروني تعليمات حول تعيين كلمة المرور الخاصة "
+"بك. إذا لم تصل خلال بضع دقائق ، فتحقق من مجلد الرسائل غير المرغوب فيها."
+
+#: .\accounts\templates\password_reset_email.html:2
+msgid "Hello,"
+msgstr "مرحبا،"
+
+#: .\accounts\templates\password_reset_email.html:4
+msgid "Someone asked for password reset for email"
+msgstr "طلب شخص ما إعادة تعيين كلمة المرور للبريد الإلكتروني"
+
+#: .\accounts\templates\password_reset_email.html:6
+msgid "Follow the link below:"
+msgstr "اتبع الرابط أدناه:"
+
+#: .\accounts\templates\password_reset_email.html:9
+msgid "if you didn't ask to reset your password, you can ignore this email."
+msgstr ""
+"إذا لم تطلب إعادة تعيين كلمة المرور الخاصة بك ، فيمكنك تجاهل هذا البريد "
+"الإلكتروني."
+
+#: .\accounts\templates\password_reset_email.html:11
+#: .\templates\email-confirm\mail_body.html:16
+msgid "Thanks,"
+msgstr "شكراً,"
+
+#: .\accounts\templates\password_reset_email.html:13
+#: .\templates\email-confirm\mail_body.html:19
+msgid "Dalil :)"
+msgstr "دليل :)"
+
+#: .\accounts\templates\password_reset_form.html:5
+#: .\accounts\templates\password_reset_form.html:17
+msgid "Reset password"
+msgstr "إعادة تعيين كلمة المرور"
+
+#: .\accounts\templates\profile.html:52
+msgid "Places created:"
+msgstr "الأماكن التي تم إنشاؤها:"
+
+#: .\accounts\templates\profile.html:56
+msgid "No places added"
+msgstr "لا توجد أماكن مضافة"
+
+#: .\accounts\templates\profile.html:80
+#: .\address\templates\products\product_list.html:51
+#: .\address\templates\products\product_list.html:85
+#: .\address\templates\shops\home.html:40
+#: .\address\templates\shops\shop_list.html:37
+#: .\address\templates\shops\shop_list.html:63
+msgid "Place name"
+msgstr "اسم مكان"
+
+#: .\accounts\templates\profile.html:81
+#: .\address\templates\shops\shop_list.html:64
+msgid "Place type"
+msgstr "نوع المكان"
+
+#: .\accounts\templates\profile.html:82
+#: .\address\templates\products\product_list.html:86
+#: .\address\templates\shops\shop_list.html:65
+msgid "Gover"
+msgstr "المحافظة"
+
+#: .\accounts\templates\profile.html:83
+#: .\address\templates\products\product_list.html:87
+#: .\address\templates\shops\home.html:45
+#: .\address\templates\shops\shop_list.html:66
+msgid "Address"
+msgstr "العنوان"
+
+#: .\accounts\templates\profile.html:84
+#: .\address\templates\shops\shop_list.html:67
+msgid "Number"
+msgstr "الرقم"
+
+#: .\accounts\templates\profile.html:85 .\address\models.py:119
+#: .\address\templates\shops\shop_detail.html:87 .\contact\models.py:23
+#: .\contact\models.py:49
+msgid "Created at"
+msgstr "أنشئت في"
+
+#: .\accounts\templates\profile.html:86 .\address\models.py:131
+#: .\address\templates\products\product_list.html:7
+#: .\address\templates\products\product_list.html:20 .\templates\base.html:65
+msgid "Products"
+msgstr "المنتجات"
+
+#: .\accounts\templates\profile.html:88 .\accounts\templates\profile.html:112
+#: .\address\templates\products\product_detail.html:44
+#: .\address\templates\shops\edit-shop.html:42
+#: .\address\templates\shops\shop_detail.html:49
+#: .\address\templates\shops\shop_detail.html:134
+#: .\address\templates\shops\shop_list_product.html:35
+#: .\templates\includes\user_settings_icon.html:15
+msgid "Edit"
+msgstr "تعديل"
+
+#: .\accounts\templates\profile.html:106
+#: .\address\templates\shops\shop_list_page.html:17
+msgid "No products added"
+msgstr "لا توجد منتجات مضافة"
+
+#: .\accounts\templates\profile.html:117
+msgid "NO PLACES HAS FOUND!!!"
+msgstr "لم يتم العثور على أماكن !!!"
+
+#: .\accounts\templates\signup.html:5
+msgid "Sing up"
+msgstr "تسجيل"
+
+#: .\accounts\templates\signup.html:40
+msgid "Creat New User"
+msgstr "إنشاء مستخدم جديد"
+
+#: .\accounts\templates\signup.html:44
+msgid "Already have an account?"
+msgstr "هل لديك حساب؟"
+
+#: .\accounts\views.py:52 .\accounts\views.py:68
+msgid "This E-mail does not exist please try again :-)"
+msgstr "هذا البريد الإلكتروني غير موجود ، يرجى المحاولة مرة أخرى :-)"
+
+#: .\address\models.py:15
+msgid "Alexandria"
+msgstr "الإسكندرية"
+
+#: .\address\models.py:16
+msgid "Aswan"
+msgstr "أسوان"
+
+#: .\address\models.py:17
+msgid "Asyut"
+msgstr "أسيوط"
+
+#: .\address\models.py:18
+msgid "Beheira"
+msgstr "البحيرة"
+
+#: .\address\models.py:19
+msgid "Beni Suef"
+msgstr "بني سويف"
+
+#: .\address\models.py:20
+msgid "Cairo"
+msgstr "القاهرة"
+
+#: .\address\models.py:21
+msgid "Dakahlia"
+msgstr "الدقهلية"
+
+#: .\address\models.py:22
+msgid "Damietta"
+msgstr "دمياط"
+
+#: .\address\models.py:23
+msgid "Faiyum"
+msgstr "الفيوم"
+
+#: .\address\models.py:24
+msgid "Gharbia"
+msgstr "الغربية"
+
+#: .\address\models.py:25
+msgid "Giza"
+msgstr "الجيزة"
+
+#: .\address\models.py:26
+msgid "Ismailia"
+msgstr "الإسماعيلية"
+
+#: .\address\models.py:27
+msgid "Kafr El Sheikh"
+msgstr "كفر الشيخ"
+
+#: .\address\models.py:28
+msgid "Luxor"
+msgstr "الأقصر"
+
+#: .\address\models.py:29
+msgid "Matruh"
+msgstr "مطروح"
+
+#: .\address\models.py:30
+msgid "Minya"
+msgstr "المنيا"
+
+#: .\address\models.py:31
+msgid "Monufia"
+msgstr "المنوفية"
+
+#: .\address\models.py:32
+msgid "New Valley"
+msgstr "الوادي الجديد"
+
+#: .\address\models.py:33
+msgid "North Sinai"
+msgstr "شمال سيناء"
+
+#: .\address\models.py:34
+msgid "Port Said"
+msgstr "بورسعيد"
+
+#: .\address\models.py:35
+msgid "Qalyubia"
+msgstr "القليوبية"
+
+#: .\address\models.py:36
+msgid "Qena"
+msgstr "قنا"
+
+#: .\address\models.py:37
+msgid "Red Sea"
+msgstr "البحر الاحمر"
+
+#: .\address\models.py:38
+msgid "Sharqia"
+msgstr "الشرقية"
+
+#: .\address\models.py:39
+msgid "Sohag"
+msgstr "سوهاج"
+
+#: .\address\models.py:40
+msgid "South Sinai"
+msgstr "جنوب سيناء"
+
+#: .\address\models.py:41
+msgid "Suez"
+msgstr "السويس"
+
+#: .\address\models.py:49
+msgid "The name of your place, then choose type"
+msgstr "أكتب اسم المكان ، ثم اختر النوع"
+
+#: .\address\models.py:49
+msgid "Naming the place"
+msgstr "تسمية المكان"
+
+#: .\address\models.py:50
+msgid "Place Type"
+msgstr "نوع المكان"
+
+#: .\address\models.py:51 .\address\templates\shops\home.html:18
+#: .\address\templates\shops\home.html:27
+msgid "Governorate"
+msgstr "المحافظة"
+
+#: .\address\models.py:52
+msgid "Detailed address"
+msgstr "العنوان التفصيلي"
+
+#: .\address\models.py:53
+msgid "Phone number"
+msgstr "رقم الهاتف"
+
+#: .\address\models.py:54
+msgid "Map location"
+msgstr "خريطة الموقع"
+
+#: .\address\models.py:55
+msgid "Created date"
+msgstr "تاريخ الإنشاء"
+
+#: .\address\models.py:56 .\address\templates\shops\shop_detail.html:88
+msgid "Created by"
+msgstr "انشأ من قبل"
+
+#: .\address\models.py:57
+msgid "Updated date"
+msgstr "تاريخ التحديث"
+
+#: .\address\models.py:58 .\address\templates\shops\shop_detail.html:92
+msgid "Updated by"
+msgstr "تم التحديث بواسطة"
+
+#: .\address\models.py:70
+msgid "Place"
+msgstr "مكان"
+
+#: .\address\models.py:71 .\address\templates\products\edit-product.html:21
+#: .\address\templates\products\product_add.html:21
+#: .\address\templates\products\product_detail.html:21
+#: .\address\templates\shops\edit-shop.html:26
+#: .\address\templates\shops\shop_add.html:29
+#: .\address\templates\shops\shop_detail.html:22
+#: .\address\templates\shops\shop_list.html:7
+#: .\address\templates\shops\shop_list.html:19 .\templates\base.html:61
+msgid "Places"
+msgstr "أماكن"
+
+#: .\address\models.py:88
+msgid "Type name"
+msgstr "اسم النوع"
+
+#: .\address\models.py:89 .\address\models.py:144
+#: .\address\templates\products\product_list.html:82
+#: .\address\templates\shops\home.html:52
+#: .\address\templates\shops\shop_detail.html:128
+msgid "Description"
+msgstr "وصف"
+
+#: .\address\models.py:90 .\address\models.py:116 .\address\models.py:145
+msgid "Link image"
+msgstr "رابط الصورة"
+
+#: .\address\models.py:100
+msgid "Type"
+msgstr "النوع"
+
+#: .\address\models.py:101
+msgid "Types"
+msgstr "الأنواع"
+
+#: .\address\models.py:112 .\address\templates\products\product_list.html:81
+#: .\address\templates\shops\home.html:21
+#: .\address\templates\shops\shop_detail.html:116
+#: .\address\templates\shops\shop_detail.html:127
+msgid "Product name"
+msgstr "أسم المنتج"
+
+#: .\address\models.py:113
+msgid "Name of place"
+msgstr "أسم المكان"
+
+#: .\address\models.py:114
+msgid "Write about the product quality and how the product work ^_^ .."
+msgstr "اكتب عن جودة المنتج وكيف يعمل المنتج ^ _ ^ .."
+
+#: .\address\models.py:114
+msgid "description"
+msgstr "وصف"
+
+#: .\address\models.py:115
+msgid "Outside reference link"
+msgstr "رابط مرجع خارجي"
+
+#: .\address\models.py:117 .\address\models.py:156
+#: .\address\templates\products\product_list.html:83
+#: .\address\templates\shops\home.html:57
+#: .\address\templates\shops\shop_detail.html:130
+msgid "Category"
+msgstr "فئة"
+
+#: .\address\models.py:118
+msgid "Must be a positive number."
+msgstr "يجب أن يكون رقما موجبا."
+
+#: .\address\models.py:118 .\address\templates\products\product_list.html:84
+#: .\address\templates\shops\shop_detail.html:129
+msgid "Price"
+msgstr "السعر"
+
+#: .\address\models.py:130
+msgid "Product"
+msgstr "المنتج"
+
+#: .\address\models.py:143
+msgid "Category name"
+msgstr "أسم الفئة"
+
+#: .\address\models.py:157
+msgid "Categories"
+msgstr "الفئات"
+
+#: .\address\templates\products\edit-product.html:5
+msgid "Edit - Product"
+msgstr "تعديل - المنتج"
+
+#: .\address\templates\products\edit-product.html:17
+msgid "Edit Product"
+msgstr "تعديل المنتج"
+
+#: .\address\templates\products\edit-product.html:49
+#: .\address\templates\shops\edit-shop.html:53
+#: .\address\templates\shops\shop_detail.html:53
+msgid "DELETE"
+msgstr "حذف"
+
+#: .\address\templates\products\edit-product.html:56
+#: .\address\templates\shops\edit-shop.html:60
+#: .\address\templates\shops\shop_detail.html:61
+msgid "Delete Confirmation"
+msgstr "تأكيد الحذف"
+
+#: .\address\templates\products\edit-product.html:62
+#: .\address\templates\shops\edit-shop.html:66
+#: .\address\templates\shops\shop_detail.html:67
+msgid "Are you sure you want to delete"
+msgstr "هل أنت متأكد أنك تريد حذف"
+
+#: .\address\templates\products\edit-product.html:65
+#: .\address\templates\shops\edit-shop.html:69
+#: .\address\templates\shops\shop_detail.html:70
+msgid "Close"
+msgstr "أغلق"
+
+#: .\address\templates\products\product_add.html:5
+msgid "Add Product"
+msgstr "أضف منتج"
+
+#: .\address\templates\products\product_add.html:17
+#: .\address\templates\shops\shop_detail.html:45
+msgid "Add product"
+msgstr "أضف منتج"
+
+#: .\address\templates\products\product_add.html:42
+#: .\address\templates\shops\shop_add.html:54
+msgid "Add"
+msgstr "أضف"
+
+#: .\address\templates\products\product_detail.html:48
+msgid "Delete Product"
+msgstr "حذف المنتج"
+
+#: .\address\templates\products\product_detail.html:53
+msgid "Category :"
+msgstr "فئة :"
+
+#: .\address\templates\products\product_detail.html:55
+msgid "Price: "
+msgstr "السعر:"
+
+#: .\address\templates\products\product_detail.html:57
+#: .\address\templates\products\product_list_page.html:13
+#: .\address\templates\shops\shop_list_product.html:12
+msgid "E£"
+msgstr "ج.م"
+
+#: .\address\templates\products\product_detail.html:59
+#: .\address\templates\products\product_list_page.html:15
+#: .\address\templates\shops\shop_list_product.html:14
+msgid "UNKNOWN"
+msgstr "غير معروف"
+
+#: .\address\templates\products\product_detail.html:65
+msgid "Outside reference:"
+msgstr "مرجع خارجي:"
+
+#: .\address\templates\products\product_detail.html:67
+msgid "Ref link"
+msgstr "رابط المرجع"
+
+#: .\address\templates\products\product_detail.html:69
+#: .\address\templates\products\product_list_page.html:26
+#: .\address\templates\products\product_list_page.html:33
+#: .\address\templates\shops\shop_list_product.html:22
+#: .\address\templates\shops\shop_list_product.html:29
+msgid "None"
+msgstr "لا يوجد"
+
+#: .\address\templates\products\product_detail.html:85
+msgid "Description :"
+msgstr "وصف :"
+
+#: .\address\templates\products\product_list.html:42
+msgid "Choose governorate"
+msgstr "اختر المحافظة"
+
+#: .\address\templates\products\product_list.html:54
+msgid "address"
+msgstr "العنوان"
+
+#: .\address\templates\products\product_list.html:59
+#: .\address\templates\shops\home.html:53
+msgid "Any thing related to product"
+msgstr "أي شيء متعلق بالمنتج"
+
+#: .\address\templates\products\product_list.html:63
+msgid "Choose category"
+msgstr "اختر الفئة"
+
+#: .\address\templates\products\product_list.html:71
+#: .\address\templates\shops\home.html:68
+#: .\address\templates\shops\shop_detail.html:119
+#: .\address\templates\shops\shop_list.html:56
+msgid "Search"
+msgstr "بحث"
+
+#: .\address\templates\products\product_list.html:74
+#: .\address\templates\shops\home.html:72
+msgid "Advanced search"
+msgstr "البحث المتقدم"
+
+#: .\address\templates\products\product_list.html:88
+#: .\address\templates\products\product_list_page.html:24
+#: .\address\templates\shops\shop_detail.html:131
+#: .\address\templates\shops\shop_list_product.html:20
+msgid "image"
+msgstr "صورة"
+
+#: .\address\templates\products\product_list.html:89
+#: .\address\templates\shops\shop_detail.html:132
+msgid "refrance"
+msgstr "مرجع"
+
+#: .\address\templates\products\product_list.html:97
+msgid "even more"
+msgstr "أكثر"
+
+#: .\address\templates\products\product_list.html:98
+msgid "working"
+msgstr "جاري العمل"
+
+#: .\address\templates\products\product_list_page.html:31
+#: .\address\templates\shops\shop_list_product.html:27
+msgid "ref link"
+msgstr "رابط المرجع"
+
+#: .\address\templates\products\product_list_page.html:38
+#: .\address\templates\shops\shop_list_product.html:46
+msgid "NO PRODUCTS HAS FOUND!!"
+msgstr "لم يتم العثور على منتجات"
+
+#: .\address\templates\shops\edit-shop.html:7
+#: .\address\templates\shops\edit-shop.html:28
+msgid "Edit-"
+msgstr "تعديل-"
+
+#: .\address\templates\shops\edit-shop.html:23
+msgid "Edit:"
+msgstr "تعديل:"
+
+#: .\address\templates\shops\home.html:7
+msgid "Dalil"
+msgstr "دليل"
+
+#: .\address\templates\shops\home.html:17
+msgid "Welcome to Dalil"
+msgstr "مرحباً بك في دليل"
+
+#: .\address\templates\shops\home.html:18
+msgid "Quick search, name the product"
+msgstr "بحث سريع ، قم بتسمية المنتج"
+
+#: .\address\templates\shops\home.html:29
+msgid "Choose..."
+msgstr "اختر..."
+
+#: .\address\templates\shops\shop_add.html:8
+#: .\address\templates\shops\shop_add.html:25 .\templates\base.html:112
+#: .\templates\includes\user_settings_icon.html:22
+msgid "Add place"
+msgstr "أضف مكان"
+
+#: .\address\templates\shops\shop_add.html:52
+msgid "Point your location with marker"
+msgstr "أشر إلى موقعك بالعلامة"
+
+#: .\address\templates\shops\shop_detail.html:83
+msgid "Num :"
+msgstr "رقم:"
+
+#: .\address\templates\shops\shop_detail.html:85
+msgid "Num : None"
+msgstr "رقم : لا يوجد"
+
+#: .\address\templates\shops\shop_detail.html:91
+msgid "Updated at"
+msgstr "تم التحديث في"
+
+#: .\address\templates\shops\shop_list.html:41
+msgid "type..."
+msgstr "النوع..."
+
+#: .\address\templates\shops\shop_list.html:49
+msgid "gover..."
+msgstr "المحافظة..."
+
+#: .\address\templates\shops\shop_list.html:68
+msgid "Offered products"
+msgstr "المنتجات المعروضة"
+
+#: .\address\templates\shops\shop_list_page.html:22
+msgid "NO PLACES HAS FOUND!!"
+msgstr "لم يتم العثور على أماكن"
+
+#: .\contact\models.py:10
+msgid "Complaint"
+msgstr "شكوى"
+
+#: .\contact\models.py:11
+msgid "Suggestions"
+msgstr "اقتراحات"
+
+#: .\contact\models.py:12
+msgid "Links Error"
+msgstr "خطأ في الروابط"
+
+#: .\contact\models.py:13
+msgid "Report a user"
+msgstr "الإبلاغ عن مستخدم"
+
+#: .\contact\models.py:14
+msgid "Property rights"
+msgstr "حقوق الملكية"
+
+#: .\contact\models.py:15
+msgid "Others"
+msgstr "آخرى"
+
+#: .\contact\models.py:20
+msgid "Subject"
+msgstr "الموضوع"
+
+#: .\contact\models.py:21
+msgid "Message type"
+msgstr "نوع الرسالة"
+
+#: .\contact\models.py:22
+msgid "Reports an error or user , copy > paste the 'link' or 'user name' "
+msgstr "للإبلاغ عن خطأ أو مستخدم , أنسخ > ألصق 'الرابط' أو 'أسم المستخدم"
+
+#: .\contact\models.py:22
+msgid "Message"
+msgstr "الرسالة"
+
+#: .\contact\models.py:24
+msgid "Seen"
+msgstr "تم المشاهدة"
+
+#: .\contact\models.py:25
+msgid "In progress"
+msgstr "جاري العمل"
+
+#: .\contact\models.py:26
+msgid "Is user"
+msgstr "مستخدم"
+
+#: .\contact\models.py:36
+msgid "Contact"
+msgstr "اتصل"
+
+#: .\contact\models.py:37
+msgid "Contacts"
+msgstr "اتصالات"
+
+#: .\contact\models.py:47
+msgid "Title"
+msgstr "العنوان"
+
+#: .\contact\models.py:48
+msgid "Main"
+msgstr "الرئيسية"
+
+#: .\contact\models.py:50
+msgid "View as main"
+msgstr "عرض كصفحة رئيسية"
+
+#: .\contact\models.py:51
+msgid "Is arabic"
+msgstr "باللغة العربية"
+
+#: .\contact\models.py:55 .\contact\models.py:56
+msgid "About"
+msgstr "حول"
+
+#: .\contact\templates\about_us.html:7 .\contact\templates\about_us.html:20
+#: .\templates\base.html:69
+msgid "About us"
+msgstr "معلومات عنا"
+
+#: .\contact\templates\contact_form.html:7
+#: .\contact\templates\contact_form.html:21
+#: .\contact\templates\contact_form.html:22
+#: .\contact\templates\contact_form.html:25 .\templates\base.html:73
+msgid "Contact us"
+msgstr "اتصل بنا"
+
+#: .\contact\templates\contact_form.html:45
+msgid "Send"
+msgstr "إرسال"
+
+#: .\project\settings.py:134
+msgid "Arabic"
+msgstr "العربية"
+
+#: .\project\settings.py:135
+msgid "English"
+msgstr "الإنجليزية"
+
+#: .\templates\avatarapp\add.html:7 .\templates\avatarapp\add.html:19
+msgid "Add Avatar"
+msgstr "أضف صورة"
+
+#: .\templates\avatarapp\add.html:37 .\templates\avatarapp\change.html:38
+msgid "Your current avatar:"
+msgstr "الصورة الحالية"
+
+#: .\templates\avatarapp\add.html:40 .\templates\avatarapp\change.html:41
+msgid "You haven't uploaded an avatar yet. Please upload one now."
+msgstr "لم تقم بتحميل صورة حتى الآن. الرجاء تحميل واحد الآن."
+
+#: .\templates\avatarapp\add.html:46 .\templates\avatarapp\change.html:56
+msgid "Upload New Image"
+msgstr "تحميل صورة جديدة"
+
+#: .\templates\avatarapp\change.html:8 .\templates\avatarapp\change.html:20
+msgid "Change Avatar"
+msgstr "تغيير الصورة"
+
+#: .\templates\avatarapp\change.html:48
+msgid "Choose new defult"
+msgstr "اختر الصورة الأفتراضية الجديدة"
+
+#: .\templates\avatarapp\confirm_delete.html:7
+#: .\templates\avatarapp\confirm_delete.html:19
+#: .\templates\includes\user_settings_icon.html:26
+msgid "Delete Avatar"
+msgstr "حذف صورة"
+
+#: .\templates\avatarapp\confirm_delete.html:37
+msgid "Please select the avatars that you would like to delete"
+msgstr "يرجى تحديد الصور التي ترغب في حذفها"
+
+#: .\templates\avatarapp\confirm_delete.html:40
+msgid "You have no avatars to delete. Please"
+msgstr "ليس لديك صور لحذفها. يرجي"
+
+#: .\templates\avatarapp\confirm_delete.html:40
+msgid "upload one"
+msgstr "تحميل صورة جديدة"
+
+#: .\templates\avatarapp\confirm_delete.html:40
+msgid "now."
+msgstr "الأن."
+
+#: .\templates\avatarapp\confirm_delete.html:47
+msgid "DELEtE"
+msgstr "حذف"
+
+#: .\templates\base.html:96
+msgid "Welcome,"
+msgstr "مرحبا،"
+
+#: .\templates\base.html:101
+msgid "My profile"
+msgstr "ملفي الشخصي"
+
+#: .\templates\base.html:108 .\templates\includes\user_settings_icon.html:18
+msgid "Change password"
+msgstr "تغيير كلمة المرور"
+
+#: .\templates\base.html:116
+msgid "Logout"
+msgstr "تسجيل الخروج"
+
+#: .\templates\email-confirm\confirm_template.html:34
+msgid "Well done!"
+msgstr "مرحى!"
+
+#: .\templates\email-confirm\confirm_template.html:35
+msgid ", you successfully confirmed your account E-mail ."
+msgstr "، لقد نجحت في تأكيد البريد الإلكتروني لحسابك."
+
+#: .\templates\email-confirm\confirm_template.html:37
+msgid "Now!!, you have full control of your account."
+msgstr "الآن !! ، لديك سيطرة كاملة على حسابك."
+
+#: .\templates\email-confirm\confirm_template.html:41
+msgid "Error!"
+msgstr "خطأ!"
+
+#: .\templates\email-confirm\confirm_template.html:42
+msgid "invalid token!."
+msgstr "رمز غير صالح !."
+
+#: .\templates\email-confirm\confirm_template.html:44
+msgid "You can try to sign up again"
+msgstr "يمكنك محاولة التسجيل مرة أخرى"
+
+#: .\templates\email-confirm\confirm_template.html:45
+msgid "Signup"
+msgstr "تسجيل"
+
+#: .\templates\email-confirm\confirm_template.html:46
+msgid "Or resend confirm email."
+msgstr "أو إعادة إرسال تأكيد البريد الإلكتروني."
+
+#: .\templates\email-confirm\mail_body.html:6
+msgid "Email Confirmation"
+msgstr "تأكيد البريد الإلكتروني"
+
+#: .\templates\email-confirm\mail_body.html:9
+msgid "You are almost there,"
+msgstr "كدت تصل،"
+
+#: .\templates\email-confirm\mail_body.html:10
+msgid "Please click"
+msgstr "من فضلك اضغط"
+
+#: .\templates\email-confirm\mail_body.html:10
+msgid "here"
+msgstr "هنا"
+
+#: .\templates\email-confirm\mail_body.html:10
+msgid "to confirm your email address"
+msgstr "لتأكيد عنوان بريدك الإلكتروني"
+
+#: .\templates\email-confirm\mail_body.html:11
+msgid "The link expires on"
+msgstr "تنتهي صلاحية الرابط في"
+
+#: .\templates\email-confirm\mail_body.html:13
+msgid "If you didn’t ask to verify this address, you can ignore this email."
+msgstr ""
+"إذا لم تطلب التحقق من هذا العنوان ، فيمكنك تجاهل هذا البريد الإلكتروني."
+
+#: .\templates\includes\user_settings_icon.html:11
+msgid "Change your avatar"
+msgstr "تغيير الصورة"
+
+#, fuzzy
+#~| msgid "E-mail"
+#~ msgid "Email"
+#~ msgstr "البريد الإلكتروني"
+
+#, fuzzy
+#~| msgid "Confirmation"
+#~ msgid "Confirmation email"
+#~ msgstr "تأكيد البريد الإلكتروني"
+
+#, fuzzy
+#~| msgid ""
+#~| "We've emailed you instructions for setting your password. If they "
+#~| "haven't arrived in a few minutes, check your spam folder."
+#~ msgid ""
+#~ "We've emailed you instructions for confirm your email address. If they "
+#~ "haven't arrived in a few minutes, check your spam folder."
+#~ msgstr ""
+#~ "لقد أرسلنا إليك عبر البريد الإلكتروني تعليمات حول تأكيد البريد الإلكتروني "
+#~ "الخاص بك. إذا لم تصل خلال بضع دقائق ، فتحقق من مجلد الرسائل غير المرغوب "
+#~ "فيها."
+
+#~ msgid "Price:"
+#~ msgstr "السعر:"

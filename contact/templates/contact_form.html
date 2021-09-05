@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}
+{# title #}
+{% translate "Contact us" %}
+{% endblock title %}
+{% block nav_contact %} active {% endblock %}
+
+
+{% block main %}
+
+<main id="main">
+
+  {#  ======= Breadcrumbs ======= #}
+    <section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          {% translate "Contact us" as contact_tr %}
+          <h2>{% translate "Contact us" %}</h2>
+          <ol>
+            <li><a href="{% url 'address:home' %}">{% translate "Home" %}</a></li>
+            <li>{% translate "Contact us" %}</li>
+          </ol>
+        </div>
+
+      </div>
+    </section>
+    {# End Breadcrumbs #} 
+
+    <section class="inner-page pt-4 extra-forms">
+      <div class="container">
+           <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10 col-sm-12">
+                     <div class="card my-2" >
+                          <div class="card-body">
+                                <h3 class="card-title">{{contact_tr}} </h3>  
+                                <form method="post" enctype="multipart/form-data" novalidate >
+
+                                    {% csrf_token %}
+                                    {% include  'includes/form.html' %}
+                                    
+                                    <button type="submit" class="btn btn-dark btn-lg btn-block">{% translate "Send" %} <i class="fa fa-send-o mr-2 mx-1"></i></button>  
+                              </form>
+                          </div>
+                      </div>
+                </div>
+            </div>
+        
+      </div>
+    </section>
+
+  </main>
+  {# End #main #}
+
+{% endblock main %}
