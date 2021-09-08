@@ -1,14 +1,19 @@
-from django.test import TestCase, testcases
-from address.models import Shop
+from django.test import TestCase
+from address.models import Shop, Type
+from django.contrib.auth.models import User
+from django.utils.translation import activate
 # Create your tests here.
 
 
-class ShopModelTest(testcases):
-
+class ShopModelTest(TestCase):
+#must change defult lang in settings.py to 'en' before runing the test
+    activate('en')
     @classmethod
     def setUpTestData(cls):
         # Set up non-modified objects used by all test methods
-        Shop.objects.create(SHname='the shop', SHtype=1  )
+        user = User.objects.create_user(username='mohamed', email='example@email.com',  password='testpass')
+        type=Type.objects.create(TYname='type', TYdesc='some desc')
+        shop = Shop.objects.create(SHname='the shop', SHtype=type, SHgover='QENA', SHaddress='some address', SHlocation='SRID=4326;POINT (31.026788 30.378931)', SHcreated_by=user)
 
     def test_SHname_label(self):
         shop = Shop.objects.get(id=1)
@@ -29,4 +34,4 @@ class ShopModelTest(testcases):
     def test_get_absolute_url(self):
         shop = Shop.objects.get(id=1)
         # This will also fail if the urlconf is not defined.
-        self.assertEqual(author.get_absolute_url(), 'places/1-the-shop')    
+        self.assertEqual(shop.get_absolute_url(), '/en/places/1-the-shop/')   
