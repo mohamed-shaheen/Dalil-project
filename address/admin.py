@@ -3,6 +3,7 @@ from django.contrib import admin
 from leaflet.admin import LeafletGeoAdmin
 from .models import Shop, Product, Category, Type
 from import_export.admin import ImportExportModelAdmin
+#from .forms import ShopAdminForm
 # Register your models here.
 
 admin.site.site_header = 'Dalil Admin Panel'
@@ -10,6 +11,8 @@ admin.site.site_title = 'Dalil Admin Panel'
 
 @admin.register(Shop)
 class ShopAdmin(LeafletGeoAdmin, ImportExportModelAdmin):
+    #form = ShopAdminForm
+    display_raw = True
     list_display = ('SHname', 'SHtype', 'SHgover', 'SHaddress', 'SHlocation', 'SHcreated_dt') 
     list_filter = ('SHtype__TYname', 'SHgover')
     search_fields = ['SHname', 'SHcreated_by__username']
