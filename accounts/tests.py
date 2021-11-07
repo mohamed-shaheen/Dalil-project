@@ -24,7 +24,8 @@ class UserTest(TestCase):
         self.assertNotEqual(user_count, 0)  
 
     def test_user_password(self):
-        self.assertTrue(self.user_a.check_password(self.user_a_pw))#check_password is belt in method that check if the password i entered is the same
+        user_pass = User.objects.get(username="cfe")
+        self.assertTrue(user_pass.check_password(self.user_a_pw))#check_password is belt in method that check if the password i entered is the same
 
 
     def test_login_url(self):
